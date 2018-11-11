@@ -1,10 +1,14 @@
 import UIKit
 
 class SingleQueueController: UITableViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         setupNavigationBar()
+    }
+
+    private func setupTableView() {
+        tableView.tableFooterView = UIView()
     }
 
     private func setupNavigationBar() {
