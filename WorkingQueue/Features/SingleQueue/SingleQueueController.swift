@@ -17,6 +17,8 @@ class SingleQueueController: UITableViewController {
     }
 
     private func setupNavigationBar() {
+        navigationItem.title = "Queue"
+
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
     }
