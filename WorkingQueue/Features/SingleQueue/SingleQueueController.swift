@@ -1,6 +1,10 @@
 import UIKit
 
 class SingleQueueController: UITableViewController {
+
+    private let cellIdentifier = "QueueCell"
+    private var queue = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -8,6 +12,7 @@ class SingleQueueController: UITableViewController {
     }
 
     private func setupTableView() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView()
     }
 
@@ -17,10 +22,25 @@ class SingleQueueController: UITableViewController {
     }
 
     @objc private func handleAdd(button: UIBarButtonItem) {
-        guard let controller = AddSingleQueuePopupBuilder().build().getResult() else {
-            return
-        }
+        let popupController = AddSingleQueuePopupBuilder(callback: { [unowned self] in self.itemDidAdd($0) })
 
-        present(controller, animated: true)
+        if let controller = popupController.build().getResult() {
+            present(controller, animated: true)
+        }
+    }
+
+    private func itemDidAdd(_ name: String) {
+        queue.append(name)
+        tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return queue.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = queue[indexPath.row]
+        return cell
     }
 }
