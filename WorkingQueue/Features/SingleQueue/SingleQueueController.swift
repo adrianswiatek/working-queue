@@ -13,6 +13,10 @@ class SingleQueueController: UITableViewController {
     }
 
     @objc private func handleAdd(button: UIBarButtonItem) {
-        print("Add new item")
+        guard let controller = AddSingleQueuePopupBuilder().build().getResult() else {
+            return
+        }
+
+        present(controller, animated: true)
     }
 }
