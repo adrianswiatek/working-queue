@@ -25,6 +25,7 @@ class SingleQueueController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        setDequeueButtonEditability()
     }
 
     private func setupViews() {
@@ -47,13 +48,27 @@ class SingleQueueController: UIViewController {
         ])
     }
 
-    private func itemDidAdd(_ name: String) {
+    private func addItem(_ name: String) {
         let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
-
         guard isNotEmpty else { return }
 
         queue.append(name)
         tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
+        setDequeueButtonEditability()
+    }
+
+    private func dequeueItem() {
+        queue.remove(at: 0)
+        tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .left)
+        setDequeueButtonEditability()
+    }
+
+    private func setDequeueButtonEditability() {
+        if queue.count > 0 {
+            controlBar.enableDequeueButton()
+        } else {
+            controlBar.disableDequeueButton()
+        }
     }
 }
 
@@ -87,10 +102,14 @@ extension SingleQueueController: UITableViewDataSource {
 
 extension SingleQueueController: ControlBarDelegate {
     func controlBarDidAdd(_ controlBar: ControlBar) {
-        let popupController = AddSingleQueuePopupBuilder { [unowned self] in self.itemDidAdd($0) }
+        let popupController = AddSingleQueuePopupBuilder { [unowned self] in self.addItem($0) }
 
         if let controller = popupController.build().getResult() {
             present(controller, animated: true)
         }
+    }
+
+    func controlBarDidDequeue(_ controlBar: ControlBar) {
+        dequeueItem()
     }
 }

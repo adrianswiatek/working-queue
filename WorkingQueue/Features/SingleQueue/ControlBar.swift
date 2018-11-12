@@ -35,6 +35,14 @@ class ControlBar: UIView {
         super.init(coder: aDecoder)
     }
 
+    func enableDequeueButton() {
+        dequeueButton.isEnabled = true
+    }
+
+    func disableDequeueButton() {
+        dequeueButton.isEnabled = false
+    }
+
     private func setupViews() {
         let stackView = getStackView()
         addSubview(stackView)
@@ -58,6 +66,6 @@ class ControlBar: UIView {
     }
 
     @objc private func handleDequeue(button: UIButton) {
-
+        delegate?.controlBarDidDequeue(self)
     }
 }
