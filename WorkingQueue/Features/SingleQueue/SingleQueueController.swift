@@ -49,4 +49,16 @@ class SingleQueueController: UITableViewController {
         cell.textLabel?.text = queue[indexPath.row]
         return cell
     }
+
+    override func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let deleteContextualAction = DeleteContextualAction {
+            self.queue.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+
+        return UISwipeActionsConfiguration(actions: [deleteContextualAction])
+    }
 }

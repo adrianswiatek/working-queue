@@ -14,6 +14,7 @@
 		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */; };
+		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3A741EAB2198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSingleQueuePopupBuilder.swift; sourceTree = "<group>"; };
+		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */,
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
+				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
 			);
 			path = SingleQueue;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
+				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
