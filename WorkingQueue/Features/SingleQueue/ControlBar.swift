@@ -7,9 +7,18 @@ class ControlBar: UIView {
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "add"), for: .normal)
-        button.tintColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         button.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var dequeueButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "dequeue"), for: .normal)
+        button.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        button.addTarget(self, action: #selector(handleDequeue), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -27,16 +36,28 @@ class ControlBar: UIView {
     }
 
     private func setupViews() {
-        addSubview(addButton)
+        let stackView = getStackView()
+        addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            addButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            addButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            addButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    private func getStackView() -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: [dequeueButton, addButton])
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }
 
     @objc private func handleAdd(button: UIButton) {
         delegate?.controlBarDidAdd(self)
+    }
+
+    @objc private func handleDequeue(button: UIButton) {
+
     }
 }
