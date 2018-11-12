@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
 		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
-		3A741E9C2198C86000763028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9B2198C86000763028 /* Assets.xcassets */; };
 		3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9D2198C86000763028 /* LaunchScreen.storyboard */; };
 		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
+		3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A2219A025900FC2BA5 /* ControlBar.swift */; };
+		3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */; };
+		3ADB89A7219A18A700FC2BA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +33,6 @@
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A741E942198C85E00763028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A741E962198C85E00763028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3A741E9B2198C86000763028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A741E9E2198C86000763028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A741EA02198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EA52198C86000763028 /* WorkingQueueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkingQueueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +41,9 @@
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSingleQueuePopupBuilder.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
+		3ADB89A2219A025900FC2BA5 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarDelegate.swift; sourceTree = "<group>"; };
+		3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +88,7 @@
 				3A741EB62198D6E700763028 /* Features */,
 				3A741E942198C85E00763028 /* AppDelegate.swift */,
 				3A741E962198C85E00763028 /* ViewController.swift */,
-				3A741E9B2198C86000763028 /* Assets.xcassets */,
+				3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */,
 				3A741E9D2198C86000763028 /* LaunchScreen.storyboard */,
 				3A741EA02198C86000763028 /* Info.plist */,
 			);
@@ -112,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */,
+				3ADB89A2219A025900FC2BA5 /* ControlBar.swift */,
+				3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */,
 				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
 			);
@@ -199,8 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADB89A7219A18A700FC2BA5 /* Assets.xcassets in Resources */,
 				3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */,
-				3A741E9C2198C86000763028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */,
+				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
+				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
 				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
