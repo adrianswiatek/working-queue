@@ -1,24 +1,32 @@
 import UIKit
 
-class SingleQueueController: UITableViewController {
+class SingleQueueController: UIViewController {
+
+    private let controlBar = ControlBar()
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.tableFooterView = UIView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
 
     private let cellIdentifier = "QueueCell"
     private var queue = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupTableView()
+        setupColors()
         setupNavigationBar()
+        setupConstraints()
     }
 
-    private func setupView() {
+    private func setupColors() {
         view.backgroundColor = .black
-    }
-
-    private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = .black
     }
 
     private func setupNavigationBar() {
@@ -45,19 +53,25 @@ class SingleQueueController: UITableViewController {
         tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return queue.count
-    }
+    private func setupConstraints() {
+        view.addSubview(controlBar)
+        view.addSubview(tableView)
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = queue[indexPath.row]
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = .black
-        return cell
+        NSLayoutConstraint.activate([
+            controlBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            controlBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            controlBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            controlBar.heightAnchor.constraint(equalToConstant: 75),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: controlBar.topAnchor)
+        ])
     }
+}
 
-    override func tableView(
+extension SingleQueueController: UITableViewDelegate {
+    func tableView(
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
@@ -67,5 +81,19 @@ class SingleQueueController: UITableViewController {
         }
 
         return UISwipeActionsConfiguration(actions: [deleteContextualAction])
+    }
+}
+
+extension SingleQueueController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return queue.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cell.textLabel?.text = queue[indexPath.row]
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = .black
+        return cell
     }
 }
