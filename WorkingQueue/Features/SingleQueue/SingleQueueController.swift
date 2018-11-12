@@ -2,7 +2,11 @@ import UIKit
 
 class SingleQueueController: UIViewController {
 
-    private let controlBar = ControlBar()
+    private lazy var controlBar: ControlBar = {
+        let controlBar = ControlBar()
+        controlBar.delegate = self
+        return controlBar
+    }()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -19,41 +23,15 @@ class SingleQueueController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupColors()
-        setupNavigationBar()
-        setupConstraints()
+
+        setupViews()
     }
 
-    private func setupColors() {
+    private func setupViews() {
         view.backgroundColor = .black
         tableView.backgroundColor = .black
-    }
-
-    private func setupNavigationBar() {
         navigationItem.title = "Queue"
 
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAdd))
-    }
-
-    @objc private func handleAdd(button: UIBarButtonItem) {
-        let popupController = AddSingleQueuePopupBuilder(callback: { [unowned self] in self.itemDidAdd($0) })
-
-        if let controller = popupController.build().getResult() {
-            present(controller, animated: true)
-        }
-    }
-
-    private func itemDidAdd(_ name: String) {
-        let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
-
-        guard isNotEmpty else { return }
-
-        queue.append(name)
-        tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
-    }
-
-    private func setupConstraints() {
         view.addSubview(controlBar)
         view.addSubview(tableView)
 
@@ -67,6 +45,15 @@ class SingleQueueController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: controlBar.topAnchor)
         ])
+    }
+
+    private func itemDidAdd(_ name: String) {
+        let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
+
+        guard isNotEmpty else { return }
+
+        queue.append(name)
+        tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
     }
 }
 
@@ -95,5 +82,15 @@ extension SingleQueueController: UITableViewDataSource {
         cell.textLabel?.textColor = .white
         cell.backgroundColor = .black
         return cell
+    }
+}
+
+extension SingleQueueController: ControlBarDelegate {
+    func controlBarDidAdd(_ controlBar: ControlBar) {
+        let popupController = AddSingleQueuePopupBuilder { [unowned self] in self.itemDidAdd($0) }
+
+        if let controller = popupController.build().getResult() {
+            present(controller, animated: true)
+        }
     }
 }
