@@ -32,6 +32,10 @@ class SingleQueueController: UITableViewController {
     }
 
     private func itemDidAdd(_ name: String) {
+        let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
+
+        guard isNotEmpty else { return }
+
         queue.append(name)
         tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
     }
