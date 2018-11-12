@@ -21,7 +21,7 @@ class AddSingleQueuePopupBuilder {
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-        alertController.addTextField { _ in }
+        alertController.addTextField { $0.keyboardAppearance = .dark }
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         alertController.preferredAction = okAction

@@ -7,8 +7,13 @@ class SingleQueueController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         setupTableView()
         setupNavigationBar()
+    }
+
+    private func setupView() {
+        view.backgroundColor = .black
     }
 
     private func setupTableView() {
@@ -47,6 +52,8 @@ class SingleQueueController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell.textLabel?.text = queue[indexPath.row]
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = .black
         return cell
     }
 

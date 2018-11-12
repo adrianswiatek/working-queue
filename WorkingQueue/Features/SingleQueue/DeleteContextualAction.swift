@@ -21,7 +21,5 @@ class DeleteContextualAction : UIContextualAction {
         super.init()
         self.title = "Delete"
         self.backgroundColor = .red
-
-        print("Init")
     }
 }
