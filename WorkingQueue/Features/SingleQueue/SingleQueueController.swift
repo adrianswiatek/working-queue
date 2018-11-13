@@ -19,13 +19,14 @@ class SingleQueueController: UIViewController {
     }()
 
     private let cellIdentifier = "QueueCell"
-    private var queue = [String]()
+    private var queue = [[String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupViews()
         setDequeueButtonEditability()
+        fetchQueue()
     }
 
     private func setupViews() {
@@ -48,15 +49,24 @@ class SingleQueueController: UIViewController {
         ])
     }
 
+    private func fetchQueue() {
+        queue.append([String]())
+        queue.append([String]())
+    }
+
     private func addItem(_ name: String) {
         let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
         guard isNotEmpty else { return }
 
-        queue.append(name)
+        var indexPath: IndexPath
 
-        let indexPath = IndexPath(
-            row: queue.count > 1 ? queue.count - 2 : 0,
-            section: queue.count > 1 ? 1 : 0)
+        if queue[0].count == 0 {
+            queue[0].append(name)
+            indexPath = IndexPath(row: 0, section: 0)
+        } else {
+            queue[1].append(name)
+            indexPath = IndexPath(row: queue[1].count - 1, section: 1)
+        }
 
         tableView.insertRows(at: [indexPath], with: .automatic)
 
@@ -64,8 +74,19 @@ class SingleQueueController: UIViewController {
     }
 
     private func dequeueItem() {
-        queue.remove(at: 0)
-        tableView.reloadData()
+        guard queue[0].count == 1 else {
+            return
+        }
+
+        queue[0].remove(at: 0)
+        tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+
+        if queue[1].count > 0 {
+            queue[0].append(queue[1].remove(at: 0))
+            tableView.moveRow(at: IndexPath(row: 0, section: 1), to: IndexPath(row: 0, section: 0))
+        }
+
+
         setDequeueButtonEditability()
     }
 
@@ -98,17 +119,11 @@ extension SingleQueueController: UITableViewDelegate {
 
 extension SingleQueueController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return queue.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return queue.count > 0 ? 1 : 0
-        } else if section == 1 {
-            return queue.count > 0 ? queue.count - 1 : 0
-        }
-
-        return 0
+        return queue[section].count
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -121,13 +136,7 @@ extension SingleQueueController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
-        if indexPath.section == 0 {
-            cell.textLabel?.text = queue[0]
-        } else if indexPath.section == 1 {
-            cell.textLabel?.text = queue[indexPath.row + 1]
-        }
-
+        cell.textLabel?.text = queue[indexPath.section][indexPath.row]
         cell.textLabel?.textColor = .white
         cell.backgroundColor = .black
         return cell
