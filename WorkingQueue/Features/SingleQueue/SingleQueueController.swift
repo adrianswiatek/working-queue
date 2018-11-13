@@ -26,7 +26,6 @@ class SingleQueueController: UIViewController {
 
         setupViews()
         setDequeueButtonEditability()
-        fetchQueue()
     }
 
     private func setupViews() {
@@ -49,26 +48,27 @@ class SingleQueueController: UIViewController {
         ])
     }
 
-    private func fetchQueue() {
-        queue.append([String]())
-        queue.append([String]())
-    }
-
     private func addItem(_ name: String) {
         let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
         guard isNotEmpty else { return }
 
         var indexPath: IndexPath
 
-        if queue[0].count == 0 {
-            queue[0].append(name)
+        if queue.count == 0 {
+            queue.append([String](arrayLiteral: name))
             indexPath = IndexPath(row: 0, section: 0)
+        } else if queue.count == 1 {
+            queue.append([String](arrayLiteral: name))
+            indexPath = IndexPath(row: 0, section: 1)
         } else {
             queue[1].append(name)
             indexPath = IndexPath(row: queue[1].count - 1, section: 1)
         }
 
+        tableView.beginUpdates()
+        tableView.insertSections(IndexSet(integer: indexPath.section), with: .automatic)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
 
         setDequeueButtonEditability()
     }
