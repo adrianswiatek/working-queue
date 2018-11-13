@@ -66,7 +66,11 @@ class SingleQueueController: UIViewController {
         }
 
         tableView.beginUpdates()
-        tableView.insertSections(IndexSet(integer: indexPath.section), with: .automatic)
+
+        if tableView.numberOfSections < 2 {
+            tableView.insertSections(IndexSet(integer: indexPath.section), with: .automatic)
+        }
+
         tableView.insertRows(at: [indexPath], with: .automatic)
         tableView.endUpdates()
 
@@ -74,18 +78,25 @@ class SingleQueueController: UIViewController {
     }
 
     private func dequeueItem() {
-        guard queue[0].count == 1 else {
+        guard queue.count > 0, queue[0].count == 1 else {
             return
         }
 
         queue[0].remove(at: 0)
         tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
 
-        if queue[1].count > 0 {
+        if queue.count == 2, queue[1].count > 0 {
             queue[0].append(queue[1].remove(at: 0))
             tableView.moveRow(at: IndexPath(row: 0, section: 1), to: IndexPath(row: 0, section: 0))
         }
 
+        if queue.count == 2, queue[1].count == 0 {
+            queue.remove(at: 1)
+            tableView.deleteSections(IndexSet(integer: 1), with: .automatic)
+        } else if queue.count == 1, queue[0].count == 0 {
+            queue.remove(at: 0)
+            tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
+        }
 
         setDequeueButtonEditability()
     }
