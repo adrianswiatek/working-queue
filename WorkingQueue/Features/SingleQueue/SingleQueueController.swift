@@ -53,22 +53,32 @@ class SingleQueueController: UIViewController {
         guard isNotEmpty else { return }
 
         queue.append(name)
-        tableView.insertRows(at: [IndexPath(row: queue.count - 1, section: 0)], with: .automatic)
+
+        let indexPath = IndexPath(
+            row: queue.count > 1 ? queue.count - 2 : 0,
+            section: queue.count > 1 ? 1 : 0)
+
+        tableView.insertRows(at: [indexPath], with: .automatic)
+
         setDequeueButtonEditability()
     }
 
     private func dequeueItem() {
         queue.remove(at: 0)
-        tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .left)
+        tableView.reloadData()
         setDequeueButtonEditability()
     }
 
     private func setDequeueButtonEditability() {
-        if queue.count > 0 {
+        if hasFirstItem() {
             controlBar.enableDequeueButton()
         } else {
             controlBar.disableDequeueButton()
         }
+    }
+
+    private func hasFirstItem() -> Bool {
+        return queue.count > 0
     }
 }
 
@@ -87,13 +97,37 @@ extension SingleQueueController: UITableViewDelegate {
 }
 
 extension SingleQueueController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return queue.count
+        if section == 0 {
+            return queue.count > 0 ? 1 : 0
+        } else if section == 1 {
+            return queue.count > 0 ? queue.count - 1 : 0
+        }
+
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return SingleQueueHeaderLabel(text: section == 0 ? "Next" : "For later")
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = queue[indexPath.row]
+
+        if indexPath.section == 0 {
+            cell.textLabel?.text = queue[0]
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = queue[indexPath.row + 1]
+        }
+
         cell.textLabel?.textColor = .white
         cell.backgroundColor = .black
         return cell
