@@ -85,11 +85,19 @@ class SingleQueueController: UIViewController {
         queue[0].remove(at: 0)
         tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
 
+        moveItemBetweenSectionsAfterDequeue()
+        cleanUpSectionsAfterDelete()
+        setDequeueButtonEditability()
+    }
+
+    private func moveItemBetweenSectionsAfterDequeue() {
         if queue.count == 2, queue[1].count > 0 {
             queue[0].append(queue[1].remove(at: 0))
             tableView.moveRow(at: IndexPath(row: 0, section: 1), to: IndexPath(row: 0, section: 0))
         }
+    }
 
+    private func cleanUpSectionsAfterDelete() {
         if queue.count == 2, queue[1].count == 0 {
             queue.remove(at: 1)
             tableView.deleteSections(IndexSet(integer: 1), with: .automatic)
@@ -97,8 +105,6 @@ class SingleQueueController: UIViewController {
             queue.remove(at: 0)
             tableView.deleteSections(IndexSet(integer: 0), with: .automatic)
         }
-
-        setDequeueButtonEditability()
     }
 
     private func setDequeueButtonEditability() {
@@ -120,8 +126,13 @@ extension SingleQueueController: UITableViewDelegate {
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let deleteContextualAction = DeleteContextualAction {
-            self.queue.remove(at: indexPath.row)
+            self.queue[indexPath.section].remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.moveItemBetweenSectionsAfterDequeue()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                self.cleanUpSectionsAfterDelete()
+            }
         }
 
         return UISwipeActionsConfiguration(actions: [deleteContextualAction])
