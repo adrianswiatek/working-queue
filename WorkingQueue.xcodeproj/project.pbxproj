@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A23B4E221A08A74003AC3ED /* WorkingQueueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */; };
-		3A23B4E421A0A1B7003AC3ED /* WorkingQueueOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* WorkingQueueOptions.swift */; };
-		3A3B032F21A0248600FD1121 /* WorkingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* WorkingQueue.swift */; };
+		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
+		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
+		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
 		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
 		3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9D2198C86000763028 /* LaunchScreen.storyboard */; };
@@ -34,9 +34,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueDelegate.swift; sourceTree = "<group>"; };
-		3A23B4E321A0A1B7003AC3ED /* WorkingQueueOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueOptions.swift; sourceTree = "<group>"; };
-		3A3B032E21A0248600FD1121 /* WorkingQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueue.swift; sourceTree = "<group>"; };
+		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
+		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
+		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A741E942198C85E00763028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A741E962198C85E00763028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,14 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A23B4E021A08A59003AC3ED /* WorkingQueue */ = {
+		3A23B4E021A08A59003AC3ED /* QueueWithSections */ = {
 			isa = PBXGroup;
 			children = (
-				3A3B032E21A0248600FD1121 /* WorkingQueue.swift */,
-				3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */,
-				3A23B4E321A0A1B7003AC3ED /* WorkingQueueOptions.swift */,
+				3A3B032E21A0248600FD1121 /* QueueWithSections.swift */,
+				3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */,
+				3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */,
 			);
-			path = WorkingQueue;
+			path = QueueWithSections;
 			sourceTree = "<group>";
 		};
 		3A3B032D21A0232A00FD1121 /* Views */ = {
@@ -143,7 +143,7 @@
 		3A741EB72198D6F700763028 /* SingleQueue */ = {
 			isa = PBXGroup;
 			children = (
-				3A23B4E021A08A59003AC3ED /* WorkingQueue */,
+				3A23B4E021A08A59003AC3ED /* QueueWithSections */,
 				3A3B032D21A0232A00FD1121 /* Views */,
 				3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */,
 				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
@@ -252,7 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A23B4E221A08A74003AC3ED /* WorkingQueueDelegate.swift in Sources */,
+				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
@@ -260,9 +260,9 @@
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
 				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
-				3A3B032F21A0248600FD1121 /* WorkingQueue.swift in Sources */,
+				3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */,
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,
-				3A23B4E421A0A1B7003AC3ED /* WorkingQueueOptions.swift in Sources */,
+				3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

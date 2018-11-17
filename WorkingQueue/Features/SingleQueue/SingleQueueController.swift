@@ -24,7 +24,7 @@ class SingleQueueController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         cellIdentifier = "QueueCell"
 
-        var workingQueueOptions = WorkingQueueOptions(maximumNumberOfSections: 2)
+        var workingQueueOptions = QueueWithSectionsOptions(maximumNumberOfSections: 2)
         workingQueueOptions.setMaximumNumberOfRowsFor(section: 0, to: 1)
         queue = WorkingQueue(options: workingQueueOptions)
 
@@ -140,7 +140,7 @@ extension SingleQueueController: ControlBarDelegate {
     }
 }
 
-extension SingleQueueController: WorkingQueueDelegate {
+extension SingleQueueController: QueueWithSectionsDelegate {
     func didEnqueueAt(section: Int, row: Int) {
         let indexPath = IndexPath(row: row, section: section)
         tableView.insertRows(at: [indexPath], with: .automatic)

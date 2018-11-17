@@ -1,4 +1,4 @@
-protocol WorkingQueueDelegate {
+protocol QueueWithSectionsDelegate {
     func didEnqueueAt(section: Int, row: Int)
     func didDequeueAt(section: Int, row: Int)
     func didRemoveAt(section: Int, row: Int)

@@ -1,14 +1,14 @@
 final class WorkingQueue<T> {
-    var delegate: WorkingQueueDelegate?
+    var delegate: QueueWithSectionsDelegate?
 
     var numberOfSections: Int {
         return items.count
     }
 
-    private var options: WorkingQueueOptions
+    private var options: QueueWithSectionsOptions
     private var items: [[T]]
 
-    init(options: WorkingQueueOptions) {
+    init(options: QueueWithSectionsOptions) {
         self.options = options
         self.items = []
     }

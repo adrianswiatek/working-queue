@@ -1,4 +1,4 @@
-struct WorkingQueueOptions {
+struct QueueWithSectionsOptions {
     let maximumNumberOfSections: Int
     private var maximumNumberOfRowsForSection: [Int: Int]
 
