@@ -8,8 +8,8 @@ class DeleteContextualAction : UIContextualAction {
 
     override var handler: UIContextualAction.Handler {
         return { [unowned self] (action, view, handler) in
-            self.callback()
             handler(true)
+            self.callback()
         }
     }
 
