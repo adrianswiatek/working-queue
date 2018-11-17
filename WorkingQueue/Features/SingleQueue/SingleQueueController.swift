@@ -18,8 +18,22 @@ class SingleQueueController: UIViewController {
         return tableView
     }()
 
-    private let cellIdentifier = "QueueCell"
-    private var queue = WorkingQueue<String>()
+    private let cellIdentifier: String
+    private var queue: WorkingQueue<String>
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        cellIdentifier = "QueueCell"
+
+        var workingQueueOptions = WorkingQueueOptions(maximumNumberOfSections: 2)
+        workingQueueOptions.setMaximumNumberOfRowsFor(section: 0, to: 1)
+        queue = WorkingQueue(options: workingQueueOptions)
+
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,34 +141,34 @@ extension SingleQueueController: ControlBarDelegate {
 }
 
 extension SingleQueueController: WorkingQueueDelegate {
-    func didEnqueueAt(section: WorkingQueueSection, row: Int) {
-        let indexPath = IndexPath(row: row, section: section.rawValue)
+    func didEnqueueAt(section: Int, row: Int) {
+        let indexPath = IndexPath(row: row, section: section)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
-    func didDequeueAt(section: WorkingQueueSection, row: Int) {
-        let indexPath = IndexPath(row: row, section: section.rawValue)
+    func didDequeueAt(section: Int, row: Int) {
+        let indexPath = IndexPath(row: row, section: section)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
-    func didRemoveAt(section: WorkingQueueSection, row: Int) {
-        let indexPath = IndexPath(row: row, section: section.rawValue)
+    func didRemoveAt(section: Int, row: Int) {
+        let indexPath = IndexPath(row: row, section: section)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
-    func didMove(at: (section: WorkingQueueSection, row: Int), to: (section: WorkingQueueSection, row: Int)) {
-        let atIndexPath = IndexPath(row: at.row, section: at.section.rawValue)
-        let toIndexPath = IndexPath(row: to.row, section: to.section.rawValue)
+    func didMove(at: (section: Int, row: Int), to: (section: Int, row: Int)) {
+        let atIndexPath = IndexPath(row: at.row, section: at.section)
+        let toIndexPath = IndexPath(row: to.row, section: to.section)
         tableView.moveRow(at: atIndexPath, to: toIndexPath)
     }
 
-    func didAddSection(_ section: WorkingQueueSection) {
-        tableView.insertSections(IndexSet(integer: section.rawValue), with: .automatic)
+    func didAddSection(_ section: Int) {
+        tableView.insertSections(IndexSet(integer: section), with: .automatic)
         setDequeueButtonEditability()
     }
 
-    func didRemoveSection(_ section: WorkingQueueSection) {
-        tableView.deleteSections(IndexSet(integer: section.rawValue), with: .automatic)
+    func didRemoveSection(_ section: Int) {
+        tableView.deleteSections(IndexSet(integer: section), with: .automatic)
         setDequeueButtonEditability()
     }
 }

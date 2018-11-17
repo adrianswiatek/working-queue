@@ -1,8 +1,8 @@
 protocol WorkingQueueDelegate {
-    func didEnqueueAt(section: WorkingQueueSection, row: Int)
-    func didDequeueAt(section: WorkingQueueSection, row: Int)
-    func didRemoveAt(section: WorkingQueueSection, row: Int)
-    func didMove(at: (section: WorkingQueueSection, row: Int), to: (section: WorkingQueueSection, row: Int))
-    func didAddSection(_ section: WorkingQueueSection)
-    func didRemoveSection(_ section: WorkingQueueSection)
+    func didEnqueueAt(section: Int, row: Int)
+    func didDequeueAt(section: Int, row: Int)
+    func didRemoveAt(section: Int, row: Int)
+    func didMove(at: (section: Int, row: Int), to: (section: Int, row: Int))
+    func didAddSection(_ section: Int)
+    func didRemoveSection(_ section: Int)
 }
