@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A23B4E221A08A74003AC3ED /* WorkingQueueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */; };
 		3A3B032F21A0248600FD1121 /* WorkingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* WorkingQueue.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
 		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueDelegate.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* WorkingQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueue.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A741E942198C85E00763028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A23B4E021A08A59003AC3ED /* WorkingQueue */ = {
+			isa = PBXGroup;
+			children = (
+				3A3B032E21A0248600FD1121 /* WorkingQueue.swift */,
+				3A23B4E121A08A74003AC3ED /* WorkingQueueDelegate.swift */,
+			);
+			path = WorkingQueue;
+			sourceTree = "<group>";
+		};
 		3A3B032D21A0232A00FD1121 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,11 +140,11 @@
 		3A741EB72198D6F700763028 /* SingleQueue */ = {
 			isa = PBXGroup;
 			children = (
+				3A23B4E021A08A59003AC3ED /* WorkingQueue */,
 				3A3B032D21A0232A00FD1121 /* Views */,
 				3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */,
 				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
-				3A3B032E21A0248600FD1121 /* WorkingQueue.swift */,
 			);
 			path = SingleQueue;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A23B4E221A08A74003AC3ED /* WorkingQueueDelegate.swift in Sources */,
 				3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
