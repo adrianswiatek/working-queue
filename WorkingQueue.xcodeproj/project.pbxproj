@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */; };
 		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
 		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
 		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
@@ -15,7 +16,7 @@
 		3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9D2198C86000763028 /* LaunchScreen.storyboard */; };
 		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
-		3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */; };
+		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
 		3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A2219A025900FC2BA5 /* ControlBar.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupController.swift; sourceTree = "<group>"; };
 		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
 		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
@@ -46,7 +48,7 @@
 		3A741EA92198C86000763028 /* WorkingQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueTests.swift; sourceTree = "<group>"; };
 		3A741EAB2198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
-		3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSingleQueuePopupBuilder.swift; sourceTree = "<group>"; };
+		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
 		3ADB89A2219A025900FC2BA5 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
@@ -145,8 +147,9 @@
 			children = (
 				3A23B4E021A08A59003AC3ED /* QueueWithSections */,
 				3A3B032D21A0232A00FD1121 /* Views */,
-				3A741EB82198DEE700763028 /* AddSingleQueuePopupBuilder.swift */,
+				3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */,
 				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
+				3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */,
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
 			);
 			path = SingleQueue;
@@ -253,12 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
-				3A741EB92198DEE700763028 /* AddSingleQueuePopupBuilder.swift in Sources */,
+				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
+				3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */,
 				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
 				3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */,
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,

@@ -128,8 +128,7 @@ extension SingleQueueController: UITableViewDataSource {
 
 extension SingleQueueController: ControlBarDelegate {
     func controlBarDidAdd(_ controlBar: ControlBar) {
-        let popupController = AddSingleQueuePopupBuilder { [unowned self] in self.addItem($0) }
-
+        let popupController = EnqueuePopupBuilder { [unowned self] in self.addItem($0) }
         if let controller = popupController.build().getResult() {
             present(controller, animated: true)
         }
