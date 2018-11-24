@@ -78,6 +78,8 @@ class EnqueuePopupController: UIViewController {
         return view
     }()
 
+    var centerYConstraint: NSLayoutConstraint!
+
     init(callback: @escaping (String) -> Void) {
         self.callback = callback
         super.init(nibName: nil, bundle: nil)
@@ -92,6 +94,7 @@ class EnqueuePopupController: UIViewController {
 
         setupView()
         setupConstraints()
+        setupKeyboardEvents()
     }
 
     private func setupView() {
@@ -126,7 +129,6 @@ class EnqueuePopupController: UIViewController {
             darkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             darkView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.heightAnchor.constraint(equalToConstant: 175),
             containerView.widthAnchor.constraint(equalToConstant: view.frame.width / 1.25),
             containerStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
@@ -137,6 +139,43 @@ class EnqueuePopupController: UIViewController {
             nameTextField.trailingAnchor.constraint(equalTo: nameContainerView.trailingAnchor, constant: -16),
             nameTextField.centerYAnchor.constraint(equalTo: nameContainerView.centerYAnchor),
         ])
+
+        centerYConstraint = containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        centerYConstraint.isActive = true
+    }
+
+    private func setupKeyboardEvents() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillToggle),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillToggle),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+
+    @objc private func keyboardWillToggle(notification: NSNotification) {
+        let keyboardRect = notification.userInfo?["UIKeyboardBoundsUserInfoKey"] as? CGRect
+        guard let keyboardHeight = keyboardRect?.height else { return }
+        let previousMiddle = view.frame.height / 2
+        let newHeight = view.frame.height - keyboardHeight
+        let newMiddle = newHeight / 2
+        setCenterYConstant(to: newMiddle - previousMiddle)
+    }
+
+    private func setCenterYConstant(to constant: CGFloat) {
+        DispatchQueue.main.async {
+            self.centerYConstraint.constant = constant
+            UIViewPropertyAnimator.runningPropertyAnimator(
+                withDuration: 0.3,
+                delay: 0,
+                options: .curveEaseOut,
+                animations: { self.view.layoutIfNeeded() })
+        }
     }
 
     @objc func handleOk() {
