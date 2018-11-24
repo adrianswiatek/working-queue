@@ -13,7 +13,7 @@ class EnqueuePopupBuilder {
         let popupController = EnqueuePopupController(callback: callback)
         popupController.isModalInPopover = true
         popupController.modalPresentationStyle = .overCurrentContext
-        popupController.modalTransitionStyle = .coverVertical
+        popupController.modalTransitionStyle = .crossDissolve
         result = popupController
 
         return self
