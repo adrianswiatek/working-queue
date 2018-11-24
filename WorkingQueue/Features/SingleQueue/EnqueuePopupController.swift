@@ -71,6 +71,13 @@ class EnqueuePopupController: UIViewController {
         return stackView
     }()
 
+    private let darkView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     init(callback: @escaping (String) -> Void) {
         self.callback = callback
         super.init(nibName: nil, bundle: nil)
@@ -108,11 +115,16 @@ class EnqueuePopupController: UIViewController {
     }
 
     private func setupConstraints() {
+        view.addSubview(darkView)
         view.addSubview(containerView)
         containerView.addSubview(containerStack)
         nameContainerView.addSubview(nameTextField)
 
         NSLayoutConstraint.activate([
+            darkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            darkView.topAnchor.constraint(equalTo: view.topAnchor),
+            darkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            darkView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             containerView.heightAnchor.constraint(equalToConstant: 175),
