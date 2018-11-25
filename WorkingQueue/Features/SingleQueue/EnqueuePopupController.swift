@@ -23,19 +23,18 @@ class EnqueuePopupController: UIViewController {
         return label
     }()
 
-    private let nameContainerView: UIView = {
-        let view = UIView()
-        return view
-    }()
+    private let nameContainerView = UIView()
 
-    private let nameTextField: UITextField = {
+    private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = UITextField.BorderStyle.roundedRect
         textField.backgroundColor = UIColor(white: 0.06, alpha: 1)
         textField.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         textField.textColor = UIColor(white: 1, alpha: 0.9)
+        textField.returnKeyType = .done
         textField.keyboardAppearance = .dark
         textField.becomeFirstResponder()
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -179,10 +178,20 @@ class EnqueuePopupController: UIViewController {
     }
 
     @objc func handleOk() {
-        dismiss(animated: true)
+        if let text = nameTextField.text {
+            callback(text)
+            dismiss(animated: true)
+        }
     }
 
     @objc func handleCancel() {
         dismiss(animated: true)
+    }
+}
+
+extension EnqueuePopupController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleOk()
+        return true
     }
 }
