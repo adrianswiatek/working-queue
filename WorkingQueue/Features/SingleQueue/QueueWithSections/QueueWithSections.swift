@@ -38,7 +38,7 @@ final class WorkingQueue<T> {
             items[0].remove(at: 0)
             delegate?.didDequeueAt(section: 0, row: 0)
 
-            moveSectionsAfterDelete()
+            moveItemsBetweenSectionsAfterDelete()
             cleanSectionsAfterDelete()
         }
     }
@@ -57,18 +57,20 @@ final class WorkingQueue<T> {
         items[section].remove(at: row)
         delegate?.didRemoveAt(section: section, row: row)
 
-        moveSectionsAfterDelete()
+        moveItemsBetweenSectionsAfterDelete()
         cleanSectionsAfterDelete()
     }
 
-    private func moveSectionsAfterDelete() {
+    private func moveItemsBetweenSectionsAfterDelete() {
         for index in 0 ..< options.maximumNumberOfSections - 1 {
             if numberOfSections > index + 1,
-                numberOfRowsIn(section: index) == 0,
+                numberOfRowsIn(section: index) < options.getMaximumNumberOfRowsFor(section: index),
                 numberOfRowsIn(section: index + 1) > 0 {
 
                 items[index].append(items[index + 1].remove(at: 0))
-                delegate?.didMove(at: (section: index + 1, row: 0), to: (section: index, row: 0))
+
+                let appendedItemRow = numberOfRowsIn(section: index) - 1
+                delegate?.didMove(at: (section: index + 1, row: 0), to: (section: index, row: appendedItemRow))
             }
         }
     }
