@@ -1,4 +1,6 @@
-final class WorkingQueue<T> {
+import Foundation
+
+final class WorkingQueue<T: Equatable> {
     var delegate: QueueWithSectionsDelegate?
 
     var numberOfSections: Int {
@@ -47,6 +49,30 @@ final class WorkingQueue<T> {
         return numberOfSections > section ? items[section].count : 0
     }
 
+    func move(at: (section: Int, row: Int), to: (section: Int, row: Int)) {
+        let item = items[at.section].remove(at: at.row)
+        items[to.section].insert(item, at: to.row)
+
+        if hasTooManyRowsIn(section: to.section),
+            to.section < numberOfSections,
+            let indexOfItemToMove = items[to.section].index(where: { $0 != item }) {
+
+            DispatchQueue.main.async { [unowned self] in
+                let additionalItem = self.items[to.section].remove(at: indexOfItemToMove)
+                self.items[to.section + 1].insert(additionalItem, at: 0)
+
+                let moveFrom = (section: to.section, row: indexOfItemToMove)
+                let moveTo = (section: to.section + 1, row: 0)
+                self.delegate?.didMove(at: moveFrom, to: moveTo)
+            }
+        }
+
+        DispatchQueue.main.async { [unowned self] in
+            self.moveItemsBetweenSectionsAfterDelete()
+            self.cleanSectionsAfterDelete()
+        }
+    }
+
     func get(section: Int, row: Int) -> T? {
         return numberOfRowsIn(section: section) >= row ? items[section][row] : nil
     }
@@ -63,8 +89,11 @@ final class WorkingQueue<T> {
 
     private func moveItemsBetweenSectionsAfterDelete() {
         for index in 0 ..< options.maximumNumberOfSections - 1 {
-            if numberOfSections > index + 1,
-                numberOfRowsIn(section: index) < options.getMaximumNumberOfRowsFor(section: index),
+            guard numberOfSections > index + 1 else {
+                continue
+            }
+
+            if numberOfRowsIn(section: index) < options.getMaximumNumberOfRowsFor(section: index),
                 numberOfRowsIn(section: index + 1) > 0 {
 
                 items[index].append(items[index + 1].remove(at: 0))
@@ -84,5 +113,10 @@ final class WorkingQueue<T> {
             items.remove(at: index)
             delegate?.didRemoveSection(index)
         }
+    }
+
+    private func hasTooManyRowsIn(section: Int) -> Bool {
+        let maximumNumberOfRows = options.getMaximumNumberOfRowsFor(section: section)
+        return numberOfRowsIn(section: section) > maximumNumberOfRows && maximumNumberOfRows != -1
     }
 }
