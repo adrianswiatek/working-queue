@@ -12,6 +12,9 @@ class SingleQueueController: UIViewController {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.dropDelegate = self
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
@@ -43,6 +46,8 @@ class SingleQueueController: UIViewController {
 
         setupViews()
         setDequeueButtonEditability()
+
+        populateTestData()
     }
 
     private func setupViews() {
@@ -84,6 +89,14 @@ class SingleQueueController: UIViewController {
     private func hasFirstItem() -> Bool {
         return queue.numberOfSections > 0
     }
+
+    private func populateTestData() {
+        queue.enqueue(item: "1")
+        queue.enqueue(item: "2")
+        queue.enqueue(item: "3")
+        queue.enqueue(item: "4")
+        queue.enqueue(item: "5")
+    }
 }
 
 extension SingleQueueController: UITableViewDelegate {
@@ -124,6 +137,36 @@ extension SingleQueueController: UITableViewDataSource {
         cell.textLabel?.textColor = .white
         cell.backgroundColor = .black
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let source = (sourceIndexPath.section, sourceIndexPath.row)
+        let destination = (destinationIndexPath.section, destinationIndexPath.row)
+        queue.move(at: source, to: destination)
+    }
+}
+
+extension SingleQueueController: UITableViewDragDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        itemsForBeginning session: UIDragSession,
+        at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
+}
+
+extension SingleQueueController: UITableViewDropDelegate {
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {}
+
+    func tableView(
+        _ tableView: UITableView,
+        dropSessionDidUpdate session: UIDropSession,
+        withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
 }
 
