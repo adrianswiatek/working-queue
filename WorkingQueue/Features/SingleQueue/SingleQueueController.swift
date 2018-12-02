@@ -18,6 +18,7 @@ class SingleQueueController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
+        tableView.separatorColor = UIColor(white: 0.15, alpha: 1)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -134,7 +135,7 @@ extension SingleQueueController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cell.textLabel?.text = queue.get(section: indexPath.section, row: indexPath.row)
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = UIColor(white: 1, alpha: 0.7)
         cell.backgroundColor = .black
         return cell
     }

@@ -25,7 +25,7 @@ class ControlBar: UIView {
     init() {
         super.init(frame: .zero)
 
-        backgroundColor = UIColor(white: 0.05, alpha: 1)
+        backgroundColor = UIColor(white: 0.06, alpha: 1)
         translatesAutoresizingMaskIntoConstraints = false
 
         setupViews()

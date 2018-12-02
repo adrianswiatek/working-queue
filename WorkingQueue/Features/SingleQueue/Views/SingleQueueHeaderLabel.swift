@@ -6,7 +6,7 @@ class SingleQueueHeaderLabel: UILabel {
 
         self.text = text
         self.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        self.backgroundColor = UIColor(white: 0.05, alpha: 1)
+        self.backgroundColor = UIColor(white: 0.06, alpha: 1)
         self.textAlignment = .center
     }
 
