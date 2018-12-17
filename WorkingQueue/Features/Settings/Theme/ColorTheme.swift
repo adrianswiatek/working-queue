@@ -8,4 +8,6 @@ protocol ColorTheme {
     var accentColor: UIColor { get }
     var backgroundColor: UIColor { get }
     var separatorColor: UIColor { get }
+
+    var barStyle: UIBarStyle { get }
 }

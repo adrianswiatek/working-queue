@@ -8,4 +8,6 @@ class DarkColorTheme: ColorTheme {
     var accentColor: UIColor = .init(white: 0.06, alpha: 1)
     var backgroundColor: UIColor = .black
     var separatorColor: UIColor = .init(white: 0.25, alpha: 1)
+
+    var barStyle: UIBarStyle = .blackOpaque
 }

@@ -24,6 +24,7 @@
 		3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6AB21C84789008C26F5 /* DarkColorTheme.swift */; };
 		3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */; };
 		3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */; };
+		3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
 		3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A2219A025900FC2BA5 /* ControlBar.swift */; };
 		3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */; };
@@ -62,6 +63,7 @@
 		3AB8C6AB21C84789008C26F5 /* DarkColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkColorTheme.swift; sourceTree = "<group>"; };
 		3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightColorTheme.swift; sourceTree = "<group>"; };
 		3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarStyleExtensions.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
 		3ADB89A2219A025900FC2BA5 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				3AB8C6AB21C84789008C26F5 /* DarkColorTheme.swift */,
 				3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */,
 				3AB8C6A421C844A9008C26F5 /* Theme.swift */,
+				3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */,
 				3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */,
 			);
 			path = Theme;
@@ -291,6 +294,7 @@
 			files = (
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
+				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
