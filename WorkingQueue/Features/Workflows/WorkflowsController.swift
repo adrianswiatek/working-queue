@@ -2,15 +2,19 @@ import UIKit
 
 class WorkflowsController: UIViewController {
 
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.tableFooterView = UIView()
-        tableView.allowsSelection = false
-        tableView.separatorColor = .separatorColor
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 150)
+        layout.minimumLineSpacing = 16
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .backgroundColor
+        collectionView.contentInset = .init(top: 16, left: 16, bottom: 16, right: 16)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
 
     private let cellIdentifier: String
@@ -36,25 +40,37 @@ class WorkflowsController: UIViewController {
         navigationItem.title = "Workflow"
         view.backgroundColor = .backgroundColor
 
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
 
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
 
-extension WorkflowsController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+extension WorkflowsController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let singleQueueController = SingleQueueController()
+        navigationController?.pushViewController(singleQueueController, animated: true)
+    }
+}
+
+extension WorkflowsController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = indexPath.row.description
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        cell.backgroundColor = .accentColor
+        cell.layer.cornerRadius = 15
+        cell.layer.shadowColor = UIColor.gray.cgColor
+        cell.layer.shadowRadius = 2
+        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.layer.shadowOpacity = 0.5
         return cell
     }
 }
