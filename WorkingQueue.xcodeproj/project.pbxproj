@@ -18,6 +18,7 @@
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
+		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
 		3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A421C844A9008C26F5 /* Theme.swift */; };
 		3AB8C6A821C8475D008C26F5 /* ColorThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A721C8475D008C26F5 /* ColorThemeType.swift */; };
 		3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A921C84771008C26F5 /* ColorTheme.swift */; };
@@ -57,6 +58,7 @@
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
+		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
 		3AB8C6A421C844A9008C26F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3AB8C6A721C8475D008C26F5 /* ColorThemeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeType.swift; sourceTree = "<group>"; };
 		3AB8C6A921C84771008C26F5 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			children = (
 				3AB8C6A321C8449B008C26F5 /* Settings */,
 				3A741EB72198D6F700763028 /* SingleQueue */,
+				3AA05A1C21C93A5200C32C7E /* Workflows */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -168,6 +171,14 @@
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
 			);
 			path = SingleQueue;
+			sourceTree = "<group>";
+		};
+		3AA05A1C21C93A5200C32C7E /* Workflows */ = {
+			isa = PBXGroup;
+			children = (
+				3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */,
+			);
+			path = Workflows;
 			sourceTree = "<group>";
 		};
 		3AB8C6A321C8449B008C26F5 /* Settings */ = {
@@ -298,6 +309,7 @@
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
+				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
