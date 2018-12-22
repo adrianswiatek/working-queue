@@ -12,7 +12,7 @@ class WorkflowsController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = .init(top: 16, left: 16, bottom: 16, right: 16)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(WorkflowCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -64,13 +64,8 @@ extension WorkflowsController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = .accentColor
-        cell.layer.cornerRadius = 15
-        cell.layer.shadowColor = UIColor.gray.cgColor
-        cell.layer.shadowRadius = 2
-        cell.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cell.layer.shadowOpacity = 0.5
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WorkflowCell
+
         return cell
     }
 }
