@@ -4,7 +4,6 @@ class WorkflowCell: UICollectionViewCell {
 
     private let workflowNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "TO READ"
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -12,7 +11,6 @@ class WorkflowCell: UICollectionViewCell {
 
     private let currentItemLabel: UILabel = {
         let label = UILabel()
-        label.text = "The here and now habit"
         label.textColor = .textColor
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 18)
@@ -32,7 +30,6 @@ class WorkflowCell: UICollectionViewCell {
 
     private let pendingNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "10"
         label.textColor = .textColor
         label.font = .systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,25 +58,35 @@ class WorkflowCell: UICollectionViewCell {
 
     private func setupViews() {
         addSubview(workflowNameLabel)
-        addSubview(currentItemLabel)
-        addSubview(bottomView)
-
-        bottomView.addSubview(pendingLabel)
-        bottomView.addSubview(pendingNumberLabel)
-
         NSLayoutConstraint.activate([
             workflowNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            workflowNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            workflowNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
+
+        addSubview(currentItemLabel)
+        NSLayoutConstraint.activate([
             currentItemLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             currentItemLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            currentItemLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            currentItemLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
+        addSubview(bottomView)
+        NSLayoutConstraint.activate([
             bottomView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 36),
-            pendingLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: -24),
-            pendingLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
-            pendingNumberLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 24),
+            bottomView.heightAnchor.constraint(equalToConstant: 38)
+        ])
+
+        bottomView.addSubview(pendingLabel)
+        NSLayoutConstraint.activate([
+            pendingLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: -12),
+            pendingLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
+        ])
+
+        bottomView.addSubview(pendingNumberLabel)
+        NSLayoutConstraint.activate([
+            pendingNumberLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 36),
             pendingNumberLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
         ])
     }
@@ -91,5 +98,11 @@ class WorkflowCell: UICollectionViewCell {
         layer.shadowRadius = 2
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.5
+    }
+
+    func update(workflowEntry: WorkflowEntry) {
+        workflowNameLabel.text = workflowEntry.name
+        currentItemLabel.text = workflowEntry.currentItemName
+        pendingNumberLabel.text = String(workflowEntry.numberOfItems)
     }
 }

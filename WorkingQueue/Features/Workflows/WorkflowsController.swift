@@ -17,10 +17,12 @@ class WorkflowsController: UIViewController {
         return collectionView
     }()
 
+    private var workflowEntries: [WorkflowEntry]
     private let cellIdentifier: String
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        cellIdentifier = "WorkflowCell"
+        self.workflowEntries = []
+        self.cellIdentifier = "WorkflowCell"
 
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -34,6 +36,11 @@ class WorkflowsController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        populateTestData()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        collectionView.reloadData()
     }
 
     private func setupViews() {
@@ -41,7 +48,6 @@ class WorkflowsController: UIViewController {
         view.backgroundColor = .backgroundColor
 
         view.addSubview(collectionView)
-
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -49,23 +55,41 @@ class WorkflowsController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+
+    private func populateTestData() {
+        let toReadEntry = WorkflowEntry(name: "Read")
+        toReadEntry.currentItem = QueueEntry(name: "The Grit")
+        toReadEntry.addQueueEntry(QueueEntry(name: "Brain Rules"))
+        toReadEntry.addQueueEntry(QueueEntry(name: "So good they can't ignore you"))
+        workflowEntries.append(toReadEntry)
+
+        let makeNotesEntry = WorkflowEntry(name: "Make notes")
+        makeNotesEntry.currentItem = QueueEntry(name: "The one thing")
+        workflowEntries.append(makeNotesEntry)
+
+        let toRetainEntry = WorkflowEntry(name: "Retain")
+        toRetainEntry.currentItem = QueueEntry(name: "The Confidence Gap")
+        toRetainEntry.addQueueEntry(QueueEntry(name: "The here and now habit"))
+        workflowEntries.append(toRetainEntry)
+    }
 }
 
 extension WorkflowsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let singleQueueController = SingleQueueController()
+        singleQueueController.workflowEntry = workflowEntries[indexPath.item]
         navigationController?.pushViewController(singleQueueController, animated: true)
     }
 }
 
 extension WorkflowsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return workflowEntries.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WorkflowCell
-
+        cell.update(workflowEntry: workflowEntries[indexPath.item])
         return cell
     }
 }

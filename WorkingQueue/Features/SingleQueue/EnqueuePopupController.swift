@@ -118,29 +118,37 @@ class EnqueuePopupController: UIViewController {
 
     private func setupConstraints() {
         view.addSubview(darkView)
-        view.addSubview(containerView)
-        containerView.addSubview(containerStack)
-        nameContainerView.addSubview(nameTextField)
-
         NSLayoutConstraint.activate([
             darkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             darkView.topAnchor.constraint(equalTo: view.topAnchor),
             darkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            darkView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            darkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+
+        view.addSubview(containerView)
+        NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.heightAnchor.constraint(equalToConstant: 175),
-            containerView.widthAnchor.constraint(equalToConstant: view.frame.width / 1.25),
-            containerStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            containerStack.topAnchor.constraint(equalTo: containerView.topAnchor),
-            containerStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            containerStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-            nameTextField.leadingAnchor.constraint(equalTo: nameContainerView.leadingAnchor, constant: 16),
-            nameTextField.trailingAnchor.constraint(equalTo: nameContainerView.trailingAnchor, constant: -16),
-            nameTextField.centerYAnchor.constraint(equalTo: nameContainerView.centerYAnchor),
+            containerView.widthAnchor.constraint(equalToConstant: view.frame.width / 1.25)
         ])
 
         centerYConstraint = containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         centerYConstraint.isActive = true
+
+        containerView.addSubview(containerStack)
+        NSLayoutConstraint.activate([
+            containerStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            containerStack.topAnchor.constraint(equalTo: containerView.topAnchor),
+            containerStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            containerStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+        ])
+
+        nameContainerView.addSubview(nameTextField)
+        NSLayoutConstraint.activate([
+            nameTextField.leadingAnchor.constraint(equalTo: nameContainerView.leadingAnchor, constant: 16),
+            nameTextField.trailingAnchor.constraint(equalTo: nameContainerView.trailingAnchor, constant: -16),
+            nameTextField.centerYAnchor.constraint(equalTo: nameContainerView.centerYAnchor),
+        ])
     }
 
     private func setupKeyboardEvents() {
