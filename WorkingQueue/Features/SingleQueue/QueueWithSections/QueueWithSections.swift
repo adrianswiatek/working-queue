@@ -15,6 +15,17 @@ final class WorkingQueue<T: Equatable> {
         self.items = []
     }
 
+    func initialize(items: [T]) {
+        items.forEach {
+            if newSectionHasToBeAdded() {
+                self.items.append([T]())
+            }
+
+            let section = numberOfSections - 1
+            self.items[section].append($0)
+        }
+    }
+
     func enqueue(item: T) {
         if newSectionHasToBeAdded() {
             items.append([T]())
@@ -118,5 +129,9 @@ final class WorkingQueue<T: Equatable> {
     private func hasTooManyRowsIn(section: Int) -> Bool {
         let maximumNumberOfRows = options.getMaximumNumberOfRowsFor(section: section)
         return numberOfRowsIn(section: section) > maximumNumberOfRows && maximumNumberOfRows != -1
+    }
+
+    func flattened() -> [T] {
+        return items.flatMap { $0 }
     }
 }

@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        let controller = SingleQueueController()
+        let controller = WorkflowsController()
         let navigationController = UINavigationController(rootViewController: controller)
         window?.rootViewController = navigationController
 

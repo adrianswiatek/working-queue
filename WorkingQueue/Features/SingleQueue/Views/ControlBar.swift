@@ -7,7 +7,7 @@ class ControlBar: UIView {
     private lazy var addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "add"), for: .normal)
-        button.tintColor = .tintColor
+        button.tintColor = .textColor
         button.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -16,7 +16,7 @@ class ControlBar: UIView {
     private lazy var dequeueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "dequeue"), for: .normal)
-        button.tintColor = .tintColor
+        button.tintColor = .textColor
         button.addTarget(self, action: #selector(handleDequeue), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

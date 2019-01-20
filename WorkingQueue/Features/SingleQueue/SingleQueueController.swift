@@ -2,6 +2,13 @@ import UIKit
 
 class SingleQueueController: UIViewController {
 
+    weak var workflowEntry: WorkflowEntry! {
+        didSet {
+            queue.initialize(items: workflowEntry.getQueueEntires())
+            title = workflowEntry.name
+        }
+    }
+
     private lazy var controlBar: ControlBar = {
         let controlBar = ControlBar()
         controlBar.delegate = self
@@ -24,7 +31,7 @@ class SingleQueueController: UIViewController {
     }()
 
     private let cellIdentifier: String
-    private var queue: WorkingQueue<String>
+    private var queue: WorkingQueue<QueueEntry>
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         cellIdentifier = "QueueCell"
@@ -36,6 +43,7 @@ class SingleQueueController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -47,14 +55,16 @@ class SingleQueueController: UIViewController {
 
         setupViews()
         setDequeueButtonEditability()
+    }
 
-        populateTestData()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        workflowEntry.setQueueEntries(queue.flattened())
     }
 
     private func setupViews() {
         view.backgroundColor = .backgroundColor
         tableView.backgroundColor = .backgroundColor
-        navigationItem.title = "Queue"
 
         view.addSubview(controlBar)
         view.addSubview(tableView)
@@ -75,7 +85,7 @@ class SingleQueueController: UIViewController {
         let isNotEmpty = name.trimmingCharacters(in: .whitespaces).count > 0
 
         if isNotEmpty {
-            queue.enqueue(item: name)
+            queue.enqueue(item: QueueEntry(name: name))
         }
     }
 
@@ -89,14 +99,6 @@ class SingleQueueController: UIViewController {
 
     private func hasFirstItem() -> Bool {
         return queue.numberOfSections > 0
-    }
-
-    private func populateTestData() {
-        queue.enqueue(item: "1")
-        queue.enqueue(item: "2")
-        queue.enqueue(item: "3")
-        queue.enqueue(item: "4")
-        queue.enqueue(item: "5")
     }
 }
 
@@ -134,7 +136,7 @@ extension SingleQueueController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        cell.textLabel?.text = queue.get(section: indexPath.section, row: indexPath.row)
+        cell.textLabel?.text = queue.get(section: indexPath.section, row: indexPath.row)?.name
         cell.textLabel?.textColor = .textColor
         cell.backgroundColor = .backgroundColor
         return cell
