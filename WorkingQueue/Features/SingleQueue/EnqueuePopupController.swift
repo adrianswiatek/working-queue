@@ -6,7 +6,7 @@ class EnqueuePopupController: UIViewController {
 
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(white: 0.06, alpha: 1)
+        view.backgroundColor = .backgroundColor
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -18,8 +18,8 @@ class EnqueuePopupController: UIViewController {
         label.text = "Enqueue item"
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
-        label.layer.backgroundColor = UIColor(white: 0.08, alpha: 1).cgColor
-        label.textColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        label.layer.backgroundColor = UIColor.accentColor.cgColor
+        label.textColor = .tintColor
         return label
     }()
 
@@ -28,9 +28,9 @@ class EnqueuePopupController: UIViewController {
     private lazy var nameTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = UITextField.BorderStyle.roundedRect
-        textField.backgroundColor = UIColor(white: 0.08, alpha: 1)
-        textField.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        textField.textColor = UIColor(white: 1, alpha: 0.7)
+        textField.backgroundColor = .backgroundColor
+        textField.tintColor = .tintColor
+        textField.textColor = .textColor
         textField.returnKeyType = .done
         textField.keyboardAppearance = .dark
         textField.becomeFirstResponder()
@@ -43,16 +43,16 @@ class EnqueuePopupController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("OK", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        button.layer.backgroundColor = UIColor(white: 0.08, alpha: 1).cgColor
-        button.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        button.layer.backgroundColor = UIColor.accentColor.cgColor
+        button.tintColor = .tintColor
         return button
     }()
 
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
-        button.layer.backgroundColor = UIColor(white: 0.08, alpha: 1).cgColor
-        button.tintColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        button.layer.backgroundColor = UIColor.accentColor.cgColor
+        button.tintColor = .tintColor
         return button
     }()
 
@@ -84,6 +84,7 @@ class EnqueuePopupController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
