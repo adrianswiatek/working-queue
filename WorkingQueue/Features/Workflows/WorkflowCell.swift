@@ -1,6 +1,12 @@
 import UIKit
 
+protocol WorkflowCellDelegate: AnyObject {
+    func doneButtonDidTap(_ workflowCell: WorkflowCell)
+}
+
 class WorkflowCell: UICollectionViewCell {
+
+    weak var delegate: WorkflowCellDelegate?
 
     private let workflowNameLabel: UILabel = {
         let label = UILabel()
@@ -61,6 +67,7 @@ class WorkflowCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
         setupStyles()
+        setupHandlers()
     }
 
     @available(*, unavailable)
@@ -120,11 +127,23 @@ class WorkflowCell: UICollectionViewCell {
         layer.shadowOpacity = 0.5
     }
 
+    private func setupHandlers() {
+        doneButton.addTarget(self, action: #selector(doneButtonDidTap), for: .touchUpInside)
+    }
+
+    @objc private func doneButtonDidTap() {
+        delegate?.doneButtonDidTap(self)
+    }
+
     func update(workflowEntry: WorkflowEntry) {
         workflowNameLabel.text = workflowEntry.name
         currentItemLabel.text = workflowEntry.currentItemName
         pendingNumberLabel.text = String(workflowEntry.numberOfItems)
 
-        doneButton.isHidden = workflowEntry.currentItem == nil
+        let currentItemExists = workflowEntry.currentItem != nil
+        doneButton.isHidden = !currentItemExists
+
+        let currentItemFontWeight: UIFont.Weight = currentItemExists ? .bold : .regular
+        currentItemLabel.font = .systemFont(ofSize: 18, weight: currentItemFontWeight)
     }
 }

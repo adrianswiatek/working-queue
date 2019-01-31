@@ -33,4 +33,8 @@ class WorkflowEntry {
     public func setQueueEntries(_ queueEntries: [QueueEntry]) {
         queue = queueEntries
     }
+
+    public func dequeueEntry() -> QueueEntry? {
+        return queue.count > 0 ? queue.remove(at: 0) : nil
+    }
 }

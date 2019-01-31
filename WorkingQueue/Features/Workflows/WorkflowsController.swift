@@ -90,6 +90,27 @@ extension WorkflowsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WorkflowCell
         cell.update(workflowEntry: workflowEntries[indexPath.item])
+        cell.delegate = self
         return cell
+    }
+}
+
+extension WorkflowsController: WorkflowCellDelegate {
+    func doneButtonDidTap(_ workflowCell: WorkflowCell) {
+        guard let indexPath = collectionView.indexPath(for: workflowCell) else { return }
+
+        let workflowEntry = workflowEntries[indexPath.item]
+        let anotherEntryExists = indexPath.item < workflowEntries.count - 1
+        var indexPathsToReload = [indexPath]
+
+        if anotherEntryExists, let currentItem = workflowEntry.currentItem {
+            workflowEntries[indexPath.item + 1].addQueueEntry(currentItem)
+            indexPathsToReload.append(IndexPath(item: indexPath.item + 1, section: 0))
+        }
+
+        workflowEntry.currentItem = workflowEntry.dequeueEntry()
+        workflowCell.update(workflowEntry: workflowEntry)
+
+        collectionView.reloadItems(at: indexPathsToReload)
     }
 }
