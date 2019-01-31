@@ -99,17 +99,21 @@ extension WorkflowsController: WorkflowCellDelegate {
     func doneButtonDidTap(_ workflowCell: WorkflowCell) {
         guard let indexPath = collectionView.indexPath(for: workflowCell) else { return }
 
-        let workflowEntry = workflowEntries[indexPath.item]
+        let currentWorkflowEntry = workflowEntries[indexPath.item]
         let anotherEntryExists = indexPath.item < workflowEntries.count - 1
         var indexPathsToReload = [indexPath]
 
-        if anotherEntryExists, let currentItem = workflowEntry.currentItem {
-            workflowEntries[indexPath.item + 1].addQueueEntry(currentItem)
+        if anotherEntryExists, let currentItem = currentWorkflowEntry.currentItem {
+            let nextWorkflowEntry = workflowEntries[indexPath.item + 1]
+            if nextWorkflowEntry.currentItem == nil {
+                nextWorkflowEntry.currentItem = currentItem
+            } else {
+                nextWorkflowEntry.addQueueEntry(currentItem)
+            }
             indexPathsToReload.append(IndexPath(item: indexPath.item + 1, section: 0))
         }
 
-        workflowEntry.dequeueToCurrent()
-        workflowCell.update(workflowEntry: workflowEntry)
+        currentWorkflowEntry.dequeueToCurrent()
         collectionView.reloadItems(at: indexPathsToReload)
     }
 }
