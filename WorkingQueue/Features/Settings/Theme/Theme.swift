@@ -7,7 +7,7 @@ class Theme {
     private let themeFactory: ThemeFactory
 
     private init() {
-        current = DarkColorTheme()
+        current = LightColorTheme()
         themeFactory = ThemeFactory()
     }
 
