@@ -34,7 +34,7 @@ class WorkflowEntry {
         queue = queueEntries
     }
 
-    public func dequeueEntry() -> QueueEntry? {
-        return queue.count > 0 ? queue.remove(at: 0) : nil
+    public func dequeueToCurrent() {
+        currentItem = queue.count > 0 ? queue.remove(at: 0) : nil
     }
 }

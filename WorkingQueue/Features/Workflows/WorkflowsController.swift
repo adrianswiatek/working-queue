@@ -108,9 +108,8 @@ extension WorkflowsController: WorkflowCellDelegate {
             indexPathsToReload.append(IndexPath(item: indexPath.item + 1, section: 0))
         }
 
-        workflowEntry.currentItem = workflowEntry.dequeueEntry()
+        workflowEntry.dequeueToCurrent()
         workflowCell.update(workflowEntry: workflowEntry)
-
         collectionView.reloadItems(at: indexPathsToReload)
     }
 }
