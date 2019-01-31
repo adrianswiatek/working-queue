@@ -3,7 +3,7 @@ class WorkflowEntry {
     public var currentItem: QueueEntry?
 
     public var currentItemName: String {
-        return currentItem?.name ?? "N/A"
+        return currentItem?.name ?? "[nothing to do]"
     }
 
     public var numberOfItems: Int {
