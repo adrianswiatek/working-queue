@@ -11,7 +11,7 @@ class WorkflowCell: UICollectionViewCell {
 
     private let currentItemLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .textColor
+        label.textColor = .tintColor
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
