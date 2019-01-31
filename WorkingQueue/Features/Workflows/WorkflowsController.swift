@@ -4,7 +4,7 @@ class WorkflowsController: UIViewController {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 150)
+        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 160)
         layout.minimumLineSpacing = 16
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

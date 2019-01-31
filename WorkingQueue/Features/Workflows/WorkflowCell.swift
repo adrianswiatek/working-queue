@@ -45,6 +45,18 @@ class WorkflowCell: UICollectionViewCell {
         return view
     }()
 
+    private let doneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .accentColor
+        button.tintColor = UIColor.tintColor
+        button.setImage(#imageLiteral(resourceName: "done"), for: .normal)
+        button.layer.cornerRadius = 28
+        button.layer.borderWidth = 3
+        button.layer.borderColor = UIColor.backgroundColor.cgColor
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -89,6 +101,14 @@ class WorkflowCell: UICollectionViewCell {
             pendingNumberLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 36),
             pendingNumberLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
         ])
+
+        addSubview(doneButton)
+        NSLayoutConstraint.activate([
+            doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            doneButton.centerYAnchor.constraint(equalTo: bottomView.topAnchor),
+            doneButton.heightAnchor.constraint(equalToConstant: 56),
+            doneButton.widthAnchor.constraint(equalTo: doneButton.heightAnchor)
+        ])
     }
 
     private func setupStyles() {
@@ -104,5 +124,7 @@ class WorkflowCell: UICollectionViewCell {
         workflowNameLabel.text = workflowEntry.name
         currentItemLabel.text = workflowEntry.currentItemName
         pendingNumberLabel.text = String(workflowEntry.numberOfItems)
+
+        doneButton.isHidden = workflowEntry.currentItem == nil
     }
 }
