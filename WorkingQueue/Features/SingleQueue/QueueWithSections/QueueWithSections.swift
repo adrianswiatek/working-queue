@@ -46,14 +46,18 @@ final class WorkingQueue<T: Equatable> {
         return numberOfRowsIn(section: lastSection) == options.getMaximumNumberOfRowsFor(section: lastSection)
     }
 
-    func dequeue() {
+    func dequeue() -> T? {
         if numberOfRowsIn(section: 0) > 0 {
-            items[0].remove(at: 0)
+            let item = items[0].remove(at: 0)
             delegate?.didDequeueAt(section: 0, row: 0)
 
             moveItemsBetweenSectionsAfterDelete()
             cleanSectionsAfterDelete()
+
+            return item
         }
+
+        return nil
     }
 
     func numberOfRowsIn(section: Int) -> Int {

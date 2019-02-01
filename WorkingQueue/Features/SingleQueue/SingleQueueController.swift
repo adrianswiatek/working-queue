@@ -182,7 +182,10 @@ extension SingleQueueController: ControlBarDelegate {
     }
 
     func controlBarDidDequeue(_ controlBar: ControlBar) {
-        queue.dequeue()
+        if let item = queue.dequeue() {
+            // TODO: Handle the case when current item already exists
+            workflowEntry.currentItem = item
+        }
     }
 }
 
