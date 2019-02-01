@@ -1,19 +1,19 @@
 import UIKit
 
-class EnqueuePopupBuilder {
-
-    private let callback: (String) -> Void
+public final class EnqueuePopupBuilder: PopupBuilder {
+    private let delegate: EnqueuePopupControllerDelegate
     private var result: EnqueuePopupController?
 
-    init(callback: @escaping (String) -> Void) {
-        self.callback = callback
+    required init(delegate: EnqueuePopupControllerDelegate, _ workflowEntry: WorkflowEntry) {
+        self.delegate = delegate
     }
 
     func build() -> EnqueuePopupBuilder {
-        let popupController = EnqueuePopupController(callback: callback)
+        let popupController = EnqueuePopupController()
         popupController.isModalInPopover = true
         popupController.modalPresentationStyle = .overCurrentContext
         popupController.modalTransitionStyle = .crossDissolve
+        popupController.delegate = delegate
         result = popupController
 
         return self

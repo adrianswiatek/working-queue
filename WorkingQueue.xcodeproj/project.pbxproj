@@ -33,6 +33,9 @@
 		3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A2219A025900FC2BA5 /* ControlBar.swift */; };
 		3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */; };
 		3ADB89A7219A18A700FC2BA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */; };
+		3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE58C592204C1CA00616CBA /* DequeuePopupBuilder.swift */; };
+		3AE58C5C2204C26C00616CBA /* DequeuePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE58C5B2204C26C00616CBA /* DequeuePopupController.swift */; };
+		3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE58C5D2204CDEE00616CBA /* PopupBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		3ADB89A2219A025900FC2BA5 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarDelegate.swift; sourceTree = "<group>"; };
 		3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AE58C592204C1CA00616CBA /* DequeuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupBuilder.swift; sourceTree = "<group>"; };
+		3AE58C5B2204C26C00616CBA /* DequeuePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupController.swift; sourceTree = "<group>"; };
+		3AE58C5D2204CDEE00616CBA /* PopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,10 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				3A23B4E021A08A59003AC3ED /* QueueWithSections */,
+				3AE58C572204C15A00616CBA /* Popups */,
 				3A3B032D21A0232A00FD1121 /* Views */,
-				3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */,
 				3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */,
-				3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */,
 				3A741EB42198D6B900763028 /* SingleQueueController.swift */,
 			);
 			path = SingleQueue;
@@ -218,6 +223,18 @@
 				3AD0AE0721F51E290072BA2A /* QueueEntry.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3AE58C572204C15A00616CBA /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				3AE58C5B2204C26C00616CBA /* DequeuePopupController.swift */,
+				3AE58C592204C1CA00616CBA /* DequeuePopupBuilder.swift */,
+				3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */,
+				3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */,
+				3AE58C5D2204CDEE00616CBA /* PopupBuilder.swift */,
+			);
+			path = Popups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,11 +337,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE58C5C2204C26C00616CBA /* DequeuePopupController.swift in Sources */,
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
+				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
@@ -332,6 +351,7 @@
 				3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
+				3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
 				3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,

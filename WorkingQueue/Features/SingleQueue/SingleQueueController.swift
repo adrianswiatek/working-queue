@@ -1,6 +1,12 @@
 import UIKit
 
+protocol SingleQueueControllerDelegate: AnyObject {
+    func proceedInWorkflowRequest(currentWorkflowEntry: WorkflowEntry)
+}
+
 class SingleQueueController: UIViewController {
+
+    weak var delegate: SingleQueueControllerDelegate?
 
     weak var workflowEntry: WorkflowEntry! {
         didSet {
@@ -67,13 +73,15 @@ class SingleQueueController: UIViewController {
         tableView.backgroundColor = .backgroundColor
 
         view.addSubview(controlBar)
-        view.addSubview(tableView)
-
         NSLayoutConstraint.activate([
             controlBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             controlBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             controlBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            controlBar.heightAnchor.constraint(equalToConstant: 75),
+            controlBar.heightAnchor.constraint(equalToConstant: 75)
+        ])
+
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -175,13 +183,38 @@ extension SingleQueueController: UITableViewDropDelegate {
 
 extension SingleQueueController: ControlBarDelegate {
     func controlBarDidAdd(_ controlBar: ControlBar) {
-        let popupController = EnqueuePopupBuilder { [unowned self] in self.addItem($0) }
-        if let controller = popupController.build().getResult() {
-            present(controller, animated: true)
-        }
+        controlBarDidAction(popupBuilder: EnqueuePopupBuilder(delegate: self, workflowEntry))
     }
 
     func controlBarDidDequeue(_ controlBar: ControlBar) {
+        if workflowEntry.currentItem != nil {
+            controlBarDidAction(popupBuilder: DequeuePopupBuilder(delegate: self, workflowEntry))
+        } else if let item = queue.dequeue() {
+            workflowEntry.currentItem = item
+        }
+    }
+
+    private func controlBarDidAction<T: PopupBuilder>(popupBuilder: T) {
+        if let controller = popupBuilder.build().getResult() {
+            present(controller, animated: true)
+        }
+    }
+}
+
+extension SingleQueueController: EnqueuePopupControllerDelegate {
+    func didAcceptWithText(_ text: String) {
+        addItem(text)
+    }
+}
+
+extension SingleQueueController: DequeuePopupControllerDelegate {
+    func didProceedInWorkflow() {
+        if queue.dequeue() != nil {
+            delegate?.proceedInWorkflowRequest(currentWorkflowEntry: workflowEntry)
+        }
+    }
+
+    func didReplace() {
         guard let item = queue.dequeue() else { return }
 
         if let currentItem = workflowEntry.currentItem {
@@ -200,7 +233,7 @@ extension SingleQueueController: QueueWithSectionsDelegate {
 
     func didDequeueAt(section: Int, row: Int) {
         let indexPath = IndexPath(row: row, section: section)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        tableView.deleteRows(at: [indexPath], with: .left)
     }
 
     func didRemoveAt(section: Int, row: Int) {

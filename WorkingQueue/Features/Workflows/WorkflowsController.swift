@@ -78,6 +78,7 @@ extension WorkflowsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let singleQueueController = SingleQueueController()
         singleQueueController.workflowEntry = workflowEntries[indexPath.item]
+        singleQueueController.delegate = self
         navigationController?.pushViewController(singleQueueController, animated: true)
     }
 }
@@ -125,6 +126,15 @@ extension WorkflowsController: WorkflowCellDelegate {
             nextWorkflowEntry.currentItem = currentItem
         } else {
             nextWorkflowEntry.addQueueEntry(currentItem)
+        }
+    }
+}
+
+extension WorkflowsController: SingleQueueControllerDelegate {
+    func proceedInWorkflowRequest(currentWorkflowEntry: WorkflowEntry) {
+        if let index = workflowEntries.firstIndex(where: { $0 === currentWorkflowEntry }) {
+            let indexPath = IndexPath(item: index, section: 0)
+            moveItemsBetweenWorkflowEntries(startingFrom: indexPath)
         }
     }
 }
