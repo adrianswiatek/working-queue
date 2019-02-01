@@ -97,23 +97,34 @@ extension WorkflowsController: UICollectionViewDataSource {
 
 extension WorkflowsController: WorkflowCellDelegate {
     func doneButtonDidTap(_ workflowCell: WorkflowCell) {
-        guard let indexPath = collectionView.indexPath(for: workflowCell) else { return }
+        if let indexPath = collectionView.indexPath(for: workflowCell) {
+            moveItemsBetweenWorkflowEntries(startingFrom: indexPath)
+        }
+    }
 
+    private func moveItemsBetweenWorkflowEntries(startingFrom indexPath: IndexPath) {
         let currentWorkflowEntry = workflowEntries[indexPath.item]
-        let anotherEntryExists = indexPath.item < workflowEntries.count - 1
+        guard let currentItem = currentWorkflowEntry.currentItem else { return }
+
         var indexPathsToReload = [indexPath]
 
-        if anotherEntryExists, let currentItem = currentWorkflowEntry.currentItem {
-            let nextWorkflowEntry = workflowEntries[indexPath.item + 1]
-            if nextWorkflowEntry.currentItem == nil {
-                nextWorkflowEntry.currentItem = currentItem
-            } else {
-                nextWorkflowEntry.addQueueEntry(currentItem)
-            }
-            indexPathsToReload.append(IndexPath(item: indexPath.item + 1, section: 0))
+        let nextWorkflowEntryExists = indexPath.item < workflowEntries.count - 1
+        if nextWorkflowEntryExists {
+            let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
+            indexPathsToReload.append(nextIndexPath)
+            setItemInNextWorkflowEntry(currentItem, nextIndexPath)
         }
 
         currentWorkflowEntry.dequeueToCurrent()
         collectionView.reloadItems(at: indexPathsToReload)
+    }
+
+    private func setItemInNextWorkflowEntry(_ currentItem: QueueEntry, _ nextIndexPath: IndexPath) {
+        let nextWorkflowEntry = workflowEntries[nextIndexPath.item]
+        if nextWorkflowEntry.currentItem == nil {
+            nextWorkflowEntry.currentItem = currentItem
+        } else {
+            nextWorkflowEntry.addQueueEntry(currentItem)
+        }
     }
 }
