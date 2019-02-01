@@ -3,7 +3,7 @@ class WorkflowEntry {
     public var currentItem: QueueEntry?
 
     public var currentItemName: String {
-        return currentItem?.name ?? "N/A"
+        return currentItem?.name ?? "[nothing to do]"
     }
 
     public var numberOfItems: Int {
@@ -32,5 +32,9 @@ class WorkflowEntry {
 
     public func setQueueEntries(_ queueEntries: [QueueEntry]) {
         queue = queueEntries
+    }
+
+    public func dequeueToCurrent() {
+        currentItem = queue.count > 0 ? queue.remove(at: 0) : nil
     }
 }

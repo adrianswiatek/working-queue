@@ -4,7 +4,7 @@ class WorkflowsController: UIViewController {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 150)
+        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 160)
         layout.minimumLineSpacing = 16
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -90,6 +90,41 @@ extension WorkflowsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WorkflowCell
         cell.update(workflowEntry: workflowEntries[indexPath.item])
+        cell.delegate = self
         return cell
+    }
+}
+
+extension WorkflowsController: WorkflowCellDelegate {
+    func doneButtonDidTap(_ workflowCell: WorkflowCell) {
+        if let indexPath = collectionView.indexPath(for: workflowCell) {
+            moveItemsBetweenWorkflowEntries(startingFrom: indexPath)
+        }
+    }
+
+    private func moveItemsBetweenWorkflowEntries(startingFrom indexPath: IndexPath) {
+        let currentWorkflowEntry = workflowEntries[indexPath.item]
+        guard let currentItem = currentWorkflowEntry.currentItem else { return }
+
+        var indexPathsToReload = [indexPath]
+
+        let nextWorkflowEntryExists = indexPath.item < workflowEntries.count - 1
+        if nextWorkflowEntryExists {
+            let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
+            indexPathsToReload.append(nextIndexPath)
+            setItemInNextWorkflowEntry(currentItem, nextIndexPath)
+        }
+
+        currentWorkflowEntry.dequeueToCurrent()
+        collectionView.reloadItems(at: indexPathsToReload)
+    }
+
+    private func setItemInNextWorkflowEntry(_ currentItem: QueueEntry, _ nextIndexPath: IndexPath) {
+        let nextWorkflowEntry = workflowEntries[nextIndexPath.item]
+        if nextWorkflowEntry.currentItem == nil {
+            nextWorkflowEntry.currentItem = currentItem
+        } else {
+            nextWorkflowEntry.addQueueEntry(currentItem)
+        }
     }
 }
