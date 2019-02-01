@@ -13,6 +13,8 @@ class EnqueuePopupController: UIViewController {
         view.backgroundColor = .backgroundColor
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
+        view.layer.borderColor = UIColor.accentColor.cgColor
+        view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

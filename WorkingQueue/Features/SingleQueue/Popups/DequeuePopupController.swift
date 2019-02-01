@@ -22,6 +22,8 @@ public class DequeuePopupController: UIViewController {
         view.backgroundColor = .backgroundColor
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
+        view.layer.borderColor = UIColor.accentColor.cgColor
+        view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -43,7 +45,7 @@ public class DequeuePopupController: UIViewController {
         label.font = .systemFont(ofSize: 15)
         label.textAlignment = .center
         label.backgroundColor = .backgroundColor
-        label.textColor = .tintColor
+        label.textColor = .textColor
         label.transform = CGAffineTransform(translationX: 0, y: 6)
         return label
     }()
@@ -54,7 +56,7 @@ public class DequeuePopupController: UIViewController {
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
         label.backgroundColor = .backgroundColor
-        label.textColor = .tintColor
+        label.textColor = .textColor
         label.transform = CGAffineTransform(translationX: 0, y: -6)
         return label
     }()
@@ -71,9 +73,11 @@ public class DequeuePopupController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Proceed in workflow", for: .normal)
         button.tintColor = .tintColor
-        button.backgroundColor = .backgroundColor
+        button.backgroundColor = .accentColor
         button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         button.layer.cornerRadius = 20
+        button.layer.borderColor = UIColor.accentColor.cgColor
+        button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -82,8 +86,11 @@ public class DequeuePopupController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Replace", for: .normal)
         button.tintColor = .tintColor
-        button.backgroundColor = .backgroundColor
+        button.backgroundColor = .accentColor
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.layer.cornerRadius = 20
+        button.layer.borderColor = UIColor.accentColor.cgColor
+        button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -92,8 +99,11 @@ public class DequeuePopupController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
         button.tintColor = .tintColor
-        button.backgroundColor = .backgroundColor
+        button.backgroundColor = .accentColor
+        button.titleLabel?.font = .systemFont(ofSize: 16)
         button.layer.cornerRadius = 20
+        button.layer.borderColor = UIColor.accentColor.cgColor
+        button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
