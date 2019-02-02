@@ -11,6 +11,7 @@
 		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
 		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
 		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
+		3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */; };
 		3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
 		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
 		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
+		3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupButton.swift; sourceTree = "<group>"; };
 		3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCell.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A741E942198C85E00763028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				3ADB89A2219A025900FC2BA5 /* ControlBar.swift */,
 				3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */,
 				3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */,
+				3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */,
 				3AE58C5C2204C26C00616CBA /* DequeuePopupController.swift in Sources */,
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,

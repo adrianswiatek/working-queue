@@ -69,44 +69,14 @@ public class DequeuePopupController: UIViewController {
         return stackView
     }()
 
-    private let proceedInWorkflowButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Proceed in workflow", for: .normal)
-        button.tintColor = .tintColor
-        button.backgroundColor = .accentColor
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        button.layer.cornerRadius = 20
-        button.layer.borderColor = UIColor.accentColor.cgColor
-        button.layer.borderWidth = 1
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let proceedInWorkflowButton: UIButton =
+        DequeuePopupButton(title: "Proceed in workflow", isPrimaryAction: true)
 
-    private let replaceButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Replace", for: .normal)
-        button.tintColor = .tintColor
-        button.backgroundColor = .accentColor
-        button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.layer.cornerRadius = 20
-        button.layer.borderColor = UIColor.accentColor.cgColor
-        button.layer.borderWidth = 1
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let replaceButton: UIButton =
+        DequeuePopupButton(title: "Replace")
 
-    private let cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Cancel", for: .normal)
-        button.tintColor = .tintColor
-        button.backgroundColor = .accentColor
-        button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.layer.cornerRadius = 20
-        button.layer.borderColor = UIColor.accentColor.cgColor
-        button.layer.borderWidth = 1
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
+    private let cancelButton: UIButton =
+        DequeuePopupButton(title: "Cancel")
 
     private let darkView: UIView = {
         let view = UIView()
