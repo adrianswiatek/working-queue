@@ -21,6 +21,7 @@
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
 		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
+		3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */; };
 		3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A421C844A9008C26F5 /* Theme.swift */; };
 		3AB8C6A821C8475D008C26F5 /* ColorThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A721C8475D008C26F5 /* ColorThemeType.swift */; };
 		3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A921C84771008C26F5 /* ColorTheme.swift */; };
@@ -71,6 +72,7 @@
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
 		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
+		3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6A421C844A9008C26F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3AB8C6A721C8475D008C26F5 /* ColorThemeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeType.swift; sourceTree = "<group>"; };
 		3AB8C6A921C84771008C26F5 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		3A741E932198C85E00763028 /* WorkingQueue */ = {
 			isa = PBXGroup;
 			children = (
+				3AA150F62206249B008E7727 /* Extensions */,
 				3A741EB62198D6E700763028 /* Features */,
 				3AD0AE0221F517940072BA2A /* Model */,
 				3A741E942198C85E00763028 /* AppDelegate.swift */,
@@ -207,6 +210,14 @@
 				3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */,
 			);
 			path = Workflows;
+			sourceTree = "<group>";
+		};
+		3AA150F62206249B008E7727 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3AB8C6A321C8449B008C26F5 /* Settings */ = {
@@ -446,6 +457,7 @@
 				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,
 				3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
+				3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */,
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
 				3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
@@ -616,7 +628,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueue/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -632,7 +647,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueue/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -649,7 +667,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -667,7 +689,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
