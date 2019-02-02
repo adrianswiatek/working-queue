@@ -211,12 +211,17 @@ extension SingleQueueController: EnqueuePopupControllerDelegate {
 
 extension SingleQueueController: DequeuePopupControllerDelegate {
     func didProceedInWorkflow() {
+        workflowEntry.setQueueEntries(queue.flattened())
+
         guard let queueEntry = queue.dequeue() else { return }
+
         makeToast("You have proceeded \"\(queueEntry.name)\" in workflow.")
         delegate?.didProceedInWorkflow(currentWorkflowEntry: workflowEntry)
     }
 
     func didReplace() {
+        workflowEntry.setQueueEntries(queue.flattened())
+
         guard let queueEntry = queue.dequeue() else { return }
 
         if let currentItem = workflowEntry.currentQueueEntry {
