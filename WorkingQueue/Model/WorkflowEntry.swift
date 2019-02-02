@@ -1,4 +1,4 @@
-class WorkflowEntry {
+public class WorkflowEntry {
     public var name: String
     public var currentQueueEntry: QueueEntry?
 

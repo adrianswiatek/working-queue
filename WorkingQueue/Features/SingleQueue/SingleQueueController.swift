@@ -184,7 +184,7 @@ extension SingleQueueController: UITableViewDropDelegate {
 
 extension SingleQueueController: ControlBarDelegate {
     func controlBarDidAdd(_ controlBar: ControlBar) {
-        controlBarDidAction(popupBuilder: EnqueuePopupBuilder(delegate: self, workflowEntry))
+        controlBarDidAction(popupBuilder: EnqueuePopupBuilder(delegate: self))
     }
 
     func controlBarDidDequeue(_ controlBar: ControlBar) {
@@ -195,7 +195,7 @@ extension SingleQueueController: ControlBarDelegate {
         }
     }
 
-    private func controlBarDidAction<T: PopupBuilder>(popupBuilder: T) {
+    private func controlBarDidAction(popupBuilder: PopupBuilder) {
         if let controller = popupBuilder.build().getResult() {
             present(controller, animated: true)
         }

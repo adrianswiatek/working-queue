@@ -5,12 +5,12 @@ public final class DequeuePopupBuilder: PopupBuilder {
     private let workflowEntry: WorkflowEntry
     private var result: DequeuePopupController?
 
-    required init(delegate: DequeuePopupControllerDelegate, _ workflowEntry: WorkflowEntry) {
+    public init(delegate: DequeuePopupControllerDelegate, _ workflowEntry: WorkflowEntry) {
         self.delegate = delegate
         self.workflowEntry = workflowEntry
     }
 
-    func build() -> DequeuePopupBuilder {
+    public func build() -> DequeuePopupBuilder {
         let popupController = DequeuePopupController()
         popupController.isModalInPopover = true
         popupController.modalPresentationStyle = .overCurrentContext
@@ -22,7 +22,7 @@ public final class DequeuePopupBuilder: PopupBuilder {
         return self
     }
 
-    func getResult() -> UIViewController? {
+    public func getResult() -> UIViewController? {
         return result
     }
 }

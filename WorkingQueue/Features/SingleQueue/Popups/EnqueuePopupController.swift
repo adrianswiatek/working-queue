@@ -1,6 +1,6 @@
 import UIKit
 
-protocol EnqueuePopupControllerDelegate: AnyObject {
+public protocol EnqueuePopupControllerDelegate: AnyObject {
     func didAcceptWithText(_ text: String)
 }
 

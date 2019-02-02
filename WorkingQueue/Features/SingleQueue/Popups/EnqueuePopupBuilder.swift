@@ -4,11 +4,11 @@ public final class EnqueuePopupBuilder: PopupBuilder {
     private let delegate: EnqueuePopupControllerDelegate
     private var result: EnqueuePopupController?
 
-    required init(delegate: EnqueuePopupControllerDelegate, _ workflowEntry: WorkflowEntry) {
+    public init(delegate: EnqueuePopupControllerDelegate) {
         self.delegate = delegate
     }
 
-    func build() -> EnqueuePopupBuilder {
+    public func build() -> EnqueuePopupBuilder {
         let popupController = EnqueuePopupController()
         popupController.isModalInPopover = true
         popupController.modalPresentationStyle = .overCurrentContext
@@ -19,7 +19,7 @@ public final class EnqueuePopupBuilder: PopupBuilder {
         return self
     }
 
-    func getResult() -> UIViewController? {
+    public func getResult() -> UIViewController? {
         return result
     }
 }

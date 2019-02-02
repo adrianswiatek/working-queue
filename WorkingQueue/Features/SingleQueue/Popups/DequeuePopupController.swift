@@ -1,15 +1,15 @@
 import UIKit
 
-protocol DequeuePopupControllerDelegate: AnyObject {
+public protocol DequeuePopupControllerDelegate: AnyObject {
     func didReplace()
     func didProceedInWorkflow()
 }
 
 public class DequeuePopupController: UIViewController {
 
-    weak var delegate: DequeuePopupControllerDelegate?
+    public weak var delegate: DequeuePopupControllerDelegate?
 
-    weak var workflowEntry: WorkflowEntry? {
+    public weak var workflowEntry: WorkflowEntry? {
         didSet {
             if let currentItemName = workflowEntry?.currentQueueEntry?.name {
                 itemLabel.text = currentItemName
