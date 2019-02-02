@@ -1,4 +1,5 @@
 import UIKit
+import Toast_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = navigationController
 
         setupNavigationControllerAppearance()
+        setupToast()
 
         return true
     }
@@ -28,5 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.tintColor = .tintColor
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
         navigationBarAppearace.isTranslucent = false
+    }
+
+    private func setupToast() {
+        func getToastStyle() -> ToastStyle {
+            var style = ToastStyle()
+            style.backgroundColor = .accentColor
+            style.messageColor = .tintColor
+            style.verticalPadding = 12
+            style.horizontalPadding = 12
+            return style
+        }
+
+        let toastManager = ToastManager.shared
+        toastManager.duration = 4
+        toastManager.style = getToastStyle()
     }
 }

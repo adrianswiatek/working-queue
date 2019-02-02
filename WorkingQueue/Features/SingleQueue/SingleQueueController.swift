@@ -1,4 +1,5 @@
 import UIKit
+import Toast_Swift
 
 protocol SingleQueueControllerDelegate: AnyObject {
     func didProceedInWorkflow(currentWorkflowEntry: WorkflowEntry)
@@ -210,16 +211,17 @@ extension SingleQueueController: EnqueuePopupControllerDelegate {
 
 extension SingleQueueController: DequeuePopupControllerDelegate {
     func didProceedInWorkflow() {
-        guard queue.dequeue() != nil else { return }
-
+        guard let queueEntry = queue.dequeue() else { return }
+        makeToast("You have proceeded \"\(queueEntry.name)\" in workflow.")
         delegate?.didProceedInWorkflow(currentWorkflowEntry: workflowEntry)
     }
 
     func didReplace() {
-        guard queue.dequeue() != nil else { return }
+        guard let queueEntry = queue.dequeue() else { return }
 
         if let currentItem = workflowEntry.currentQueueEntry {
             queue.enqueue(item: currentItem)
+            makeToast("You have replaced \"\(currentItem.name)\" with \"\(queueEntry.name)\".")
         }
 
         delegate?.didReplaceQueueEntry(currentWorkflowEntry: workflowEntry)

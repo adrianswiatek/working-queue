@@ -1,0 +1,6 @@
+framework module Pods_WorkingQueueTests {
+  umbrella header "Pods-WorkingQueueTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
