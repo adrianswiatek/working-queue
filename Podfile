@@ -6,6 +6,7 @@ target 'WorkingQueue' do
   use_frameworks!
 
   # Pods for WorkingQueue
+  pod 'Toast-Swift', '~> 4.0'
 
   target 'WorkingQueueTests' do
     inherit! :search_paths

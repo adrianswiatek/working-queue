@@ -283,6 +283,7 @@
 				3A741E8D2198C85E00763028 /* Sources */,
 				3A741E8E2198C85E00763028 /* Frameworks */,
 				3A741E8F2198C85E00763028 /* Resources */,
+				794A3AB1049BCDBAE26383DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,6 +371,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		794A3AB1049BCDBAE26383DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WorkingQueue/Pods-WorkingQueue-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WorkingQueue/Pods-WorkingQueue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		82E7EFFAA5FF3481779D813F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
