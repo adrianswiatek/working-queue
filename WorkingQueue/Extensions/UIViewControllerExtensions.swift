@@ -3,11 +3,7 @@ import Toast_Swift
 
 public extension UIViewController {
     func makeToast(_ message: String) {
-        func getPoint() -> CGPoint {
-            let width = view.frame.width
-            let height = view.frame.height
-            return CGPoint(x: width / 2, y: height - height / 5)
-        }
-        view.makeToast(message, point: getPoint(), title: nil, image: nil, completion: nil)
+        let point = CGPoint(x: view.frame.width / 2, y: view.frame.height - 124)
+        view.makeToast(message, point: point, title: nil, image: nil, completion: nil)
     }
 }
