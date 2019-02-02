@@ -39,10 +39,6 @@ class WorkflowsController: UIViewController {
         populateTestData()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        collectionView.reloadData()
-    }
-
     private func setupViews() {
         navigationItem.title = "Workflow"
         view.backgroundColor = .backgroundColor
@@ -58,17 +54,19 @@ class WorkflowsController: UIViewController {
 
     private func populateTestData() {
         let toReadEntry = WorkflowEntry(name: "Read")
-        toReadEntry.currentItem = QueueEntry(name: "The Grit")
+        toReadEntry.currentQueueEntry = QueueEntry(name: "The Grit")
         toReadEntry.addQueueEntry(QueueEntry(name: "Brain Rules"))
         toReadEntry.addQueueEntry(QueueEntry(name: "So good they can't ignore you"))
+        toReadEntry.addQueueEntry(QueueEntry(name: "The Shallows"))
+        toReadEntry.addQueueEntry(QueueEntry(name: "Digital Minimalism"))
         workflowEntries.append(toReadEntry)
 
         let makeNotesEntry = WorkflowEntry(name: "Make notes")
-        makeNotesEntry.currentItem = QueueEntry(name: "The one thing")
+        makeNotesEntry.currentQueueEntry = QueueEntry(name: "The one thing")
         workflowEntries.append(makeNotesEntry)
 
         let toRetainEntry = WorkflowEntry(name: "Retain")
-        toRetainEntry.currentItem = QueueEntry(name: "The Confidence Gap")
+        toRetainEntry.currentQueueEntry = QueueEntry(name: "The Confidence Gap")
         toRetainEntry.addQueueEntry(QueueEntry(name: "The here and now habit"))
         workflowEntries.append(toRetainEntry)
     }
@@ -78,6 +76,7 @@ extension WorkflowsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let singleQueueController = SingleQueueController()
         singleQueueController.workflowEntry = workflowEntries[indexPath.item]
+        singleQueueController.delegate = self
         navigationController?.pushViewController(singleQueueController, animated: true)
     }
 }
@@ -98,13 +97,13 @@ extension WorkflowsController: UICollectionViewDataSource {
 extension WorkflowsController: WorkflowCellDelegate {
     func doneButtonDidTap(_ workflowCell: WorkflowCell) {
         if let indexPath = collectionView.indexPath(for: workflowCell) {
-            moveItemsBetweenWorkflowEntries(startingFrom: indexPath)
+            moveQueueEntriesBetweenWorkflowEntries(startingFrom: indexPath)
         }
     }
 
-    private func moveItemsBetweenWorkflowEntries(startingFrom indexPath: IndexPath) {
+    private func moveQueueEntriesBetweenWorkflowEntries(startingFrom indexPath: IndexPath) {
         let currentWorkflowEntry = workflowEntries[indexPath.item]
-        guard let currentItem = currentWorkflowEntry.currentItem else { return }
+        guard let currentQueueEntry = currentWorkflowEntry.currentQueueEntry else { return }
 
         var indexPathsToReload = [indexPath]
 
@@ -112,19 +111,51 @@ extension WorkflowsController: WorkflowCellDelegate {
         if nextWorkflowEntryExists {
             let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
             indexPathsToReload.append(nextIndexPath)
-            setItemInNextWorkflowEntry(currentItem, nextIndexPath)
+            setQueueEntryInNextWorkflowEntry(currentQueueEntry, nextIndexPath)
         }
 
         currentWorkflowEntry.dequeueToCurrent()
         collectionView.reloadItems(at: indexPathsToReload)
     }
 
-    private func setItemInNextWorkflowEntry(_ currentItem: QueueEntry, _ nextIndexPath: IndexPath) {
+    private func setQueueEntryInNextWorkflowEntry(_ currentQueueEntry: QueueEntry, _ nextIndexPath: IndexPath) {
         let nextWorkflowEntry = workflowEntries[nextIndexPath.item]
-        if nextWorkflowEntry.currentItem == nil {
-            nextWorkflowEntry.currentItem = currentItem
+        if nextWorkflowEntry.currentQueueEntry == nil {
+            nextWorkflowEntry.currentQueueEntry = currentQueueEntry
         } else {
-            nextWorkflowEntry.addQueueEntry(currentItem)
+            nextWorkflowEntry.addQueueEntry(currentQueueEntry)
         }
+    }
+}
+
+extension WorkflowsController: SingleQueueControllerDelegate {
+    func didProceedInWorkflow(currentWorkflowEntry: WorkflowEntry) {
+        if let indexPath = getIndexPathOf(workflowEntry: currentWorkflowEntry) {
+            moveQueueEntriesBetweenWorkflowEntries(startingFrom: indexPath)
+        }
+    }
+
+    func didReplaceQueueEntry(currentWorkflowEntry: WorkflowEntry) {
+        if let indexPath = getIndexPathOf(workflowEntry: currentWorkflowEntry) {
+            replaceQueueEntryAt(workflowEntryIndexPath: indexPath)
+        }
+    }
+
+    private func getIndexPathOf(workflowEntry: WorkflowEntry) -> IndexPath? {
+        return workflowEntries
+            .firstIndex(where: { $0 === workflowEntry })
+            .map { IndexPath(item: $0, section: 0) }
+    }
+
+    private func replaceQueueEntryAt(workflowEntryIndexPath indexPath: IndexPath) {
+        let currentWorkflowEntry = workflowEntries[indexPath.item]
+
+        if let currentQueueEntry = currentWorkflowEntry.currentQueueEntry {
+            currentWorkflowEntry.addQueueEntry(currentQueueEntry)
+        }
+
+        currentWorkflowEntry.currentQueueEntry = currentWorkflowEntry.removeFirstQueueEntry()
+
+        collectionView.reloadItems(at: [indexPath])
     }
 }

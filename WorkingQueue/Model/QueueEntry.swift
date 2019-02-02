@@ -1,13 +1,13 @@
-class QueueEntry {
+public class QueueEntry {
     var name: String
 
-    init(name: String) {
+    public init(name: String) {
         self.name = name
     }
 }
 
 extension QueueEntry: Equatable {
-    static func == (lhs: QueueEntry, rhs: QueueEntry) -> Bool {
+    public static func == (lhs: QueueEntry, rhs: QueueEntry) -> Bool {
         return lhs.name == rhs.name
     }
 }

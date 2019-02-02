@@ -1,14 +1,20 @@
 import UIKit
 
+public protocol EnqueuePopupControllerDelegate: AnyObject {
+    func didAcceptWithText(_ text: String)
+}
+
 class EnqueuePopupController: UIViewController {
 
-    var callback: (String) -> Void
+    weak var delegate: EnqueuePopupControllerDelegate?
 
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .backgroundColor
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
+        view.layer.borderColor = UIColor.accentColor.cgColor
+        view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -18,7 +24,7 @@ class EnqueuePopupController: UIViewController {
         label.text = "Enqueue item"
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .center
-        label.layer.backgroundColor = UIColor.accentColor.cgColor
+        label.backgroundColor = .accentColor
         label.textColor = .tintColor
         return label
     }()
@@ -43,7 +49,7 @@ class EnqueuePopupController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("OK", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        button.layer.backgroundColor = UIColor.accentColor.cgColor
+        button.backgroundColor = .accentColor
         button.tintColor = .tintColor
         return button
     }()
@@ -51,7 +57,7 @@ class EnqueuePopupController: UIViewController {
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
-        button.layer.backgroundColor = UIColor.accentColor.cgColor
+        button.backgroundColor = .accentColor
         button.tintColor = .tintColor
         return button
     }()
@@ -78,16 +84,6 @@ class EnqueuePopupController: UIViewController {
     }()
 
     var centerYConstraint: NSLayoutConstraint!
-
-    init(callback: @escaping (String) -> Void) {
-        self.callback = callback
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,7 +184,7 @@ class EnqueuePopupController: UIViewController {
 
     @objc func handleOk() {
         if let text = nameTextField.text {
-            callback(text)
+            delegate?.didAcceptWithText(text)
             dismiss(animated: true)
         }
     }
