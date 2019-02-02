@@ -11,7 +11,7 @@ public class DequeuePopupController: UIViewController {
 
     weak var workflowEntry: WorkflowEntry? {
         didSet {
-            if let currentItemName = workflowEntry?.currentItem?.name {
+            if let currentItemName = workflowEntry?.currentQueueEntry?.name {
                 itemLabel.text = currentItemName
             }
         }

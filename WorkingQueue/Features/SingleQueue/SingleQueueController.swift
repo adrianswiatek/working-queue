@@ -1,7 +1,8 @@
 import UIKit
 
 protocol SingleQueueControllerDelegate: AnyObject {
-    func proceedInWorkflowRequest(currentWorkflowEntry: WorkflowEntry)
+    func didProceedInWorkflow(currentWorkflowEntry: WorkflowEntry)
+    func didReplaceQueueEntry(currentWorkflowEntry: WorkflowEntry)
 }
 
 class SingleQueueController: UIViewController {
@@ -187,10 +188,10 @@ extension SingleQueueController: ControlBarDelegate {
     }
 
     func controlBarDidDequeue(_ controlBar: ControlBar) {
-        if workflowEntry.currentItem != nil {
+        if workflowEntry.currentQueueEntry != nil {
             controlBarDidAction(popupBuilder: DequeuePopupBuilder(delegate: self, workflowEntry))
         } else if let item = queue.dequeue() {
-            workflowEntry.currentItem = item
+            workflowEntry.currentQueueEntry = item
         }
     }
 
@@ -209,19 +210,19 @@ extension SingleQueueController: EnqueuePopupControllerDelegate {
 
 extension SingleQueueController: DequeuePopupControllerDelegate {
     func didProceedInWorkflow() {
-        if queue.dequeue() != nil {
-            delegate?.proceedInWorkflowRequest(currentWorkflowEntry: workflowEntry)
-        }
+        guard queue.dequeue() != nil else { return }
+
+        delegate?.didProceedInWorkflow(currentWorkflowEntry: workflowEntry)
     }
 
     func didReplace() {
-        guard let item = queue.dequeue() else { return }
+        guard queue.dequeue() != nil else { return }
 
-        if let currentItem = workflowEntry.currentItem {
+        if let currentItem = workflowEntry.currentQueueEntry {
             queue.enqueue(item: currentItem)
         }
 
-        workflowEntry.currentItem = item
+        delegate?.didReplaceQueueEntry(currentWorkflowEntry: workflowEntry)
     }
 }
 

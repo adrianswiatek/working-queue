@@ -1,12 +1,12 @@
 class WorkflowEntry {
     public var name: String
-    public var currentItem: QueueEntry?
+    public var currentQueueEntry: QueueEntry?
 
-    public var currentItemName: String {
-        return currentItem?.name ?? "[nothing to do]"
+    public var currenQueueEntryName: String {
+        return currentQueueEntry?.name ?? "[nothing to do]"
     }
 
-    public var numberOfItems: Int {
+    public var numberOfEntries: Int {
         return queue.count
     }
 
@@ -15,7 +15,7 @@ class WorkflowEntry {
     public init(name: String, queue: [QueueEntry], currentItem: QueueEntry?) {
         self.name = name
         self.queue = queue
-        self.currentItem = currentItem
+        self.currentQueueEntry = currentItem
     }
 
     public convenience init(name: String) {
@@ -24,6 +24,10 @@ class WorkflowEntry {
 
     public func addQueueEntry(_ queueEntry: QueueEntry) {
         queue.append(queueEntry)
+    }
+
+    public func removeFirstQueueEntry() -> QueueEntry? {
+        return numberOfEntries > 0 ? queue.remove(at: 0) : nil
     }
 
     public func getQueueEntires() -> [QueueEntry] {
@@ -35,6 +39,6 @@ class WorkflowEntry {
     }
 
     public func dequeueToCurrent() {
-        currentItem = queue.count > 0 ? queue.remove(at: 0) : nil
+        currentQueueEntry = queue.count > 0 ? queue.remove(at: 0) : nil
     }
 }

@@ -137,10 +137,10 @@ class WorkflowCell: UICollectionViewCell {
 
     func update(workflowEntry: WorkflowEntry) {
         workflowNameLabel.text = workflowEntry.name
-        currentItemLabel.text = workflowEntry.currentItemName
-        pendingNumberLabel.text = String(workflowEntry.numberOfItems)
+        currentItemLabel.text = workflowEntry.currenQueueEntryName
+        pendingNumberLabel.text = String(workflowEntry.numberOfEntries)
 
-        let currentItemExists = workflowEntry.currentItem != nil
+        let currentItemExists = workflowEntry.currentQueueEntry != nil
         doneButton.isHidden = !currentItemExists
 
         let currentItemFontWeight: UIFont.Weight = currentItemExists ? .bold : .regular
