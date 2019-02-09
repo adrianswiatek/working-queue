@@ -36,6 +36,7 @@ class WorkflowsController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        setupHamburgerButton()
         populateTestData()
     }
 
@@ -50,6 +51,18 @@ class WorkflowsController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func setupHamburgerButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "hamburger"), style:
+            UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(handleHamburgerButtonTap))
+    }
+
+    @objc private func handleHamburgerButtonTap() {
+        print("Hamburger button tapped...")
     }
 
     private func populateTestData() {
