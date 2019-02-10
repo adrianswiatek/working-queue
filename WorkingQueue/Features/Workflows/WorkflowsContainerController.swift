@@ -62,28 +62,24 @@ public class WorkflowsContainerController: UIViewController {
         isSettingsViewShown = true
         workflowsCoverView.isHidden = false
 
-        getAnimator() {
-            self.workflowsController.navigationController?.view.transform =
-                CGAffineTransform(translationX: self.getMaxWorkflowsControllerXLocation(), y: 0)
-        }.startAnimation()
-    }
-
-    private func getAnimator(animations: @escaping () -> Void) -> UIViewPropertyAnimator {
-        let springTimingParameters =
-            UISpringTimingParameters(mass: 0.5, stiffness: 100, damping: 10, initialVelocity: .zero)
-
-        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: springTimingParameters)
-        animator.addAnimations(animations)
-        return animator
+        let showSettingsTranslation = CGAffineTransform(translationX: getMaxWorkflowsControllerXLocation(), y: 0)
+        animate { self.workflowsController.navigationController?.view.transform = showSettingsTranslation }
     }
 
     private func hideSettingsView() {
         isSettingsViewShown = false
         workflowsCoverView.isHidden = true
 
-        getAnimator() {
-            self.workflowsController.navigationController?.view.transform = .identity
-        }.startAnimation()
+        animate { self.workflowsController.navigationController?.view.transform = .identity }
+    }
+
+    private func animate(animations: @escaping () -> Void) {
+        let springTimingParameters =
+            UISpringTimingParameters(mass: 0.5, stiffness: 100, damping: 10, initialVelocity: .zero)
+
+        let animator = UIViewPropertyAnimator(duration: 0.5, timingParameters: springTimingParameters)
+        animator.addAnimations(animations)
+        animator.startAnimation()
     }
 
     private func getMaxWorkflowsControllerXLocation() -> CGFloat {
