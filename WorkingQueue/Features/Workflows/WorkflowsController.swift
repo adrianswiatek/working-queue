@@ -2,6 +2,8 @@ import UIKit
 
 class WorkflowsController: UIViewController {
 
+    public var hamburgerButtonDidTap: (() -> Void)?
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: view.bounds.width - 32, height: 160)
@@ -36,6 +38,7 @@ class WorkflowsController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        setupNavigationControllerViewShadow()
         setupHamburgerButton()
         populateTestData()
     }
@@ -53,6 +56,14 @@ class WorkflowsController: UIViewController {
         ])
     }
 
+    private func setupNavigationControllerViewShadow() {
+        guard let layer = navigationController?.view.layer else { return }
+        layer.shadowRadius = 5
+        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowOffset = CGSize(width: -5, height: 0)
+        layer.shadowOpacity = 0.35
+    }
+
     private func setupHamburgerButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: #imageLiteral(resourceName: "hamburger"), style:
@@ -62,7 +73,7 @@ class WorkflowsController: UIViewController {
     }
 
     @objc private func handleHamburgerButtonTap() {
-        print("Hamburger button tapped...")
+        hamburgerButtonDidTap?()
     }
 
     private func populateTestData() {

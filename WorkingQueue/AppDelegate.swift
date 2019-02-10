@@ -13,9 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        let controller = WorkflowsController()
-        let navigationController = UINavigationController(rootViewController: controller)
-        window?.rootViewController = navigationController
+        window?.rootViewController = WorkflowsContainerController()
 
         setupNavigationControllerAppearance()
         setupToast()
