@@ -2,10 +2,15 @@ import UIKit
 
 public class WorkflowsContainerController: UIViewController {
 
-    private var isSettingsViewShown: Bool = false
-
     private let settingsController = UIViewController()
     private let workflowsController = WorkflowsController()
+
+    private var isSettingsViewShown: Bool = false
+    private var lastStartingXLocation: CGFloat = 0.0
+
+    private var maxWorkflowsXLocation: CGFloat {
+        return view.frame.width - 56
+    }
 
     private let workflowsCoverView: UIView = {
         let view = UIView()
@@ -62,7 +67,7 @@ public class WorkflowsContainerController: UIViewController {
         isSettingsViewShown = true
         workflowsCoverView.isHidden = false
 
-        let showSettingsTranslation = CGAffineTransform(translationX: getMaxWorkflowsControllerXLocation(), y: 0)
+        let showSettingsTranslation = CGAffineTransform(translationX: maxWorkflowsXLocation, y: 0)
         animate { self.workflowsController.navigationController?.view.transform = showSettingsTranslation }
     }
 
@@ -82,25 +87,18 @@ public class WorkflowsContainerController: UIViewController {
         animator.startAnimation()
     }
 
-    private func getMaxWorkflowsControllerXLocation() -> CGFloat {
-        return workflowsController.view.bounds.width / 1.25
-    }
-
-    private var lastStartingXLocation: CGFloat = 0.0
-
     @objc private func handleWorkflowsPan(recognizer: UIPanGestureRecognizer) {
-        guard
-            let workflowsNavigationController = workflowsController.navigationController,
-            workflowsNavigationController.viewControllers.count == 1
-        else { return }
+        guard let workflowsNavigationController = workflowsController.navigationController else { return }
+
+        let canHandlePan = workflowsNavigationController.viewControllers.count == 1
+        guard canHandlePan else { return }
 
         if recognizer.state == .began {
             lastStartingXLocation = isSettingsViewShown ? 0 : recognizer.location(in: nil).x
         }
 
         let xLocation: CGFloat = recognizer.location(in: nil).x
-        let xDifference: CGFloat =
-            max(min(xLocation - lastStartingXLocation, getMaxWorkflowsControllerXLocation()), 0)
+        let xDifference: CGFloat = max(min(xLocation - lastStartingXLocation, maxWorkflowsXLocation), 0)
 
         workflowsNavigationController.view.transform = CGAffineTransform(translationX: xDifference, y: 0)
 
@@ -112,13 +110,14 @@ public class WorkflowsContainerController: UIViewController {
 
     private func handleWorkflowsPanGestureEnd(_ xLocation: CGFloat, _ xVelocity: CGFloat) {
         let velocityThreshold: CGFloat = 750.0
+        let screenWidth = view.frame.width
 
         if isSettingsViewShown {
-            let locationXThreshold: CGFloat = view.frame.width - view.frame.width / 3
+            let locationXThreshold: CGFloat = screenWidth - screenWidth / 3
             let canHide = xLocation <= locationXThreshold || xVelocity < -velocityThreshold
             canHide ? hideSettingsView() : showSettingsView()
         } else {
-            let locationXThreshold: CGFloat = view.frame.width / 3
+            let locationXThreshold: CGFloat = screenWidth / 3
             let canShow = xLocation > locationXThreshold || xVelocity > velocityThreshold
             canShow ? showSettingsView() : hideSettingsView()
         }
