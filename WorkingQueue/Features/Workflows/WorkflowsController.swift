@@ -59,7 +59,7 @@ class WorkflowsController: UIViewController {
     private func setupNavigationControllerViewShadow() {
         guard let layer = navigationController?.view.layer else { return }
         layer.shadowRadius = 5
-        layer.shadowColor = UIColor.darkGray.cgColor
+        layer.shadowColor = UIColor.shadowColor.cgColor
         layer.shadowOffset = CGSize(width: -5, height: 0)
         layer.shadowOpacity = 0.35
     }

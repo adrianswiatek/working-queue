@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
 
-        window?.rootViewController = WorkflowsContainerController()
+        window?.rootViewController = MainContainerController()
 
         setupNavigationControllerAppearance()
         setupToast()
@@ -26,8 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearace.barTintColor = .accentColor
         navigationBarAppearace.barStyle = .currentStyle
         navigationBarAppearace.tintColor = .tintColor
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
         navigationBarAppearace.isTranslucent = false
+
+        navigationBarAppearace.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+        
+        navigationBarAppearace.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
     }
 
     private func setupToast() {

@@ -19,8 +19,10 @@
 		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
+		3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BD82214E72A00CA82C7 /* SettingsController.swift */; };
+		3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
-		3A9B6253220F818100B68BD1 /* WorkflowsContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6252220F818100B68BD1 /* WorkflowsContainerController.swift */; };
+		3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6252220F818100B68BD1 /* MainContainerController.swift */; };
 		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
 		3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */; };
 		3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A421C844A9008C26F5 /* Theme.swift */; };
@@ -71,8 +73,10 @@
 		3A741EAB2198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
+		3A778BD82214E72A00CA82C7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStatusBarStyleExtensions.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
-		3A9B6252220F818100B68BD1 /* WorkflowsContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsContainerController.swift; sourceTree = "<group>"; };
+		3A9B6252220F818100B68BD1 /* MainContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerController.swift; sourceTree = "<group>"; };
 		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
 		3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6A421C844A9008C26F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 			children = (
 				3AA150F62206249B008E7727 /* Extensions */,
 				3A741EB62198D6E700763028 /* Features */,
+				3A9B6252220F818100B68BD1 /* MainContainerController.swift */,
 				3AD0AE0221F517940072BA2A /* Model */,
 				3A741E942198C85E00763028 /* AppDelegate.swift */,
 				3A741E962198C85E00763028 /* ViewController.swift */,
@@ -210,7 +215,6 @@
 			children = (
 				3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */,
 				3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */,
-				3A9B6252220F818100B68BD1 /* WorkflowsContainerController.swift */,
 			);
 			path = Workflows;
 			sourceTree = "<group>";
@@ -227,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB8C6A621C84749008C26F5 /* Theme */,
+				3A778BD82214E72A00CA82C7 /* SettingsController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 				3AB8C6A421C844A9008C26F5 /* Theme.swift */,
 				3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */,
 				3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */,
+				3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
+				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
@@ -465,7 +472,8 @@
 				3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
 				3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */,
-				3A9B6253220F818100B68BD1 /* WorkflowsContainerController.swift in Sources */,
+				3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */,
+				3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
 				3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */,

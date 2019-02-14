@@ -1,8 +1,8 @@
 import UIKit
 
-public class WorkflowsContainerController: UIViewController {
+public class MainContainerController: UIViewController {
 
-    private let settingsController = UIViewController()
+    private let settingsController = SettingsController()
     private let workflowsController = WorkflowsController()
 
     private var isSettingsViewShown: Bool = false
@@ -19,6 +19,10 @@ public class WorkflowsContainerController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .currentStyle
+    }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +58,11 @@ public class WorkflowsContainerController: UIViewController {
     }
 
     private func setupSettingsController() {
-        settingsController.view.backgroundColor = .white
-        addChild(settingsController)
-        view.addSubview(settingsController.view)
+        let settingsNavigationController =
+            UINavigationController(rootViewController: settingsController)
+
+        addChild(settingsNavigationController)
+        view.addSubview(settingsNavigationController.view)
     }
 
     private func handleViewsPassage() {

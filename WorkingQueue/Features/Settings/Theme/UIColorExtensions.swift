@@ -20,4 +20,8 @@ extension UIColor {
     static var separatorColor: UIColor {
         return Theme.shared.current.separatorColor
     }
+
+    static var shadowColor: UIColor {
+        return Theme.shared.current.shadowColor
+    }
 }
