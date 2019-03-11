@@ -11,6 +11,8 @@
 		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
 		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
 		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
+		3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */; };
+		3A49C8EE2220BD0100D25B8C /* ColorThemeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */; };
 		3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */; };
 		3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
@@ -61,6 +63,8 @@
 		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
 		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
+		3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeChangeable.swift; sourceTree = "<group>"; };
+		3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingCell.swift; sourceTree = "<group>"; };
 		3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupButton.swift; sourceTree = "<group>"; };
 		3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCell.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,8 +172,9 @@
 			children = (
 				3AA150F62206249B008E7727 /* Extensions */,
 				3A741EB62198D6E700763028 /* Features */,
-				3A9B6252220F818100B68BD1 /* MainContainerController.swift */,
 				3AD0AE0221F517940072BA2A /* Model */,
+				3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */,
+				3A9B6252220F818100B68BD1 /* MainContainerController.swift */,
 				3A741E942198C85E00763028 /* AppDelegate.swift */,
 				3A741E962198C85E00763028 /* ViewController.swift */,
 				3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */,
@@ -232,6 +237,7 @@
 			children = (
 				3AB8C6A621C84749008C26F5 /* Theme */,
 				3A778BD82214E72A00CA82C7 /* SettingsController.swift */,
+				3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -458,6 +464,7 @@
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
+				3A49C8EE2220BD0100D25B8C /* ColorThemeSettingCell.swift in Sources */,
 				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
@@ -483,6 +490,7 @@
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,
 				3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */,
 				3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */,
+				3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

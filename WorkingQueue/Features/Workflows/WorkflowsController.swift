@@ -1,6 +1,6 @@
 import UIKit
 
-class WorkflowsController: UIViewController {
+class WorkflowsController: UIViewController, ColorThemeRefreshable {
 
     public var hamburgerButtonDidTap: (() -> Void)?
 
@@ -12,7 +12,6 @@ class WorkflowsController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = .init(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.register(WorkflowCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -40,12 +39,24 @@ class WorkflowsController: UIViewController {
         setupViews()
         setupNavigationControllerViewShadow()
         setupHamburgerButton()
+        refreshColorTheme()
         populateTestData()
+    }
+
+    public func refreshColorTheme() {
+        if let navigationBar = navigationController?.navigationBar {
+            let navigationBarSuperview = navigationBar.superview
+            navigationBar.removeFromSuperview()
+            navigationBarSuperview?.addSubview(navigationBar)
+        }
+
+        navigationController?.view.layer.shadowColor = UIColor.shadowColor.cgColor
+        collectionView.backgroundColor = .backgroundColor
+        collectionView.visibleCells.forEach { ($0 as? ColorThemeRefreshable)?.refreshColorTheme() }
     }
 
     private func setupViews() {
         navigationItem.title = "Workflow"
-        view.backgroundColor = .backgroundColor
 
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -57,11 +68,9 @@ class WorkflowsController: UIViewController {
     }
 
     private func setupNavigationControllerViewShadow() {
-        guard let layer = navigationController?.view.layer else { return }
-        layer.shadowRadius = 5
-        layer.shadowColor = UIColor.shadowColor.cgColor
-        layer.shadowOffset = CGSize(width: -5, height: 0)
-        layer.shadowOpacity = 0.35
+        navigationController?.view.layer.shadowRadius = 5
+        navigationController?.view.layer.shadowOffset = CGSize(width: -5, height: 0)
+        navigationController?.view.layer.shadowOpacity = 0.35
     }
 
     private func setupHamburgerButton() {

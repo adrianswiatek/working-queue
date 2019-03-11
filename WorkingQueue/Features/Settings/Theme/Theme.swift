@@ -1,7 +1,7 @@
 import UIKit
 
-class Theme {
-    static private(set) var shared = Theme()
+public class Theme {
+    public static private(set) var shared = Theme()
 
     private(set) var current: ColorTheme
     private let themeFactory: ThemeFactory
@@ -11,9 +11,13 @@ class Theme {
         themeFactory = ThemeFactory()
     }
 
-    func switchTheme(to themeType: ColorThemeType) {
+    public func switchTheme(to themeType: ColorThemeType) {
         guard current.type != themeType else { return }
+
         current = themeFactory.create(themeType)
+
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.refreshColorTheme()
     }
 
     private class ThemeFactory {

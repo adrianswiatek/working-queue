@@ -15,10 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = MainContainerController()
 
-        setupNavigationControllerAppearance()
+        refreshColorTheme()
         setupToast()
-
+        
         return true
+    }
+
+    func refreshColorTheme() {
+        setupNavigationControllerAppearance()
+
+        let rootViewController = window?.rootViewController as? ColorThemeRefreshable
+        rootViewController?.refreshColorTheme()
+
+        setupToast()
     }
 
     private func setupNavigationControllerAppearance() {

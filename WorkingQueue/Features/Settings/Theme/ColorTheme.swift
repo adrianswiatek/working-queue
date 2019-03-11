@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ColorTheme {
+public protocol ColorTheme {
     var type: ColorThemeType { get }
 
     var textColor: UIColor { get }

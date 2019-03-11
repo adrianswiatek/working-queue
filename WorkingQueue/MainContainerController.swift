@@ -1,9 +1,9 @@
 import UIKit
 
-public class MainContainerController: UIViewController {
+public class MainContainerController: UIViewController, ColorThemeRefreshable {
 
-    private let settingsController = SettingsController()
-    private let workflowsController = WorkflowsController()
+    private let settingsController: SettingsController & ColorThemeRefreshable = SettingsController()
+    private let workflowsController: WorkflowsController & ColorThemeRefreshable = WorkflowsController()
 
     private var isSettingsViewShown: Bool = false
     private var lastStartingXLocation: CGFloat = 0.0
@@ -29,6 +29,11 @@ public class MainContainerController: UIViewController {
 
         setupSettingsController()
         setupWorkflowsController()
+    }
+
+    public func refreshColorTheme() {
+        settingsController.refreshColorTheme()
+        workflowsController.refreshColorTheme()
     }
 
     private func setupWorkflowsController() {
