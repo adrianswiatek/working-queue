@@ -25,7 +25,7 @@ public class SettingsController: UICollectionViewController, ColorThemeRefreshab
         navigationController?.refreshNavigationBar()
         navigationController?.view.backgroundColor = .accentColor
         collectionView.backgroundColor = .accentColor
-        collectionView.visibleCells.forEach { ($0 as? ColorThemeRefreshable)?.refreshColorTheme() }
+        collectionView.refreshCellsColors()
     }
 
     public override func collectionView(

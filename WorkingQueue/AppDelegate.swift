@@ -16,21 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MainContainerController()
 
         refreshColorTheme()
-        setupToast()
+        refreshToastAppearance()
         
         return true
     }
 
     func refreshColorTheme() {
-        setupNavigationControllerAppearance()
+        refreshNavigationControllerAppearance()
+        refreshToastAppearance()
 
         let rootViewController = window?.rootViewController as? ColorThemeRefreshable
         rootViewController?.refreshColorTheme()
-
-        setupToast()
     }
 
-    private func setupNavigationControllerAppearance() {
+    private func refreshNavigationControllerAppearance() {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = .accentColor
         navigationBarAppearace.barStyle = .currentStyle
@@ -44,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
     }
 
-    private func setupToast() {
+    private func refreshToastAppearance() {
         func getToastStyle() -> ToastStyle {
             var style = ToastStyle()
             style.backgroundColor = .accentColor

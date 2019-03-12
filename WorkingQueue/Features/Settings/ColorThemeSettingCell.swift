@@ -2,19 +2,19 @@ import UIKit
 
 public class ColorThemeSettingCell: UICollectionViewCell, ColorThemeRefreshable {
 
-    private let settingNameLabel: UILabel = {
-        let label = UILabel()
+    private let settingNameLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.text = "Color Theme"
         label.font = .systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let settingValueLabel: UILabel = {
-        let label = UILabel()
+    private let settingValueLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.text = "Light"
         label.font = .boldSystemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.tintColor }
         return label
     }()
 
@@ -46,8 +46,7 @@ public class ColorThemeSettingCell: UICollectionViewCell, ColorThemeRefreshable 
 
     public func refreshColorTheme() {
         backgroundColor = .backgroundColor
-        settingNameLabel.textColor = .textColor
-        settingValueLabel.textColor = .tintColor
+        subviews.compactMap { $0 as? ColorThemeRefreshable }.forEach { $0.refreshColorTheme() }
     }
 
     public override var isHighlighted: Bool {
@@ -60,11 +59,7 @@ public class ColorThemeSettingCell: UICollectionViewCell, ColorThemeRefreshable 
         let springTimingParameters = UISpringTimingParameters(mass: 1, stiffness: 100, damping: 10, initialVelocity: .zero)
         let animator = UIViewPropertyAnimator(duration: 0, timingParameters: springTimingParameters)
         animator.addAnimations {
-            if self.isHighlighted {
-                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95).translatedBy(x: -5, y: 0)
-            } else {
-                self.transform = .identity
-            }
+            self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.99, y: 0.99) : .identity
         }
         animator.startAnimation()
     }

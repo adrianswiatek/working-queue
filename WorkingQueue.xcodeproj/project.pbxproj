@@ -24,6 +24,11 @@
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
 		3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BD82214E72A00CA82C7 /* SettingsController.swift */; };
 		3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */; };
+		3A8C083922385E66002AD9FC /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */; };
+		3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083B2238608E002AD9FC /* ThemedLabel.swift */; };
+		3A8C083E223864A7002AD9FC /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083D223864A7002AD9FC /* ThemedButton.swift */; };
+		3A8C084022386683002AD9FC /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083F22386683002AD9FC /* ThemedView.swift */; };
+		3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
 		3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6252220F818100B68BD1 /* MainContainerController.swift */; };
 		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
@@ -81,6 +86,11 @@
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
 		3A778BD82214E72A00CA82C7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStatusBarStyleExtensions.swift; sourceTree = "<group>"; };
+		3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		3A8C083B2238608E002AD9FC /* ThemedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		3A8C083D223864A7002AD9FC /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
+		3A8C083F22386683002AD9FC /* ThemedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
+		3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
 		3A9B6252220F818100B68BD1 /* MainContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerController.swift; sourceTree = "<group>"; };
 		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
@@ -172,6 +182,7 @@
 		3A741E932198C85E00763028 /* WorkingQueue */ = {
 			isa = PBXGroup;
 			children = (
+				3A8C083A22386069002AD9FC /* Controls */,
 				3AA150F62206249B008E7727 /* Extensions */,
 				3A741EB62198D6E700763028 /* Features */,
 				3AD0AE0221F517940072BA2A /* Model */,
@@ -217,6 +228,16 @@
 			path = SingleQueue;
 			sourceTree = "<group>";
 		};
+		3A8C083A22386069002AD9FC /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				3A8C083D223864A7002AD9FC /* ThemedButton.swift */,
+				3A8C083B2238608E002AD9FC /* ThemedLabel.swift */,
+				3A8C083F22386683002AD9FC /* ThemedView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		3AA05A1C21C93A5200C32C7E /* Workflows */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,8 +250,10 @@
 		3AA150F62206249B008E7727 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */,
 				3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */,
 				3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */,
+				3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,8 +492,11 @@
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
 				3A49C8EE2220BD0100D25B8C /* ColorThemeSettingCell.swift in Sources */,
 				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
+				3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
+				3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */,
+				3A8C083922385E66002AD9FC /* UICollectionViewExtensions.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
@@ -481,6 +507,7 @@
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
 				3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
+				3A8C083E223864A7002AD9FC /* ThemedButton.swift in Sources */,
 				3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */,
 				3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */,
 				3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */,
@@ -493,6 +520,7 @@
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,
 				3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */,
 				3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */,
+				3A8C084022386683002AD9FC /* ThemedView.swift in Sources */,
 				3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */,
 				3A494AC122371BEE00C6EB75 /* UINavigationControllerExtensions.swift in Sources */,
 			);

@@ -47,7 +47,7 @@ class WorkflowsController: UIViewController, ColorThemeRefreshable {
         navigationController?.refreshNavigationBar()
         navigationController?.view.layer.shadowColor = UIColor.shadowColor.cgColor
         collectionView.backgroundColor = .backgroundColor
-        collectionView.visibleCells.forEach { ($0 as? ColorThemeRefreshable)?.refreshColorTheme() }
+        collectionView.refreshCellsColors()
     }
 
     private func setupViews() {

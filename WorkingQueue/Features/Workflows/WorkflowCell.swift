@@ -8,50 +8,52 @@ class WorkflowCell: UICollectionViewCell, ColorThemeRefreshable {
 
     weak var delegate: WorkflowCellDelegate?
 
-    private let workflowNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let workflowNameLabel: ThemedLabel = {
+        let label = ThemedLabel()
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let currentItemLabel: UILabel = {
-        let label = UILabel()
+    private let currentItemLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.tintColor }
         return label
     }()
 
-    private let pendingLabel: UILabel = {
-        let label = UILabel()
+    private let pendingLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.text = "Pending:"
         label.font = .systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let pendingNumberLabel: UILabel = {
-        let label = UILabel()
+    private let pendingNumberLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.font = .systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let bottomView: UIView = {
-        let view = UIView()
+    private let bottomView: ThemedView = {
+        let view = ThemedView()
         view.layer.cornerRadius = 15
         view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMaxXMaxYCorner, .layerMinXMaxYCorner)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.getBackgroundColor = { UIColor.backgroundColor }
         return view
     }()
 
-    private let doneButton: UIButton = {
-        let button = UIButton(type: .system)
+    private let doneButton: ThemedButton = {
+        let button = ThemedButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "done"), for: .normal)
         button.layer.cornerRadius = 28
         button.layer.borderWidth = 3
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.getTintColor = { UIColor.tintColor }
+        button.getBackgroundColor = { UIColor.accentColor }
+        button.getBorderColor = { UIColor.backgroundColor }
         return button
     }()
 
@@ -65,20 +67,13 @@ class WorkflowCell: UICollectionViewCell, ColorThemeRefreshable {
 
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     public func refreshColorTheme() {
         backgroundColor = .accentColor
         layer.shadowColor = UIColor.shadowColor.cgColor
-        workflowNameLabel.textColor = .textColor
-        currentItemLabel.textColor = .tintColor
-        pendingNumberLabel.textColor = .textColor
-        pendingLabel.textColor = .textColor
-        bottomView.backgroundColor = .backgroundColor
-        doneButton.backgroundColor = .accentColor
-        doneButton.tintColor = .tintColor
-        doneButton.layer.borderColor = UIColor.backgroundColor.cgColor
+        refreshSubviewsColors()
     }
 
     private func setupViews() {
