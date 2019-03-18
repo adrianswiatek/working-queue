@@ -70,7 +70,7 @@ final class WorkingQueue<T: Equatable> {
 
         if hasTooManyRowsIn(section: to.section),
             to.section < numberOfSections,
-            let indexOfItemToMove = items[to.section].index(where: { $0 != item }) {
+            let indexOfItemToMove = items[to.section].firstIndex(where: { $0 != item }) {
 
             DispatchQueue.main.async { [unowned self] in
                 let additionalItem = self.items[to.section].remove(at: indexOfItemToMove)
