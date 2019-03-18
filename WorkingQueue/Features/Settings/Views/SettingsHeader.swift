@@ -1,10 +1,17 @@
 import UIKit
 
-public class ColorThemeSettingCell: UICollectionViewCell, ColorThemeRefreshable {
+public class SettingsHeader: UIView, ColorThemeRefreshable {
+
+    var viewModel: SettingsHeaderViewModel? {
+        didSet {
+            settingNameLabel.text = viewModel?.name
+            settingValueLabel.text = viewModel?.value
+        }
+    }
 
     private let settingNameLabel: ThemedLabel = {
         let label = ThemedLabel()
-        label.text = "Color Theme"
+        label.text = "Color theme"
         label.font = .systemFont(ofSize: 16)
         label.getTextColor = { UIColor.textColor }
         return label
@@ -47,24 +54,5 @@ public class ColorThemeSettingCell: UICollectionViewCell, ColorThemeRefreshable 
     public func refreshColorTheme() {
         backgroundColor = .backgroundColor
         subviews.compactMap { $0 as? ColorThemeRefreshable }.forEach { $0.refreshColorTheme() }
-    }
-
-    public override var isHighlighted: Bool {
-        didSet {
-            handleIsHightlightedChanged()
-        }
-    }
-
-    private func handleIsHightlightedChanged() {
-        let springTimingParameters = UISpringTimingParameters(mass: 1, stiffness: 100, damping: 10, initialVelocity: .zero)
-        let animator = UIViewPropertyAnimator(duration: 0, timingParameters: springTimingParameters)
-        animator.addAnimations {
-            self.transform = self.isHighlighted ? CGAffineTransform(scaleX: 0.99, y: 0.99) : .identity
-        }
-        animator.startAnimation()
-    }
-
-    public func setOption(to colorTheme: ColorThemeType) {
-        settingValueLabel.text = colorTheme.rawValue
     }
 }

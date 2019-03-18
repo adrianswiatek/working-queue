@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3A15473B2240502D0002EC33 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15473A2240502D0002EC33 /* UITableViewExtensions.swift */; };
+		3A15473E224053090002EC33 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15473D224053090002EC33 /* SettingsHeader.swift */; };
+		3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */; };
 		3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */; };
 		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
 		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
 		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
 		3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */; };
 		3A494AC122371BEE00C6EB75 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */; };
-		3A49C8EE2220BD0100D25B8C /* ColorThemeSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */; };
+		3A49C8EE2220BD0100D25B8C /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */; };
 		3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */; };
 		3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
@@ -67,13 +69,15 @@
 /* Begin PBXFileReference section */
 		1F9C049793B51D81E21DBC74 /* Pods_WorkingQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkingQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A15473A2240502D0002EC33 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		3A15473D224053090002EC33 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
+		3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderViewModel.swift; sourceTree = "<group>"; };
 		3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupController.swift; sourceTree = "<group>"; };
 		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
 		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
 		3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeChangeable.swift; sourceTree = "<group>"; };
 		3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
-		3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingCell.swift; sourceTree = "<group>"; };
+		3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupButton.swift; sourceTree = "<group>"; };
 		3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCell.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +144,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A15473C224052BA0002EC33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */,
+				3A15473D224053090002EC33 /* SettingsHeader.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A15473F2240548D0002EC33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3A23B4E021A08A59003AC3ED /* QueueWithSections */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB8C6A321C8449B008C26F5 /* Settings */,
+				3A778BD82214E72A00CA82C7 /* SettingsController.swift */,
 				3A741EB72198D6F700763028 /* SingleQueue */,
 				3AA05A1C21C93A5200C32C7E /* Workflows */,
 			);
@@ -265,8 +287,8 @@
 			isa = PBXGroup;
 			children = (
 				3AB8C6A621C84749008C26F5 /* Theme */,
-				3A778BD82214E72A00CA82C7 /* SettingsController.swift */,
-				3A49C8ED2220BD0100D25B8C /* ColorThemeSettingCell.swift */,
+				3A15473F2240548D0002EC33 /* ViewModels */,
+				3A15473C224052BA0002EC33 /* Views */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -489,19 +511,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A15473E224053090002EC33 /* SettingsHeader.swift in Sources */,
 				3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */,
 				3AE58C5C2204C26C00616CBA /* DequeuePopupController.swift in Sources */,
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
-				3A49C8EE2220BD0100D25B8C /* ColorThemeSettingCell.swift in Sources */,
+				3A49C8EE2220BD0100D25B8C /* SettingsCell.swift in Sources */,
 				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
 				3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
 				3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */,
 				3A8C083922385E66002AD9FC /* UICollectionViewExtensions.swift in Sources */,
+				3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A15473B2240502D0002EC33 /* UITableViewExtensions.swift in Sources */,
