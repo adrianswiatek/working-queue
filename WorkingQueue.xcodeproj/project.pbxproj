@@ -34,6 +34,11 @@
 		3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
 		3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6252220F818100B68BD1 /* MainContainerController.swift */; };
+		3A9F697222419430009FFCC5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697122419430009FFCC5 /* SettingsFactory.swift */; };
+		3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697322419D14009FFCC5 /* SettingsSections.swift */; };
+		3A9F69762241A490009FFCC5 /* ColorThemeSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */; };
+		3A9F697A2241ACBD009FFCC5 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */; };
+		3A9F697C2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */; };
 		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
 		3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */; };
 		3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A421C844A9008C26F5 /* Theme.swift */; };
@@ -99,6 +104,11 @@
 		3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
 		3A9B6252220F818100B68BD1 /* MainContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerController.swift; sourceTree = "<group>"; };
+		3A9F697122419430009FFCC5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		3A9F697322419D14009FFCC5 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsFactory.swift; sourceTree = "<group>"; };
+		3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsSection.swift; sourceTree = "<group>"; };
 		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
 		3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6A421C844A9008C26F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -262,6 +272,25 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		3A9F69772241A4B1009FFCC5 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */,
+				3A9F697122419430009FFCC5 /* SettingsFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		3A9F69782241ACAB009FFCC5 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */,
+				3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */,
+				3A9F697322419D14009FFCC5 /* SettingsSections.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
 		3AA05A1C21C93A5200C32C7E /* Workflows */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +315,8 @@
 		3AB8C6A321C8449B008C26F5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3A9F69772241A4B1009FFCC5 /* Factories */,
+				3A9F69782241ACAB009FFCC5 /* Sections */,
 				3AB8C6A621C84749008C26F5 /* Theme */,
 				3A15473F2240548D0002EC33 /* ViewModels */,
 				3A15473C224052BA0002EC33 /* Views */,
@@ -519,8 +550,10 @@
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
 				3A49C8EE2220BD0100D25B8C /* SettingsCell.swift in Sources */,
+				3A9F697A2241ACBD009FFCC5 /* SettingsSection.swift in Sources */,
 				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
 				3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */,
+				3A9F69762241A490009FFCC5 /* ColorThemeSettingsFactory.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
 				3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */,
@@ -530,6 +563,7 @@
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
 				3A15473B2240502D0002EC33 /* UITableViewExtensions.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
+				3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */,
 				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,
 				3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
@@ -544,12 +578,14 @@
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
 				3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */,
+				3A9F697C2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift in Sources */,
 				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
 				3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */,
 				3AB8C6A821C8475D008C26F5 /* ColorThemeType.swift in Sources */,
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,
 				3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */,
 				3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */,
+				3A9F697222419430009FFCC5 /* SettingsFactory.swift in Sources */,
 				3A8C084022386683002AD9FC /* ThemedView.swift in Sources */,
 				3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */,
 				3A494AC122371BEE00C6EB75 /* UINavigationControllerExtensions.swift in Sources */,

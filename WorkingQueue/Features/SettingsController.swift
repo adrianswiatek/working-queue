@@ -2,10 +2,15 @@ import UIKit
 
 public class SettingsController: UITableViewController, ColorThemeRefreshable {
 
+    private var sections: SettingsSections!
     private let cellHeight: CGFloat = 44
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+
+        sections = SettingsSections { section in
+            print("Is section expanded: \(section.isExpanded)")
+        }
 
         setViews()
         refreshColorTheme()
@@ -30,12 +35,10 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
     }
 
     public override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
 
     public override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = SettingsHeader()
-        header.viewModel = SettingsHeaderViewModel(name: "Color theme", value: "Light")
-        return header
+        return sections[section]?.header
     }
 }

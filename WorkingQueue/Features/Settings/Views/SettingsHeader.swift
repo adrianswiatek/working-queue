@@ -2,7 +2,9 @@ import UIKit
 
 public class SettingsHeader: UIView, ColorThemeRefreshable {
 
-    var viewModel: SettingsHeaderViewModel? {
+    public var headerDidTap: (() -> Void)?
+
+    public var viewModel: SettingsHeaderViewModel? {
         didSet {
             settingNameLabel.text = viewModel?.name
             settingValueLabel.text = viewModel?.value
@@ -11,7 +13,6 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
 
     private let settingNameLabel: ThemedLabel = {
         let label = ThemedLabel()
-        label.text = "Color theme"
         label.font = .systemFont(ofSize: 16)
         label.getTextColor = { UIColor.textColor }
         return label
@@ -19,7 +20,6 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
 
     private let settingValueLabel: ThemedLabel = {
         let label = ThemedLabel()
-        label.text = "Light"
         label.font = .boldSystemFont(ofSize: 16)
         label.getTextColor = { UIColor.tintColor }
         return label
@@ -29,6 +29,7 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         super.init(frame: frame)
 
         setupViews()
+        setupGestureRecognizer()
         refreshColorTheme()
     }
 
@@ -49,6 +50,15 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
             settingValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             settingValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    private func setupGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc private func handleTapGesture() {
+        headerDidTap?()
     }
 
     public func refreshColorTheme() {
