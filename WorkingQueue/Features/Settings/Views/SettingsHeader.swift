@@ -28,6 +28,7 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
+        setupShadows()
         setupViews()
         setupGestureRecognizer()
         refreshColorTheme()
@@ -36,6 +37,12 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+
+    private func setupShadows() {
+        layer.shadowOpacity = 0.35
+        layer.shadowOffset = .init(width: 0, height: 1)
+        layer.shadowColor = UIColor.shadowColor.cgColor
     }
 
     private func setupViews() {
@@ -57,7 +64,7 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         addGestureRecognizer(tapGestureRecognizer)
     }
 
-    @objc private func handleTapGesture() {
+    @objc private func handleTapGesture(gestureRecognizer: UITapGestureRecognizer) {
         headerDidTap?()
     }
 

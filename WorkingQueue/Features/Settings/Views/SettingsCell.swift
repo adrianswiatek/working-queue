@@ -2,16 +2,15 @@ import UIKit
 
 public class SettingsCell: UITableViewCell, ColorThemeRefreshable {
 
-    private let settingNameLabel: ThemedLabel = {
-        let label = ThemedLabel()
-        label.font = .systemFont(ofSize: 16)
-        label.getTextColor = { UIColor.textColor }
-        return label
-    }()
+    public var viewModel: String? {
+        didSet {
+            label.text = viewModel
+        }
+    }
 
-    private let settingValueLabel: ThemedLabel = {
+    private let label: ThemedLabel = {
         let label = ThemedLabel()
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 15)
         label.getTextColor = { UIColor.tintColor }
         return label
     }()
@@ -29,16 +28,10 @@ public class SettingsCell: UITableViewCell, ColorThemeRefreshable {
     }
 
     private func setupViews() {
-        addSubview(settingNameLabel)
+        addSubview(label)
         NSLayoutConstraint.activate([
-            settingNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            settingNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
-
-        addSubview(settingValueLabel)
-        NSLayoutConstraint.activate([
-            settingValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
-            settingValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
