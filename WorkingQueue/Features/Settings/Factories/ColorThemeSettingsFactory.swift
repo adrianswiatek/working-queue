@@ -1,20 +1,24 @@
 public class ColorThemeSettingsFactory: SettingsFactory {
+
+    private let colorThemeTypes: [ColorThemeType]
+
+    init() {
+        colorThemeTypes = ColorThemeType.allCases
+    }
+
     public func getHeader() -> SettingsHeader {
-        let header = SettingsHeader()
-        header.viewModel = SettingsHeaderViewModel(name: "Color theme", value: "Light")
-        return header
+        return SettingsHeader()
+    }
+
+    public func getHeaderViewModel() -> SettingsHeaderViewModel {
+        return SettingsHeaderViewModel(name: "Color theme", value: "Light")
     }
 
     public func getCells() -> [SettingsCell] {
-        let cell1 = SettingsCell()
-        cell1.viewModel = "Dark"
+        return colorThemeTypes.map { _ in SettingsCell() }
+    }
 
-        let cell2 = SettingsCell()
-        cell2.viewModel = "Colorful"
-
-        let cell3 = SettingsCell()
-        cell3.viewModel = "Ultraviolet"
-
-        return [cell1, cell2, cell3]
+    public func getCellsViewModels() -> [String] {
+        return colorThemeTypes.map { $0.rawValue }
     }
 }

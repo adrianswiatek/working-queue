@@ -8,27 +8,31 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        sections = SettingsSections { [weak self] section in
-            guard let `self` = self else { return }
-
-            let indexPaths =
-                stride(from: section.numberOfCells - 1, through: 0, by: -1).map { IndexPath(row: $0, section: 0) }
-
-            if section.isExpanded {
-                self.tableView.insertRows(at: indexPaths, with: .top)
-            } else {
-                self.tableView.deleteRows(at: indexPaths, with: .top)
-            }
-        }
+        sections = SettingsSections(headerDidTap: headerDidTap, cellDidTap: cellDidTap)
 
         setViews()
         refreshColorTheme()
+    }
+
+    private func headerDidTap(section: SettingsSection) {
+        let indexPaths = (0 ..< section.numberOfCells).map { IndexPath(row: $0, section: 0)}
+        if section.isExpanded {
+            tableView.insertRows(at: indexPaths, with: .top)
+        } else {
+            tableView.deleteRows(at: indexPaths, with: .top)
+        }
+    }
+
+    private func cellDidTap(section: SettingsSection, cellIndex: Int) {
+        let indexPaths = (0 ..< section.numberOfCells).map { IndexPath(row: $0, section: 0)}
+        tableView.deleteRows(at: indexPaths, with: .top)
     }
 
     private func setViews() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Settings"
 
+        tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
     }
 
@@ -65,9 +69,5 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
         }
 
         return cell
-    }
-
-    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

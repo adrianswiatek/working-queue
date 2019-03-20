@@ -2,6 +2,8 @@ import UIKit
 
 public class SettingsCell: UITableViewCell, ColorThemeRefreshable {
 
+    public var cellDidTap: (() -> Void)?
+
     public var viewModel: String? {
         didSet {
             label.text = viewModel
@@ -19,6 +21,7 @@ public class SettingsCell: UITableViewCell, ColorThemeRefreshable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setupViews()
+        setupGestureRecognizer()
         refreshColorTheme()
     }
 
@@ -33,6 +36,17 @@ public class SettingsCell: UITableViewCell, ColorThemeRefreshable {
             label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
             label.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    private func setupGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc private func handleTapGesture(gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == .ended {
+            cellDidTap?()
+        }
     }
 
     public func refreshColorTheme() {

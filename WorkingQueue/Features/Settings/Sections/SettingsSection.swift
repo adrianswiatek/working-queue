@@ -5,5 +5,8 @@ public protocol SettingsSection {
     var numberOfVisibleCells: Int { get }
     var isExpanded: Bool { get set }
 
-    init(_ factory: SettingsFactory, _ headerDidTap: @escaping (SettingsSection) -> Void)
+    init(
+        _ factory: SettingsFactory,
+        _ headerDidTap: @escaping (SettingsSection) -> Void,
+        _ cellDidTap: @escaping (SettingsSection, Int) -> Void)
 }

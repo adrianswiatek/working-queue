@@ -65,7 +65,9 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
     }
 
     @objc private func handleTapGesture(gestureRecognizer: UITapGestureRecognizer) {
-        headerDidTap?()
+        if gestureRecognizer.state == .ended {
+            headerDidTap?()
+        }
     }
 
     public func refreshColorTheme() {

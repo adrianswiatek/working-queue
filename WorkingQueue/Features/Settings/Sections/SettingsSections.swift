@@ -5,10 +5,15 @@ public class SettingsSections {
     }
 
     private let headerDidTap: (SettingsSection) -> Void
+    private let cellDidTap: (SettingsSection, Int) -> Void
     private var sections: [SettingsSection] = []
 
-    init(headerDidTap: @escaping (SettingsSection) -> Void) {
+    init(
+        headerDidTap: @escaping (SettingsSection) -> Void,
+        cellDidTap: @escaping (SettingsSection, Int) -> Void) {
+
         self.headerDidTap = headerDidTap
+        self.cellDidTap = cellDidTap
         self.registerSections()
     }
 
@@ -24,6 +29,6 @@ public class SettingsSections {
 
     private func getColorThemeSettingsSection() -> SettingsSection {
         let factory = ColorThemeSettingsFactory()
-        return ColorThemeSettingsSection(factory, headerDidTap)
+        return ColorThemeSettingsSection(factory, headerDidTap, cellDidTap)
     }
 }
