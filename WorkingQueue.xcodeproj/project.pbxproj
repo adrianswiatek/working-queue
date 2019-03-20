@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A15473B2240502D0002EC33 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15473A2240502D0002EC33 /* UITableViewExtensions.swift */; };
 		3A15473E224053090002EC33 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15473D224053090002EC33 /* SettingsHeader.swift */; };
 		3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */; };
 		3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */; };
@@ -73,7 +72,6 @@
 
 /* Begin PBXFileReference section */
 		1F9C049793B51D81E21DBC74 /* Pods_WorkingQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkingQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A15473A2240502D0002EC33 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		3A15473D224053090002EC33 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderViewModel.swift; sourceTree = "<group>"; };
 		3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupController.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */,
 				3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */,
 				3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */,
-				3A15473A2240502D0002EC33 /* UITableViewExtensions.swift */,
 				3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -561,7 +558,6 @@
 				3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
-				3A15473B2240502D0002EC33 /* UITableViewExtensions.swift in Sources */,
 				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
 				3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */,
 				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,

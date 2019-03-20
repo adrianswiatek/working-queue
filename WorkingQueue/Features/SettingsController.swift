@@ -15,7 +15,7 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
     }
 
     private func headerDidTap(section: SettingsSection) {
-        let indexPaths = (0 ..< section.numberOfCells).map { IndexPath(row: $0, section: 0)}
+        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: 0)}
         if section.isExpanded {
             tableView.insertRows(at: indexPaths, with: .top)
         } else {
@@ -23,9 +23,14 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
         }
     }
 
-    private func cellDidTap(section: SettingsSection, cellIndex: Int) {
-        let indexPaths = (0 ..< section.numberOfCells).map { IndexPath(row: $0, section: 0)}
+    private func cellDidTap(section: SettingsSection, cell: SettingsCell) {
+        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: 0)}
         tableView.deleteRows(at: indexPaths, with: .top)
+
+        if let theme = cell.viewModel, let colorThemeType = ColorThemeType(rawValue: theme) {
+            Theme.shared.switchTheme(to: colorThemeType)
+            (UIApplication.shared.delegate as? AppDelegate)?.refreshColorTheme()
+        }
     }
 
     private func setViews() {
@@ -33,6 +38,7 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
         navigationItem.title = "Settings"
 
         tableView.allowsSelection = false
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
     }
 
@@ -40,7 +46,7 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
         navigationController?.refreshNavigationBar()
         navigationController?.view.backgroundColor = .accentColor
         tableView.backgroundColor = .accentColor
-        tableView.refreshCellsColors()
+        sections.refreshColorTheme()
     }
 
     public override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

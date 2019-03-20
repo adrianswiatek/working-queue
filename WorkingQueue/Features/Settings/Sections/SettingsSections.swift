@@ -1,16 +1,16 @@
-public class SettingsSections {
+public class SettingsSections: ColorThemeRefreshable {
 
     public var count: Int {
         return sections.count
     }
 
     private let headerDidTap: (SettingsSection) -> Void
-    private let cellDidTap: (SettingsSection, Int) -> Void
+    private let cellDidTap: (SettingsSection, SettingsCell) -> Void
     private var sections: [SettingsSection] = []
 
     init(
         headerDidTap: @escaping (SettingsSection) -> Void,
-        cellDidTap: @escaping (SettingsSection, Int) -> Void) {
+        cellDidTap: @escaping (SettingsSection, SettingsCell) -> Void) {
 
         self.headerDidTap = headerDidTap
         self.cellDidTap = cellDidTap
@@ -30,5 +30,9 @@ public class SettingsSections {
     private func getColorThemeSettingsSection() -> SettingsSection {
         let factory = ColorThemeSettingsFactory()
         return ColorThemeSettingsSection(factory, headerDidTap, cellDidTap)
+    }
+
+    public func refreshColorTheme() {
+        sections.forEach { $0.refreshColorTheme() }
     }
 }

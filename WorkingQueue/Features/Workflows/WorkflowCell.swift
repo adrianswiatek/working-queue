@@ -98,13 +98,13 @@ class WorkflowCell: UICollectionViewCell, ColorThemeRefreshable {
             bottomView.heightAnchor.constraint(equalToConstant: 38)
         ])
 
-        bottomView.addSubview(pendingLabel)
+        addSubview(pendingLabel)
         NSLayoutConstraint.activate([
             pendingLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: -12),
             pendingLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
         ])
 
-        bottomView.addSubview(pendingNumberLabel)
+        addSubview(pendingNumberLabel)
         NSLayoutConstraint.activate([
             pendingNumberLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 36),
             pendingNumberLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
