@@ -21,7 +21,6 @@
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
 		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
 		3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9D2198C86000763028 /* LaunchScreen.storyboard */; };
-		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
 		3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BD82214E72A00CA82C7 /* SettingsController.swift */; };
@@ -47,6 +46,7 @@
 		3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */; };
 		3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */; };
 		3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */; };
+		3AC0F12C2248344C00136664 /* SettingsSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */; };
 		3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */; };
 		3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0721F51E290072BA2A /* QueueEntry.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
@@ -89,7 +89,6 @@
 		3A741E9E2198C86000763028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A741EA02198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EA52198C86000763028 /* WorkingQueueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkingQueueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A741EA92198C86000763028 /* WorkingQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueTests.swift; sourceTree = "<group>"; };
 		3A741EAB2198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightColorTheme.swift; sourceTree = "<group>"; };
 		3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarStyleExtensions.swift; sourceTree = "<group>"; };
+		3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionsTests.swift; sourceTree = "<group>"; };
 		3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowEntry.swift; sourceTree = "<group>"; };
 		3AD0AE0721F51E290072BA2A /* QueueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueEntry.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 		3A741EA82198C86000763028 /* WorkingQueueTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A741EA92198C86000763028 /* WorkingQueueTests.swift */,
 				3A741EAB2198C86000763028 /* Info.plist */,
+				3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */,
 			);
 			path = WorkingQueueTests;
 			sourceTree = "<group>";
@@ -592,7 +592,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */,
+				3AC0F12C2248344C00136664 /* SettingsSectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,6 +778,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;
@@ -788,6 +789,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkingQueue.app/WorkingQueue";
@@ -800,6 +802,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;

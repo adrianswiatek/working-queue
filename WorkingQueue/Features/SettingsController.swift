@@ -15,7 +15,11 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
     }
 
     private func headerDidTap(section: SettingsSection) {
-        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: 0)}
+        guard let sectionIndex = sections.getIndex(of: section) else {
+            fatalError("Section does not exist in the sections list.")
+        }
+
+        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: sectionIndex)}
         if section.isExpanded {
             tableView.insertRows(at: indexPaths, with: .top)
         } else {
@@ -24,7 +28,11 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
     }
 
     private func cellDidTap(section: SettingsSection, cell: SettingsCell) {
-        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: 0)}
+        guard let sectionIndex = sections.getIndex(of: section) else {
+            fatalError("Section does not exist in the sections list.")
+        }
+
+        let indexPaths = (0 ..< section.totalNumberOfCells).map { IndexPath(row: $0, section: sectionIndex)}
         tableView.deleteRows(at: indexPaths, with: .top)
 
         if let theme = cell.viewModel, let colorThemeType = ColorThemeType(rawValue: theme) {

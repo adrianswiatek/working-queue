@@ -1,4 +1,4 @@
-public protocol SettingsSection: ColorThemeRefreshable {
+public protocol SettingsSection: class, ColorThemeRefreshable {
     var header: SettingsHeader { get }
     var cells: [SettingsCell] { get }
     var totalNumberOfCells: Int { get }

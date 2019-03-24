@@ -23,6 +23,10 @@ public class SettingsSections: ColorThemeRefreshable {
         return sections[index]
     }
 
+    public func getIndex(of section: SettingsSection) -> Int? {
+        return sections.firstIndex { $0 === section }
+    }
+
     private func registerSections() {
         sections.append(getColorThemeSettingsSection())
     }
