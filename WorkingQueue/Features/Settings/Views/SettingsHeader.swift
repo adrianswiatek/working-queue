@@ -8,6 +8,7 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         didSet {
             settingNameLabel.text = viewModel?.name
             settingValueLabel.text = viewModel?.value
+            isExpanded = viewModel?.isExpanded == true
         }
     }
 
@@ -25,6 +26,13 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         return label
     }()
 
+    private let chevronImageView: ThemedImageView = {
+        let imageView = ThemedImageView(image: #imageLiteral(resourceName: "chevron").withRenderingMode(.alwaysTemplate))
+        imageView.getTintColor = { UIColor.tintColor }
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -32,6 +40,14 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         setupViews()
         setupGestureRecognizer()
         refreshColorTheme()
+    }
+
+    private var isExpanded: Bool = false {
+        didSet {
+            if isExpanded != oldValue {
+                animateChevron()
+            }
+        }
     }
 
     @available(*, unavailable)
@@ -46,16 +62,24 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
     }
 
     private func setupViews() {
-        addSubview(settingNameLabel)
+        addSubview(chevronImageView)
         NSLayoutConstraint.activate([
-            settingNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            settingNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            chevronImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+            chevronImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            chevronImageView.heightAnchor.constraint(equalToConstant: 9),
+            chevronImageView.widthAnchor.constraint(equalToConstant: 9),
         ])
 
         addSubview(settingValueLabel)
         NSLayoutConstraint.activate([
-            settingValueLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -80),
+            settingValueLabel.trailingAnchor.constraint(equalTo: chevronImageView.leadingAnchor, constant: -32),
             settingValueLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+
+        addSubview(settingNameLabel)
+        NSLayoutConstraint.activate([
+            settingNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            settingNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -68,6 +92,12 @@ public class SettingsHeader: UIView, ColorThemeRefreshable {
         if gestureRecognizer.state == .ended {
             headerDidTap?()
         }
+    }
+
+    private func animateChevron() {
+        UIViewPropertyAnimator(duration: 0.33, curve: .easeInOut) {
+            self.chevronImageView.transform = self.isExpanded ? .init(rotationAngle: .pi) : .identity
+        }.startAnimation()
     }
 
     public func refreshColorTheme() {

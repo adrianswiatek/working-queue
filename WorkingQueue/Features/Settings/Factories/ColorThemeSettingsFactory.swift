@@ -11,7 +11,7 @@ public class ColorThemeSettingsFactory: SettingsFactory {
     }
 
     public func getHeaderViewModel() -> SettingsHeaderViewModel {
-        return SettingsHeaderViewModel(name: "Color theme", value: "Light")
+        return SettingsHeaderViewModel(name: "Color theme", value: "Light", isExpanded: false)
     }
 
     public func getCells() -> [SettingsCell] {

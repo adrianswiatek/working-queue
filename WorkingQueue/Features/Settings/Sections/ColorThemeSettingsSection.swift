@@ -15,7 +15,12 @@ public class ColorThemeSettingsSection: SettingsSection {
         return max(allCells.count - 1, 0)
     }
 
-    private var headerViewModel: SettingsHeaderViewModel
+    private var headerViewModel: SettingsHeaderViewModel {
+        didSet {
+            header.viewModel = headerViewModel
+        }
+    }
+
     private var allCells: [SettingsCell]
 
     public required init(
@@ -33,6 +38,9 @@ public class ColorThemeSettingsSection: SettingsSection {
         self.header.headerDidTap = { [weak self] in
             guard let `self` = self else { return }
             self.isExpanded.toggle()
+
+            self.headerViewModel = self.headerViewModel.getWithModified(isExpanded: self.isExpanded)
+
             headerDidTap(self)
         }
 
@@ -48,8 +56,10 @@ public class ColorThemeSettingsSection: SettingsSection {
                 cellDidTap(self, cell)
 
                 cell.viewModel = self.headerViewModel.value
-                self.headerViewModel = SettingsHeaderViewModel(name: self.headerViewModel.name, value: colorName)
-                self.header.viewModel = self.headerViewModel
+
+                self.headerViewModel = self.headerViewModel
+                    .GetWithModified(value: colorName)
+                    .getWithModified(isExpanded: false)
             }
         }
     }
