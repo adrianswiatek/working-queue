@@ -12,12 +12,9 @@ public class Theme {
     }
 
     public func switchTheme(to themeType: ColorThemeType) {
-        guard current.type != themeType else { return }
-
-        current = themeFactory.create(themeType)
-
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.refreshColorTheme()
+        if current.type != themeType {
+            current = themeFactory.create(themeType)
+        }
     }
 
     private class ThemeFactory {

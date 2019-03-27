@@ -3,7 +3,11 @@ public class ColorThemeSettingsFactory: SettingsFactory {
     private let colorThemeTypes: [ColorThemeType]
 
     init() {
-        colorThemeTypes = ColorThemeType.allCases
+        let currentColorThemeType = Theme.shared.current.type
+        var colorThemeTypes = ColorThemeType.allCases.filter { $0 != currentColorThemeType }
+        colorThemeTypes.append(currentColorThemeType)
+
+        self.colorThemeTypes = colorThemeTypes
     }
 
     public func getHeader() -> SettingsHeader {
@@ -11,7 +15,8 @@ public class ColorThemeSettingsFactory: SettingsFactory {
     }
 
     public func getHeaderViewModel() -> SettingsHeaderViewModel {
-        return SettingsHeaderViewModel(name: "Color theme", value: "Light", isExpanded: false)
+        let value = Theme.shared.current.type.rawValue
+        return SettingsHeaderViewModel(name: "Color theme", value: value, isExpanded: false)
     }
 
     public func getCells() -> [SettingsCell] {

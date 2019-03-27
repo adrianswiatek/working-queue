@@ -7,7 +7,7 @@ public struct SettingsHeaderViewModel {
         return SettingsHeaderViewModel(name: self.name, value: self.value, isExpanded: isExpanded)
     }
 
-    public func GetWithModified(value: String) -> SettingsHeaderViewModel {
+    public func getWithModified(value: String) -> SettingsHeaderViewModel {
         return SettingsHeaderViewModel(name: self.name, value: value, isExpanded: self.isExpanded)
     }
 }

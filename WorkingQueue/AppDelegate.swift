@@ -4,6 +4,8 @@ import Toast_Swift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var userDefaultsManager: UserDefaultsManager?
+
     var window: UIWindow?
 
     func application(
@@ -12,16 +14,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
-
         window?.rootViewController = MainContainerController()
 
+        userDefaultsManager = UserDefaultsManager(userDefaults: UserDefaults.standard)
+
+        setInitialColorTheme()
         refreshColorTheme()
         refreshToastAppearance()
         
         return true
     }
 
-    func refreshColorTheme() {
+    func switchColorTheme(to colorThemeType: ColorThemeType) {
+        Theme.shared.switchTheme(to: colorThemeType)
+        userDefaultsManager?.setColorThemeType(to: colorThemeType)
+        refreshColorTheme()
+    }
+
+    private func setInitialColorTheme() {
+        guard let colorThemeType = userDefaultsManager?.getColorThemeType() else {
+            return Theme.shared.switchTheme(to: .light)
+        }
+
+        Theme.shared.switchTheme(to: colorThemeType)
+    }
+
+    private func refreshColorTheme() {
         refreshNavigationControllerAppearance()
         refreshToastAppearance()
 

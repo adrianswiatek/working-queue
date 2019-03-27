@@ -58,7 +58,7 @@ public class ColorThemeSettingsSection: SettingsSection {
                 cell.viewModel = self.headerViewModel.value
 
                 self.headerViewModel = self.headerViewModel
-                    .GetWithModified(value: colorName)
+                    .getWithModified(value: colorName)
                     .getWithModified(isExpanded: false)
             }
         }

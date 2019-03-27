@@ -36,8 +36,7 @@ public class SettingsController: UITableViewController, ColorThemeRefreshable {
         tableView.deleteRows(at: indexPaths, with: .top)
 
         if let theme = cell.viewModel, let colorThemeType = ColorThemeType(rawValue: theme) {
-            Theme.shared.switchTheme(to: colorThemeType)
-            (UIApplication.shared.delegate as? AppDelegate)?.refreshColorTheme()
+            (UIApplication.shared.delegate as? AppDelegate)?.switchColorTheme(to: colorThemeType)
         }
     }
 
