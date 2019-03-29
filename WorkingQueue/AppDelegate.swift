@@ -4,6 +4,8 @@ import Toast_Swift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    private var userDefaultsManager: UserDefaultsManager?
+
     var window: UIWindow?
 
     func application(
@@ -12,27 +14,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow()
         window?.makeKeyAndVisible()
+        window?.rootViewController = MainContainerController()
 
-        let controller = WorkflowsController()
-        let navigationController = UINavigationController(rootViewController: controller)
-        window?.rootViewController = navigationController
+        userDefaultsManager = UserDefaultsManager(userDefaults: UserDefaults.standard)
 
-        setupNavigationControllerAppearance()
-        setupToast()
-
+        setInitialColorTheme()
+        refreshColorTheme()
+        refreshToastAppearance()
+        
         return true
     }
 
-    private func setupNavigationControllerAppearance() {
+    func switchColorTheme(to colorThemeType: ColorThemeType) {
+        Theme.shared.switchTheme(to: colorThemeType)
+        userDefaultsManager?.setColorThemeType(to: colorThemeType)
+        refreshColorTheme()
+    }
+
+    private func setInitialColorTheme() {
+        guard let colorThemeType = userDefaultsManager?.getColorThemeType() else {
+            return Theme.shared.switchTheme(to: .light)
+        }
+
+        Theme.shared.switchTheme(to: colorThemeType)
+    }
+
+    private func refreshColorTheme() {
+        refreshNavigationControllerAppearance()
+        refreshToastAppearance()
+
+        let rootViewController = window?.rootViewController as? ColorThemeRefreshable
+        rootViewController?.refreshColorTheme()
+    }
+
+    private func refreshNavigationControllerAppearance() {
         let navigationBarAppearace = UINavigationBar.appearance()
         navigationBarAppearace.barTintColor = .accentColor
         navigationBarAppearace.barStyle = .currentStyle
         navigationBarAppearace.tintColor = .tintColor
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
         navigationBarAppearace.isTranslucent = false
+
+        navigationBarAppearace.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+        
+        navigationBarAppearace.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
     }
 
-    private func setupToast() {
+    private func refreshToastAppearance() {
         func getToastStyle() -> ToastStyle {
             var style = ToastStyle()
             style.backgroundColor = .accentColor

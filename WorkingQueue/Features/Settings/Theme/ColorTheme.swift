@@ -1,6 +1,6 @@
 import UIKit
 
-protocol ColorTheme {
+public protocol ColorTheme {
     var type: ColorThemeType { get }
 
     var textColor: UIColor { get }
@@ -8,6 +8,8 @@ protocol ColorTheme {
     var accentColor: UIColor { get }
     var backgroundColor: UIColor { get }
     var separatorColor: UIColor { get }
+    var shadowColor: UIColor { get }
 
     var barStyle: UIBarStyle { get }
+    var statusBarStyle: UIStatusBarStyle { get }
 }

@@ -1,6 +1,8 @@
 import UIKit
 
-class WorkflowsController: UIViewController {
+class WorkflowsController: UIViewController, ColorThemeRefreshable {
+
+    public var hamburgerButtonDidTap: (() -> Void)?
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -10,7 +12,6 @@ class WorkflowsController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = .init(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.register(WorkflowCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,12 +37,21 @@ class WorkflowsController: UIViewController {
         super.viewDidLoad()
 
         setupViews()
+        setupNavigationControllerViewShadow()
+        setupHamburgerButton()
+        refreshColorTheme()
         populateTestData()
+    }
+
+    public func refreshColorTheme() {
+        navigationController?.refreshNavigationBar()
+        navigationController?.view.layer.shadowColor = UIColor.shadowColor.cgColor
+        collectionView.backgroundColor = .backgroundColor
+        collectionView.refreshCellsColors()
     }
 
     private func setupViews() {
         navigationItem.title = "Workflow"
-        view.backgroundColor = .backgroundColor
 
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -50,6 +60,24 @@ class WorkflowsController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func setupNavigationControllerViewShadow() {
+        navigationController?.view.layer.shadowRadius = 5
+        navigationController?.view.layer.shadowOffset = CGSize(width: -5, height: 0)
+        navigationController?.view.layer.shadowOpacity = 0.35
+    }
+
+    private func setupHamburgerButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: #imageLiteral(resourceName: "hamburger"), style:
+            UIBarButtonItem.Style.plain,
+            target: self,
+            action: #selector(handleHamburgerButtonTap))
+    }
+
+    @objc private func handleHamburgerButtonTap() {
+        hamburgerButtonDidTap?()
     }
 
     private func populateTestData() {

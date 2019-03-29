@@ -7,19 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A15473E224053090002EC33 /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A15473D224053090002EC33 /* SettingsHeader.swift */; };
+		3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */; };
 		3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */; };
 		3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */; };
 		3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */; };
+		3A2C8C9C224C34EE00511EFE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2C8C9B224C34EE00511EFE /* UserDefaultsManager.swift */; };
 		3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3B032E21A0248600FD1121 /* QueueWithSections.swift */; };
+		3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */; };
+		3A494AC122371BEE00C6EB75 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */; };
+		3A49C8EE2220BD0100D25B8C /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */; };
 		3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */; };
 		3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */; };
 		3A741E952198C85E00763028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E942198C85E00763028 /* AppDelegate.swift */; };
-		3A741E972198C85E00763028 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741E962198C85E00763028 /* ViewController.swift */; };
 		3A741E9F2198C86000763028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A741E9D2198C86000763028 /* LaunchScreen.storyboard */; };
-		3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EA92198C86000763028 /* WorkingQueueTests.swift */; };
 		3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB42198D6B900763028 /* SingleQueueController.swift */; };
 		3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */; };
+		3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BD82214E72A00CA82C7 /* SettingsController.swift */; };
+		3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */; };
+		3A8C083922385E66002AD9FC /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */; };
+		3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083B2238608E002AD9FC /* ThemedLabel.swift */; };
+		3A8C083E223864A7002AD9FC /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083D223864A7002AD9FC /* ThemedButton.swift */; };
+		3A8C084022386683002AD9FC /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C083F22386683002AD9FC /* ThemedView.swift */; };
+		3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */; };
 		3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */; };
+		3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9B6252220F818100B68BD1 /* MainContainerController.swift */; };
+		3A9F697222419430009FFCC5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697122419430009FFCC5 /* SettingsFactory.swift */; };
+		3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697322419D14009FFCC5 /* SettingsSections.swift */; };
+		3A9F69762241A490009FFCC5 /* ColorThemeSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */; };
+		3A9F697A2241ACBD009FFCC5 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */; };
+		3A9F697C2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */; };
 		3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */; };
 		3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */; };
 		3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6A421C844A9008C26F5 /* Theme.swift */; };
@@ -29,6 +46,8 @@
 		3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */; };
 		3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */; };
 		3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */; };
+		3AC0F12C2248344C00136664 /* SettingsSectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */; };
+		3AC0F12E224842ED00136664 /* ThemedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F12D224842ED00136664 /* ThemedImageView.swift */; };
 		3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */; };
 		3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0721F51E290072BA2A /* QueueEntry.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
@@ -54,23 +73,40 @@
 
 /* Begin PBXFileReference section */
 		1F9C049793B51D81E21DBC74 /* Pods_WorkingQueue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkingQueue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A15473D224053090002EC33 /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
+		3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderViewModel.swift; sourceTree = "<group>"; };
 		3A17BF8F21A35AB300B22DCA /* EnqueuePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupController.swift; sourceTree = "<group>"; };
 		3A23B4E121A08A74003AC3ED /* QueueWithSectionsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsDelegate.swift; sourceTree = "<group>"; };
 		3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSectionsOptions.swift; sourceTree = "<group>"; };
+		3A2C8C9B224C34EE00511EFE /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		3A3B032E21A0248600FD1121 /* QueueWithSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueWithSections.swift; sourceTree = "<group>"; };
+		3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeChangeable.swift; sourceTree = "<group>"; };
+		3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		3A58231D2205AFC10095E479 /* DequeuePopupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DequeuePopupButton.swift; sourceTree = "<group>"; };
 		3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowCell.swift; sourceTree = "<group>"; };
 		3A741E912198C85E00763028 /* WorkingQueue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkingQueue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A741E942198C85E00763028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A741E962198C85E00763028 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3A741E9E2198C86000763028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A741EA02198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EA52198C86000763028 /* WorkingQueueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorkingQueueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A741EA92198C86000763028 /* WorkingQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingQueueTests.swift; sourceTree = "<group>"; };
 		3A741EAB2198C86000763028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A741EB42198D6B900763028 /* SingleQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueController.swift; sourceTree = "<group>"; };
 		3A741EB82198DEE700763028 /* EnqueuePopupBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnqueuePopupBuilder.swift; sourceTree = "<group>"; };
+		3A778BD82214E72A00CA82C7 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStatusBarStyleExtensions.swift; sourceTree = "<group>"; };
+		3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
+		3A8C083B2238608E002AD9FC /* ThemedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		3A8C083D223864A7002AD9FC /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
+		3A8C083F22386683002AD9FC /* ThemedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
+		3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCellExtensions.swift; sourceTree = "<group>"; };
 		3A92995A219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleQueueHeaderLabel.swift; sourceTree = "<group>"; };
+		3A9B6252220F818100B68BD1 /* MainContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainerController.swift; sourceTree = "<group>"; };
+		3A9F697122419430009FFCC5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		3A9F697322419D14009FFCC5 /* SettingsSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
+		3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsFactory.swift; sourceTree = "<group>"; };
+		3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSettingsSection.swift; sourceTree = "<group>"; };
 		3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowsController.swift; sourceTree = "<group>"; };
 		3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6A421C844A9008C26F5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -80,6 +116,8 @@
 		3AB8C6AD21C847A3008C26F5 /* LightColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightColorTheme.swift; sourceTree = "<group>"; };
 		3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarStyleExtensions.swift; sourceTree = "<group>"; };
+		3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionsTests.swift; sourceTree = "<group>"; };
+		3AC0F12D224842ED00136664 /* ThemedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedImageView.swift; sourceTree = "<group>"; };
 		3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowEntry.swift; sourceTree = "<group>"; };
 		3AD0AE0721F51E290072BA2A /* QueueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueEntry.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
@@ -116,6 +154,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A15473C224052BA0002EC33 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A49C8ED2220BD0100D25B8C /* SettingsCell.swift */,
+				3A15473D224053090002EC33 /* SettingsHeader.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3A15473F2240548D0002EC33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3A154740224054AA0002EC33 /* SettingsHeaderViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		3A23B4E021A08A59003AC3ED /* QueueWithSections */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +179,14 @@
 				3A23B4E321A0A1B7003AC3ED /* QueueWithSectionsOptions.swift */,
 			);
 			path = QueueWithSections;
+			sourceTree = "<group>";
+		};
+		3A2C8C9A224C349900511EFE /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				3A2C8C9B224C34EE00511EFE /* UserDefaultsManager.swift */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		3A3B032D21A0232A00FD1121 /* Views */ = {
@@ -160,11 +223,14 @@
 		3A741E932198C85E00763028 /* WorkingQueue */ = {
 			isa = PBXGroup;
 			children = (
+				3A8C083A22386069002AD9FC /* Controls */,
 				3AA150F62206249B008E7727 /* Extensions */,
 				3A741EB62198D6E700763028 /* Features */,
+				3A2C8C9A224C349900511EFE /* Infrastructure */,
 				3AD0AE0221F517940072BA2A /* Model */,
+				3A494ABE22370FA300C6EB75 /* ColorThemeChangeable.swift */,
+				3A9B6252220F818100B68BD1 /* MainContainerController.swift */,
 				3A741E942198C85E00763028 /* AppDelegate.swift */,
-				3A741E962198C85E00763028 /* ViewController.swift */,
 				3ADB89A6219A18A700FC2BA5 /* Assets.xcassets */,
 				3A741E9D2198C86000763028 /* LaunchScreen.storyboard */,
 				3A741EA02198C86000763028 /* Info.plist */,
@@ -175,8 +241,8 @@
 		3A741EA82198C86000763028 /* WorkingQueueTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A741EA92198C86000763028 /* WorkingQueueTests.swift */,
 				3A741EAB2198C86000763028 /* Info.plist */,
+				3AC0F12B2248344C00136664 /* SettingsSectionsTests.swift */,
 			);
 			path = WorkingQueueTests;
 			sourceTree = "<group>";
@@ -185,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				3AB8C6A321C8449B008C26F5 /* Settings */,
+				3A778BD82214E72A00CA82C7 /* SettingsController.swift */,
 				3A741EB72198D6F700763028 /* SingleQueue */,
 				3AA05A1C21C93A5200C32C7E /* Workflows */,
 			);
@@ -203,6 +270,36 @@
 			path = SingleQueue;
 			sourceTree = "<group>";
 		};
+		3A8C083A22386069002AD9FC /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				3A8C083D223864A7002AD9FC /* ThemedButton.swift */,
+				3AC0F12D224842ED00136664 /* ThemedImageView.swift */,
+				3A8C083B2238608E002AD9FC /* ThemedLabel.swift */,
+				3A8C083F22386683002AD9FC /* ThemedView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		3A9F69772241A4B1009FFCC5 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F69752241A490009FFCC5 /* ColorThemeSettingsFactory.swift */,
+				3A9F697122419430009FFCC5 /* SettingsFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		3A9F69782241ACAB009FFCC5 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				3A9F697B2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift */,
+				3A9F69792241ACBD009FFCC5 /* SettingsSection.swift */,
+				3A9F697322419D14009FFCC5 /* SettingsSections.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
 		3AA05A1C21C93A5200C32C7E /* Workflows */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +312,9 @@
 		3AA150F62206249B008E7727 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3A8C08412238676E002AD9FC /* UICollectionViewCellExtensions.swift */,
+				3A8C083822385E66002AD9FC /* UICollectionViewExtensions.swift */,
+				3A494AC022371BEE00C6EB75 /* UINavigationControllerExtensions.swift */,
 				3AA150F7220624A8008E7727 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -223,7 +323,11 @@
 		3AB8C6A321C8449B008C26F5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3A9F69772241A4B1009FFCC5 /* Factories */,
+				3A9F69782241ACAB009FFCC5 /* Sections */,
 				3AB8C6A621C84749008C26F5 /* Theme */,
+				3A15473F2240548D0002EC33 /* ViewModels */,
+				3A15473C224052BA0002EC33 /* Views */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -238,6 +342,7 @@
 				3AB8C6A421C844A9008C26F5 /* Theme.swift */,
 				3AB8C6B321C866D1008C26F5 /* UIBarStyleExtensions.swift */,
 				3AB8C6B121C84CCD008C26F5 /* UIColorExtensions.swift */,
+				3A778BDA2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -336,9 +441,11 @@
 				TargetAttributes = {
 					3A741E902198C85E00763028 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 					3A741EA42198C86000763028 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 						TestTargetID = 3A741E902198C85E00763028;
 					};
 				};
@@ -443,17 +550,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A15473E224053090002EC33 /* SettingsHeader.swift in Sources */,
 				3A58231E2205AFC10095E479 /* DequeuePopupButton.swift in Sources */,
 				3AE58C5C2204C26C00616CBA /* DequeuePopupController.swift in Sources */,
 				3A23B4E221A08A74003AC3ED /* QueueWithSectionsDelegate.swift in Sources */,
 				3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */,
 				3A741EB92198DEE700763028 /* EnqueuePopupBuilder.swift in Sources */,
 				3AB8C6B421C866D1008C26F5 /* UIBarStyleExtensions.swift in Sources */,
+				3A49C8EE2220BD0100D25B8C /* SettingsCell.swift in Sources */,
+				3A9F697A2241ACBD009FFCC5 /* SettingsSection.swift in Sources */,
+				3A778BD92214E72A00CA82C7 /* SettingsController.swift in Sources */,
+				3A8C083C2238608E002AD9FC /* ThemedLabel.swift in Sources */,
+				3A9F69762241A490009FFCC5 /* ColorThemeSettingsFactory.swift in Sources */,
+				3A2C8C9C224C34EE00511EFE /* UserDefaultsManager.swift in Sources */,
 				3A5B8BE121CDACAB00DEF3DE /* WorkflowCell.swift in Sources */,
 				3AE58C5A2204C1CA00616CBA /* DequeuePopupBuilder.swift in Sources */,
+				3A8C08422238676E002AD9FC /* UICollectionViewCellExtensions.swift in Sources */,
+				3A8C083922385E66002AD9FC /* UICollectionViewExtensions.swift in Sources */,
+				3A154741224054AA0002EC33 /* SettingsHeaderViewModel.swift in Sources */,
 				3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */,
 				3AB8C6AC21C84789008C26F5 /* DarkColorTheme.swift in Sources */,
-				3A741E972198C85E00763028 /* ViewController.swift in Sources */,
+				3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */,
 				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,
 				3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
@@ -461,16 +578,25 @@
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
 				3AE58C5E2204CDEE00616CBA /* PopupBuilder.swift in Sources */,
 				3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */,
+				3A8C083E223864A7002AD9FC /* ThemedButton.swift in Sources */,
 				3AB8C6AA21C84771008C26F5 /* ColorTheme.swift in Sources */,
+				3A778BDB2214EC9F00CA82C7 /* UIStatusBarStyleExtensions.swift in Sources */,
+				3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
+				3AC0F12E224842ED00136664 /* ThemedImageView.swift in Sources */,
 				3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */,
+				3A9F697C2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift in Sources */,
 				3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */,
 				3A3B032F21A0248600FD1121 /* QueueWithSections.swift in Sources */,
 				3AB8C6A821C8475D008C26F5 /* ColorThemeType.swift in Sources */,
 				3A92995B219AA8CE001A6ECD /* SingleQueueHeaderLabel.swift in Sources */,
 				3AB8C6AE21C847A3008C26F5 /* LightColorTheme.swift in Sources */,
 				3A23B4E421A0A1B7003AC3ED /* QueueWithSectionsOptions.swift in Sources */,
+				3A9F697222419430009FFCC5 /* SettingsFactory.swift in Sources */,
+				3A8C084022386683002AD9FC /* ThemedView.swift in Sources */,
+				3A494ABF22370FA300C6EB75 /* ColorThemeChangeable.swift in Sources */,
+				3A494AC122371BEE00C6EB75 /* UINavigationControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A741EAA2198C86000763028 /* WorkingQueueTests.swift in Sources */,
+				3AC0F12C2248344C00136664 /* SettingsSectionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,7 +760,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -653,7 +779,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -664,6 +790,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;
@@ -674,7 +801,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkingQueue.app/WorkingQueue";
 			};
@@ -686,6 +814,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q924VJ4PLT;
 				INFOPLIST_FILE = WorkingQueueTests/Info.plist;
@@ -696,7 +825,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.aswiatek.WorkingQueueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WorkingQueue.app/WorkingQueue";
 			};

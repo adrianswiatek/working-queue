@@ -4,62 +4,56 @@ protocol WorkflowCellDelegate: AnyObject {
     func doneButtonDidTap(_ workflowCell: WorkflowCell)
 }
 
-class WorkflowCell: UICollectionViewCell {
+class WorkflowCell: UICollectionViewCell, ColorThemeRefreshable {
 
     weak var delegate: WorkflowCellDelegate?
 
-    private let workflowNameLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .textColor
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let workflowNameLabel: ThemedLabel = {
+        let label = ThemedLabel()
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let currentItemLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .tintColor
+    private let currentItemLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.tintColor }
         return label
     }()
 
-    private let pendingLabel: UILabel = {
-        let label = UILabel()
+    private let pendingLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.text = "Pending:"
-        label.textColor = .textColor
         label.font = .systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let pendingNumberLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .textColor
+    private let pendingNumberLabel: ThemedLabel = {
+        let label = ThemedLabel()
         label.font = .systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.getTextColor = { UIColor.textColor }
         return label
     }()
 
-    private let bottomView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .backgroundColor
+    private let bottomView: ThemedView = {
+        let view = ThemedView()
         view.layer.cornerRadius = 15
         view.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMaxXMaxYCorner, .layerMinXMaxYCorner)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.getBackgroundColor = { UIColor.backgroundColor }
         return view
     }()
 
-    private let doneButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .accentColor
-        button.tintColor = UIColor.tintColor
+    private let doneButton: ThemedButton = {
+        let button = ThemedButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "done"), for: .normal)
         button.layer.cornerRadius = 28
         button.layer.borderWidth = 3
-        button.layer.borderColor = UIColor.backgroundColor.cgColor
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.getTintColor = { UIColor.tintColor }
+        button.getBackgroundColor = { UIColor.accentColor }
+        button.getBorderColor = { UIColor.backgroundColor }
         return button
     }()
 
@@ -68,11 +62,18 @@ class WorkflowCell: UICollectionViewCell {
         setupViews()
         setupStyles()
         setupHandlers()
+        refreshColorTheme()
     }
 
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+    }
+
+    public func refreshColorTheme() {
+        backgroundColor = .accentColor
+        layer.shadowColor = UIColor.shadowColor.cgColor
+        refreshSubviewsColors()
     }
 
     private func setupViews() {
@@ -97,13 +98,13 @@ class WorkflowCell: UICollectionViewCell {
             bottomView.heightAnchor.constraint(equalToConstant: 38)
         ])
 
-        bottomView.addSubview(pendingLabel)
+        addSubview(pendingLabel)
         NSLayoutConstraint.activate([
             pendingLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: -12),
             pendingLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
         ])
 
-        bottomView.addSubview(pendingNumberLabel)
+        addSubview(pendingNumberLabel)
         NSLayoutConstraint.activate([
             pendingNumberLabel.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor, constant: 36),
             pendingNumberLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor)
@@ -119,9 +120,7 @@ class WorkflowCell: UICollectionViewCell {
     }
 
     private func setupStyles() {
-        backgroundColor = .accentColor
         layer.cornerRadius = 15
-        layer.shadowColor = UIColor.gray.cgColor
         layer.shadowRadius = 2
         layer.shadowOffset = CGSize(width: 0, height: 1)
         layer.shadowOpacity = 0.5
