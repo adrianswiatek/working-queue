@@ -50,6 +50,8 @@
 		3AC0F12E224842ED00136664 /* ThemedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC0F12D224842ED00136664 /* ThemedImageView.swift */; };
 		3AD0AE0621F51D8A0072BA2A /* WorkflowEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */; };
 		3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD0AE0721F51E290072BA2A /* QueueEntry.swift */; };
+		3AD60BB42252A939008A5701 /* WorkflowEndCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD60BB32252A939008A5701 /* WorkflowEndCell.swift */; };
+		3AD60BB82252AF9D008A5701 /* WorkflowEndEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD60BB72252AF9D008A5701 /* WorkflowEndEntry.swift */; };
 		3ADB899B2199EC8500FC2BA5 /* DeleteContextualAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */; };
 		3ADB89A3219A025900FC2BA5 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A2219A025900FC2BA5 /* ControlBar.swift */; };
 		3ADB89A5219A0D6100FC2BA5 /* ControlBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */; };
@@ -120,6 +122,8 @@
 		3AC0F12D224842ED00136664 /* ThemedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedImageView.swift; sourceTree = "<group>"; };
 		3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowEntry.swift; sourceTree = "<group>"; };
 		3AD0AE0721F51E290072BA2A /* QueueEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueEntry.swift; sourceTree = "<group>"; };
+		3AD60BB32252A939008A5701 /* WorkflowEndCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowEndCell.swift; sourceTree = "<group>"; };
+		3AD60BB72252AF9D008A5701 /* WorkflowEndEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowEndEntry.swift; sourceTree = "<group>"; };
 		3ADB899A2199EC8500FC2BA5 /* DeleteContextualAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteContextualAction.swift; sourceTree = "<group>"; };
 		3ADB89A2219A025900FC2BA5 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
 		3ADB89A4219A0D6100FC2BA5 /* ControlBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarDelegate.swift; sourceTree = "<group>"; };
@@ -303,7 +307,7 @@
 		3AA05A1C21C93A5200C32C7E /* Workflows */ = {
 			isa = PBXGroup;
 			children = (
-				3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */,
+				3AD60BB52252AAFF008A5701 /* Cells */,
 				3AA05A1D21C93A6B00C32C7E /* WorkflowsController.swift */,
 			);
 			path = Workflows;
@@ -351,9 +355,19 @@
 			isa = PBXGroup;
 			children = (
 				3AD0AE0521F51D8A0072BA2A /* WorkflowEntry.swift */,
+				3AD60BB72252AF9D008A5701 /* WorkflowEndEntry.swift */,
 				3AD0AE0721F51E290072BA2A /* QueueEntry.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3AD60BB52252AAFF008A5701 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A5B8BE021CDACAB00DEF3DE /* WorkflowCell.swift */,
+				3AD60BB32252A939008A5701 /* WorkflowEndCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3AE58C572204C15A00616CBA /* Popups */ = {
@@ -573,6 +587,7 @@
 				3A9F697422419D14009FFCC5 /* SettingsSections.swift in Sources */,
 				3AA05A1E21C93A6B00C32C7E /* WorkflowsController.swift in Sources */,
 				3AD0AE0821F51E290072BA2A /* QueueEntry.swift in Sources */,
+				3AD60BB82252AF9D008A5701 /* WorkflowEndEntry.swift in Sources */,
 				3AB8C6A521C844A9008C26F5 /* Theme.swift in Sources */,
 				3AA150F8220624A8008E7727 /* UIViewControllerExtensions.swift in Sources */,
 				3AB8C6B221C84CCD008C26F5 /* UIColorExtensions.swift in Sources */,
@@ -584,6 +599,7 @@
 				3A9B6253220F818100B68BD1 /* MainContainerController.swift in Sources */,
 				3A741E952198C85E00763028 /* AppDelegate.swift in Sources */,
 				3A741EB52198D6B900763028 /* SingleQueueController.swift in Sources */,
+				3AD60BB42252A939008A5701 /* WorkflowEndCell.swift in Sources */,
 				3AC0F12E224842ED00136664 /* ThemedImageView.swift in Sources */,
 				3A17BF9021A35AB300B22DCA /* EnqueuePopupController.swift in Sources */,
 				3A9F697C2241ACE0009FFCC5 /* ColorThemeSettingsSection.swift in Sources */,

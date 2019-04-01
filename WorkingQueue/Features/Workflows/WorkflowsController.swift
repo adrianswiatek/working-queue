@@ -6,24 +6,28 @@ class WorkflowsController: UIViewController, ColorThemeRefreshable {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width - 32, height: 160)
         layout.minimumLineSpacing = 16
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = .init(top: 16, left: 16, bottom: 16, right: 16)
-        collectionView.register(WorkflowCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(WorkflowCell.self, forCellWithReuseIdentifier: workflowCellIdentifier)
+        collectionView.register(WorkflowEndCell.self, forCellWithReuseIdentifier: workflowEndCellIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
     private var workflowEntries: [WorkflowEntry]
-    private let cellIdentifier: String
+    private var workflowEndEntry: WorkflowEndEntry
+    private let workflowCellIdentifier: String
+    private let workflowEndCellIdentifier: String
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.workflowEntries = []
-        self.cellIdentifier = "WorkflowCell"
+        self.workflowEndEntry = WorkflowEndEntry()
+        self.workflowCellIdentifier = "WorkflowCell"
+        self.workflowEndCellIdentifier = "WorkflowEndCell"
 
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -102,23 +106,57 @@ class WorkflowsController: UIViewController, ColorThemeRefreshable {
 
 extension WorkflowsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let singleQueueController = SingleQueueController()
-        singleQueueController.workflowEntry = workflowEntries[indexPath.item]
-        singleQueueController.delegate = self
-        navigationController?.pushViewController(singleQueueController, animated: true)
+        if isLastItem(indexPath) {
+
+        } else {
+            let singleQueueController = SingleQueueController()
+            singleQueueController.workflowEntry = workflowEntries[indexPath.item]
+            singleQueueController.delegate = self
+            navigationController?.pushViewController(singleQueueController, animated: true)
+        }
     }
 }
 
 extension WorkflowsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return workflowEntries.count
+        return workflowEntries.count + 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! WorkflowCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if isLastItem(indexPath) {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: workflowEndCellIdentifier,
+                for: indexPath) as! WorkflowEndCell
+            cell.update(workflowEndEntry: workflowEndEntry)
+            cell.delegate = self
+            return cell
+        }
+
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: workflowCellIdentifier,
+            for: indexPath) as! WorkflowCell
         cell.update(workflowEntry: workflowEntries[indexPath.item])
         cell.delegate = self
         return cell
+    }
+
+    private func isLastItem(_ indexPath: IndexPath) -> Bool {
+        return indexPath.item == workflowEntries.count
+    }
+}
+
+extension WorkflowsController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width - 32
+        return isLastItem(indexPath)
+            ? .init(width: width, height: 96)
+            : .init(width: width, height: 160)
     }
 }
 
@@ -133,14 +171,13 @@ extension WorkflowsController: WorkflowCellDelegate {
         let currentWorkflowEntry = workflowEntries[indexPath.item]
         guard let currentQueueEntry = currentWorkflowEntry.currentQueueEntry else { return }
 
-        var indexPathsToReload = [indexPath]
+        let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
+        let indexPathsToReload = [indexPath, nextIndexPath]
 
-        let nextWorkflowEntryExists = indexPath.item < workflowEntries.count - 1
-        if nextWorkflowEntryExists {
-            let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
-            indexPathsToReload.append(nextIndexPath)
-            setQueueEntryInNextWorkflowEntry(currentQueueEntry, nextIndexPath)
-        }
+        let itThisLastWorkflowEntry = indexPath.item == workflowEntries.count - 1
+        itThisLastWorkflowEntry
+            ? setQueueEntryInWorkflowEndEntry(currentQueueEntry)
+            : setQueueEntryInNextWorkflowEntry(currentQueueEntry, nextIndexPath)
 
         currentWorkflowEntry.dequeueToCurrent()
         collectionView.reloadItems(at: indexPathsToReload)
@@ -153,6 +190,16 @@ extension WorkflowsController: WorkflowCellDelegate {
         } else {
             nextWorkflowEntry.addQueueEntry(currentQueueEntry)
         }
+    }
+
+    private func setQueueEntryInWorkflowEndEntry(_ currentQueueEntry: QueueEntry) {
+        workflowEndEntry.addEntry(currentQueueEntry)
+    }
+}
+
+extension WorkflowsController: WorkflowEndCellDelegate {
+    func removeAllButton(_ workflowEndCell: WorkflowEndCell) {
+        print("Last cell tapped!")
     }
 }
 
