@@ -107,7 +107,10 @@ class WorkflowsController: UIViewController, ColorThemeRefreshable {
 extension WorkflowsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isLastItem(indexPath) {
-
+            let finishedItemsController = FinishedItemsController()
+            finishedItemsController.entry = workflowEndEntry
+            finishedItemsController.delegate = self
+            navigationController?.pushViewController(finishedItemsController, animated: true)
         } else {
             let singleQueueController = SingleQueueController()
             singleQueueController.workflowEntry = workflowEntries[indexPath.item]
@@ -232,5 +235,12 @@ extension WorkflowsController: SingleQueueControllerDelegate {
         currentWorkflowEntry.currentQueueEntry = currentWorkflowEntry.removeFirstQueueEntry()
 
         collectionView.reloadItems(at: [indexPath])
+    }
+}
+
+extension WorkflowsController: FinishedItemsControllerDelegate {
+    func entryDidDelete(viewController: FinishedItemsController, entry: WorkflowEndEntry) {
+        workflowEndEntry = entry
+        collectionView.reloadData()
     }
 }
