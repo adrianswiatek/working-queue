@@ -21,4 +21,8 @@ public class WorkflowEndEntry {
     public func getEntries() -> [QueueEntry] {
         return entries
     }
+
+    public func removeAllEntries() {
+        entries.removeAll()
+    }
 }

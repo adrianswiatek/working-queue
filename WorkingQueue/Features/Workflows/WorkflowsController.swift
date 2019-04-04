@@ -122,7 +122,7 @@ extension WorkflowsController: UICollectionViewDelegate {
 
 extension WorkflowsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return workflowEntries.count + 1
+        return workflowEntries.count + (workflowEndEntry.numberOfEntries > 0 ? 1 : 0)
     }
 
     func collectionView(
@@ -177,9 +177,9 @@ extension WorkflowsController: WorkflowCellDelegate {
         let nextIndexPath = IndexPath(item: indexPath.item + 1, section: 0)
         let indexPathsToReload = [indexPath, nextIndexPath]
 
-        let itThisLastWorkflowEntry = indexPath.item == workflowEntries.count - 1
-        itThisLastWorkflowEntry
-            ? setQueueEntryInWorkflowEndEntry(currentQueueEntry)
+        let isThisLastWorkflowEntry = indexPath.item == workflowEntries.count - 1
+        isThisLastWorkflowEntry
+            ? setQueueEntryInWorkflowEndEntry(currentQueueEntry, nextIndexPath)
             : setQueueEntryInNextWorkflowEntry(currentQueueEntry, nextIndexPath)
 
         currentWorkflowEntry.dequeueToCurrent()
@@ -195,14 +195,33 @@ extension WorkflowsController: WorkflowCellDelegate {
         }
     }
 
-    private func setQueueEntryInWorkflowEndEntry(_ currentQueueEntry: QueueEntry) {
+    private func setQueueEntryInWorkflowEndEntry(_ currentQueueEntry: QueueEntry, _ nextIndexPath: IndexPath) {
         workflowEndEntry.addEntry(currentQueueEntry)
+        collectionView.insertItems(at: [nextIndexPath])
     }
 }
 
 extension WorkflowsController: WorkflowEndCellDelegate {
     func removeAllButton(_ workflowEndCell: WorkflowEndCell) {
-        print("Last cell tapped!")
+        let alertController = UIAlertController(
+            title: "Remove All",
+            message: "Do you want to remove all items in section?",
+            preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+
+        let removeAllAction = UIAlertAction(title: "Remove All", style: .destructive) { [weak self] _ in
+            guard let `self` = self else { return }
+            self.workflowEndEntry.removeAllEntries()
+
+            if let indexPath = self.collectionView.indexPath(for: workflowEndCell) {
+                self.collectionView.deleteItems(at: [indexPath])
+            }
+        }
+        alertController.addAction(removeAllAction)
+
+        present(alertController, animated: true)
     }
 }
 

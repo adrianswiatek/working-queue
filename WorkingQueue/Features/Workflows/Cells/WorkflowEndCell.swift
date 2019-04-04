@@ -123,6 +123,9 @@ class WorkflowEndCell: UICollectionViewCell, ColorThemeRefreshable {
     }
 
     func update(workflowEndEntry: WorkflowEndEntry) {
+        let currentItemExists = workflowEndEntry.numberOfEntries > 0
+        removeAllButton.isHidden = !currentItemExists
+
         itemsNumberLabel.text = String(workflowEndEntry.numberOfEntries)
     }
 }

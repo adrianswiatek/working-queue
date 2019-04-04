@@ -47,6 +47,7 @@ public class FinishedItemsController: UITableViewController {
             self.delegate?.entryDidDelete(viewController: self, entry: entry)
 
             completionHandler(true)
+            self.tableView.reloadData()
         }
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
