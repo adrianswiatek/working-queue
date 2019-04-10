@@ -197,7 +197,9 @@ extension WorkflowsController: WorkflowCellDelegate {
 
     private func setQueueEntryInWorkflowEndEntry(_ currentQueueEntry: QueueEntry, _ nextIndexPath: IndexPath) {
         workflowEndEntry.addEntry(currentQueueEntry)
-        collectionView.insertItems(at: [nextIndexPath])
+        workflowEndEntry.numberOfEntries == 1
+            ? collectionView.insertItems(at: [nextIndexPath])
+            : collectionView.reloadItems(at: [nextIndexPath])
     }
 }
 
