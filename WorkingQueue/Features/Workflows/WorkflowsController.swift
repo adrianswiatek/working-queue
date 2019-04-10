@@ -166,6 +166,7 @@ extension WorkflowsController: UICollectionViewDelegateFlowLayout {
 extension WorkflowsController: WorkflowCellDelegate {
     func doneButtonDidTap(_ workflowCell: WorkflowCell) {
         if let indexPath = collectionView.indexPath(for: workflowCell) {
+            collectionView.refreshCellsColors()
             moveQueueEntriesBetweenWorkflowEntries(startingFrom: indexPath)
         }
     }
@@ -184,6 +185,10 @@ extension WorkflowsController: WorkflowCellDelegate {
 
         currentWorkflowEntry.dequeueToCurrent()
         collectionView.reloadItems(at: indexPathsToReload)
+
+        // All cells need to be refreshed otherwise
+        // wrong colors theme may be applied
+        collectionView.refreshCellsColors()
     }
 
     private func setQueueEntryInNextWorkflowEntry(_ currentQueueEntry: QueueEntry, _ nextIndexPath: IndexPath) {
@@ -197,9 +202,10 @@ extension WorkflowsController: WorkflowCellDelegate {
 
     private func setQueueEntryInWorkflowEndEntry(_ currentQueueEntry: QueueEntry, _ nextIndexPath: IndexPath) {
         workflowEndEntry.addEntry(currentQueueEntry)
-        workflowEndEntry.numberOfEntries == 1
-            ? collectionView.insertItems(at: [nextIndexPath])
-            : collectionView.reloadItems(at: [nextIndexPath])
+
+        if workflowEndEntry.numberOfEntries == 1 {
+            collectionView.insertItems(at: [nextIndexPath])
+        }
     }
 }
 
