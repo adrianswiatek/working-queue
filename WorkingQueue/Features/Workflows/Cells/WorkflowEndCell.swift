@@ -43,7 +43,7 @@ class WorkflowEndCell: UICollectionViewCell, ColorThemeRefreshable {
 
     private let removeAllButton: ThemedButton = {
         let button = ThemedButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "done"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
         button.layer.cornerRadius = 28
         button.layer.borderWidth = 3
         button.getTintColor = { UIColor.tintColor }
