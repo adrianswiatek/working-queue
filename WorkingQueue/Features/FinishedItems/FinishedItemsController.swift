@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol FinishedItemsControllerDelegate {
-    func entryDidDelete(viewController: FinishedItemsController, entry: WorkflowEndEntry)
+    func didDelete(viewController: FinishedItemsController)
 }
 
 public class FinishedItemsController: UIViewController {
@@ -49,15 +49,40 @@ public class FinishedItemsController: UIViewController {
         let deleteAllBarButtonItem = UIBarButtonItem(
             title: "Delete All",
             style: .plain,
-            target: nil,
-            action: nil)
+            target: self,
+            action: #selector(deleteAll))
 
         toolbar.setItems([spaceBarButtonItem, deleteAllBarButtonItem, spaceBarButtonItem], animated: true)
     }
 
     @objc
     private func deleteAll() {
-        print("Delete all")
+        let alertController = UIAlertController(
+            title: "Remove All",
+            message: "Do you want to remove all items?",
+            preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+
+        let removeAllAction = UIAlertAction(title: "Remove All", style: .destructive) { [weak self] _ in
+            guard let `self` = self else { return }
+
+            let numberOfEntries = self.entry?.numberOfEntries ?? 0
+            let indexPaths = (0 ..< numberOfEntries).map { IndexPath(row: $0, section: 0) }.sorted { $0 < $1 }
+
+            self.entry?.removeAllEntries()
+
+            self.tableView.deleteRows(at: indexPaths, with: .automatic)
+            self.delegate?.didDelete(viewController: self)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+        }
+        alertController.addAction(removeAllAction)
+
+        present(alertController, animated: true)
     }
 
     private func setupViews() {
@@ -105,8 +130,7 @@ extension FinishedItemsController: UITableViewDelegate {
             let entryToRemove = entry.getEntries()[indexPath.row]
             entry.removeEntry(entryToRemove)
 
-            self.entry = entry
-            self.delegate?.entryDidDelete(viewController: self, entry: entry)
+            self.delegate?.didDelete(viewController: self)
 
             completionHandler(true)
             self.tableView.reloadData()

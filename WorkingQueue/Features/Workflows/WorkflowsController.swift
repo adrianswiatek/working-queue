@@ -266,8 +266,7 @@ extension WorkflowsController: SingleQueueControllerDelegate {
 }
 
 extension WorkflowsController: FinishedItemsControllerDelegate {
-    func entryDidDelete(viewController: FinishedItemsController, entry: WorkflowEndEntry) {
-        workflowEndEntry = entry
+    func didDelete(viewController: FinishedItemsController) {
         collectionView.reloadData()
     }
 }
