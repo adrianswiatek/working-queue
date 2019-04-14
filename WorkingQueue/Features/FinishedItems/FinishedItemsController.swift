@@ -1,5 +1,6 @@
 import UIKit
 import RxSwift
+import RxCocoa
 
 public class FinishedItemsController: UIViewController {
 
@@ -9,7 +10,7 @@ public class FinishedItemsController: UIViewController {
         return entrySubject.asObservable().share()
     }
 
-    private let entrySubject = PublishSubject<WorkflowEndEntry>()
+    private let entrySubject = PublishRelay<WorkflowEndEntry>()
     private let disposeBag = DisposeBag()
     private let cellIdentifier = "Cell"
 
@@ -76,8 +77,8 @@ public class FinishedItemsController: UIViewController {
             let indexPaths = (0 ..< numberOfEntries).map { IndexPath(row: $0, section: 0) }.sorted { $0 < $1 }
 
             entry.removeAllEntries()
-            
-            self.entrySubject.onNext(entry)
+
+            self.entrySubject.accept(entry)
             self.tableView.deleteRows(at: indexPaths, with: .automatic)
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
@@ -137,7 +138,7 @@ extension FinishedItemsController: UITableViewDelegate {
 
             let entryToRemove = entry.getEntries()[indexPath.row]
             entry.removeEntry(entryToRemove)
-            self.entrySubject.onNext(entry)
+            self.entrySubject.accept(entry)
 
             completionHandler(true)
             self.tableView.reloadData()
