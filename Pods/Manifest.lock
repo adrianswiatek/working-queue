@@ -1,16 +1,25 @@
 PODS:
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - Toast-Swift (4.0.1)
 
 DEPENDENCIES:
+  - RxCocoa (~> 4.5)
+  - RxSwift (~> 4.5)
   - Toast-Swift (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - RxCocoa
+    - RxSwift
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: ca2ded7848b3ae6eee47cd669944497af2cb7f54
+PODFILE CHECKSUM: ed816c0a5d3c3e00ce74535f0edd94dcf9138ae7
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

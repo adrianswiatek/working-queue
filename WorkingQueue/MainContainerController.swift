@@ -56,9 +56,10 @@ public class MainContainerController: UIViewController, ColorThemeRefreshable {
         ])
 
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handleWorkflowsPan))
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleWorkflowsTap))
-
+        panRecognizer.delegate = self
         workflowsNavigationController.view.addGestureRecognizer(panRecognizer)
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleWorkflowsTap))
         workflowsCoverView.addGestureRecognizer(tapRecognizer)
     }
 
@@ -136,5 +137,13 @@ public class MainContainerController: UIViewController, ColorThemeRefreshable {
 
     @objc private func handleWorkflowsTap() {
         hideSettingsView()
+    }
+}
+
+extension MainContainerController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

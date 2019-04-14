@@ -1,4 +1,4 @@
-public class WorkflowEndEntry {
+public struct WorkflowEndEntry {
 
     private var entries: [QueueEntry]
 
@@ -10,11 +10,11 @@ public class WorkflowEndEntry {
         self.entries = []
     }
 
-    public func addEntry(_ entry: QueueEntry) {
+    public mutating func addEntry(_ entry: QueueEntry) {
         entries.append(entry)
     }
 
-    public func removeEntry(_ entry: QueueEntry) {
+    public mutating func removeEntry(_ entry: QueueEntry) {
         entries.removeAll(where: { $0 == entry })
     }
 
@@ -22,7 +22,7 @@ public class WorkflowEndEntry {
         return entries
     }
 
-    public func removeAllEntries() {
+    public mutating func removeAllEntries() {
         entries.removeAll()
     }
 }

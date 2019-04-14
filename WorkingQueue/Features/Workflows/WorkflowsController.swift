@@ -1,4 +1,5 @@
 import UIKit
+import RxSwift
 
 class WorkflowsController: UIViewController, ColorThemeRefreshable {
 
@@ -22,6 +23,8 @@ class WorkflowsController: UIViewController, ColorThemeRefreshable {
     private var workflowEndEntry: WorkflowEndEntry
     private let workflowCellIdentifier: String
     private let workflowEndCellIdentifier: String
+
+    private let disposeBag = DisposeBag()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.workflowEntries = []
@@ -109,8 +112,14 @@ extension WorkflowsController: UICollectionViewDelegate {
         if isLastItem(indexPath) {
             let finishedItemsController = FinishedItemsController()
             finishedItemsController.entry = workflowEndEntry
-            finishedItemsController.delegate = self
             navigationController?.pushViewController(finishedItemsController, animated: true)
+
+            finishedItemsController.entryObservable
+                .subscribe(onNext: { [weak self] in
+                    self?.workflowEndEntry = $0
+                    DispatchQueue.main.async { self?.collectionView.reloadData() }
+                })
+                .disposed(by: disposeBag)
         } else {
             let singleQueueController = SingleQueueController()
             singleQueueController.workflowEntry = workflowEntries[indexPath.item]
@@ -262,11 +271,5 @@ extension WorkflowsController: SingleQueueControllerDelegate {
         currentWorkflowEntry.currentQueueEntry = currentWorkflowEntry.removeFirstQueueEntry()
 
         collectionView.reloadItems(at: [indexPath])
-    }
-}
-
-extension WorkflowsController: FinishedItemsControllerDelegate {
-    func didDelete(viewController: FinishedItemsController) {
-        collectionView.reloadData()
     }
 }
