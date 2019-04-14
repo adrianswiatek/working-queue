@@ -48,17 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func refreshNavigationControllerAppearance() {
-        let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.barTintColor = .accentColor
-        navigationBarAppearace.barStyle = .currentStyle
-        navigationBarAppearace.tintColor = .tintColor
-        navigationBarAppearace.isTranslucent = false
+        let navigationBarAppearance = UINavigationBar.appearance()
+        navigationBarAppearance.barTintColor = .accentColor
+        navigationBarAppearance.barStyle = .currentStyle
+        navigationBarAppearance.tintColor = .tintColor
+        navigationBarAppearance.isTranslucent = false
 
-        navigationBarAppearace.titleTextAttributes =
+        navigationBarAppearance.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
         
-        navigationBarAppearace.largeTitleTextAttributes =
+        navigationBarAppearance.largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.tintColor]
+
+        let toolbarAppearance = UIToolbar.appearance()
+        toolbarAppearance.tintColor = .tintColor
+        toolbarAppearance.barTintColor = .accentColor
     }
 
     private func refreshToastAppearance() {

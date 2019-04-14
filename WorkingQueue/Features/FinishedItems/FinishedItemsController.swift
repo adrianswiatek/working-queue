@@ -14,14 +14,6 @@ public class FinishedItemsController: UIViewController {
     private let disposeBag = DisposeBag()
     private let cellIdentifier = "Cell"
 
-    private let toolbar: UIToolbar = {
-        let toolbar = UIToolbar()
-        toolbar.barTintColor = .accentColor
-        toolbar.tintColor = .tintColor
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        return toolbar
-    }()
-
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .backgroundColor
@@ -36,6 +28,16 @@ public class FinishedItemsController: UIViewController {
         configureToolbar()
         setupEntrySubject()
         setupViews()
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(false, animated: true)
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setToolbarHidden(true, animated: true)
     }
 
     private func configureTableView() {
@@ -57,7 +59,8 @@ public class FinishedItemsController: UIViewController {
             target: self,
             action: #selector(deleteAll))
 
-        toolbar.setItems([spaceBarButtonItem, deleteAllBarButtonItem, spaceBarButtonItem], animated: true)
+        let toolbarItems = [spaceBarButtonItem, deleteAllBarButtonItem, spaceBarButtonItem]
+        setToolbarItems(toolbarItems, animated: true)
     }
 
     @objc
@@ -95,19 +98,12 @@ public class FinishedItemsController: UIViewController {
     }
 
     private func setupViews() {
-        view.addSubview(toolbar)
-        NSLayoutConstraint.activate([
-            toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: toolbar.topAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
